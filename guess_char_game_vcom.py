@@ -9,10 +9,11 @@ def function():
     while(vrai == "true"):
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
         print(f"""
-===================
+"STOP" to end the game
+=======================
 Record : {max}
 Score : {combo}
-===================\n\n\n\n\n""")
+=======================\n\n\n\n\n""")
         x = 4
         hiragana = ""
         romaji = ""
@@ -34,16 +35,17 @@ Score : {combo}
         elif(reponse == "STOP"):
            break
         else:
-            input(f'non connard, c\'est "{romaji}"')
+            input(f'Oupsi, c\'était "{romaji}"\n')
             if(max < combo):
                 max = combo
             combo = 0
 
-    print(f"{max} à la suite. gg")
+    print(f"{max} à la suite")
 
-
-    again = input("again")
-    if(again == "y"):
+    restart = ""
+    while(restart == ""):
+        restart = input("Restart ? (y/n)\n>")
+        if(restart == "y"):
            function()
 
 
@@ -51,6 +53,20 @@ Score : {combo}
 
     
 def main():
+    input("""
+=================================================
+   This program is a guessing game with score.
+            Gives you multiples kanas.
+         You have to write them in romaji.
+=================================================
+...
+""")
+    input("""
+This symbol ">", means you have to write.
+If there is no symbol, press Enter to proceed.
+Restart the game or exit the program,
+will reset the high score.
+""")
     function()
 
 if __name__=="__main__":
