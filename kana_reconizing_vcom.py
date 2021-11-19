@@ -17,7 +17,7 @@ n, h, m,
 y, r, w,
 sp
 >""")
-    while(not choose == "A" and not choose == "v" and not choose == "k" and not choose == "s" and not choose == "t" and not choose == "n" and not choose == "h" and not choose == "m" and not choose == "y" and not choose == "r" and not choose == "w" and not choose == "sp"):
+    while(not choice == "A" and not choice == "v" and not choice == "k" and not choice == "s" and not choice == "t" and not choice == "n" and not choice == "h" and not choice == "m" and not choice == "y" and not choice == "r" and not choice == "w" and not choice == "sp"):
         choice = input(">")
 
 
@@ -129,7 +129,7 @@ def main():
 Press Enter to proceed when nothing is asked.
 ...
 """)
-    input("""This symbol ">", means a answer is expected.
+    input("""This symbol ">", means an answer is expected.
 =============================
 """)
     

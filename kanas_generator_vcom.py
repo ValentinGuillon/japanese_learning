@@ -4,8 +4,8 @@ from module_characters_jap_vcom import *
 import random
 
 def function():
-    choose = input("kana or romaji?\n>")
-    nbr = int(input("How much?\n>"))
+    choose = input("Kana => Romaji (k)\nRomaji => Kana (r)\n>")
+    nbr = int(input("How many?\n>"))
 
     
     replay = ""
@@ -36,11 +36,12 @@ def function():
 
         replay = input("Again ? (Enter or n)\n>")
     
-    restart = ""
-    while(restart == ""):
-        restart = input("Restart ? (y/n)\n>")
+    restart = input("Restart ? (y/n)\n>")
+    while(restart == "" or not restart == "n"):
         if(restart == "y"):
             function()
+            break
+        restart = input(">")
 
 
 
@@ -56,8 +57,11 @@ def main():
           base on
         your number
 =============================
-When there is no choices
-press Enter
+Press Enter to proceed when nothing is asked.
+...
+""")
+    input("""This symbol ">", means an answer is expected.
+=============================
 """)
     
     function()

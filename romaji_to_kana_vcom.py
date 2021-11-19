@@ -190,8 +190,7 @@ def romaji_to_hiragana(text):
 
 
 def main() :
-    input("""
-    	
+    input("""	
 =============================
         This program
           traduct
@@ -203,7 +202,7 @@ def main() :
 Press Enter to proceed when nothing is asked.
 ...
 """)
-    input("""This symbol ">", means a answer is expected.
+    input("""This symbol ">", means an answer is expected.
 =============================
 """)
     function()

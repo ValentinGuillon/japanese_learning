@@ -133,28 +133,28 @@ Expressions (e)
         
         if(mod == "g"):
             if(choose == "fr"):
-                guess = str.lower(input(f"""Write "STOP" to end the game\n\n\n\nIn romaji ?\n\n{word_fr}\n>"""))
+                guess = str.lower(input(f""""STOP" to end the game\n\n\n\nIn romaji ?\n\n{word_fr}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_romaji)):
                     input(f"""Oupsi. C'était "{word_romaji}"\n""")
 
             elif(choose == "rf"):
-                guess = str.lower(input(f"""Write "STOP" to end the game\n\n\n\nIn french ?\n\n{word_romaji}\n>"""))
+                guess = str.lower(input(f""""STOP" to end the game\n\n\n\nIn french ?\n\n{word_romaji}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_fr)):
                     input(f"""Oupsi. C'était "{word_fr}"\n""")
 
             elif(choose == "hr"):
-                guess = str.lower(input(f"""Write "STOP" to end the game\n\n\n\nIn romaji ?\n\n{word_hiragana}\n>"""))
+                guess = str.lower(input(f""""STOP" to end the game\n\n\n\nIn romaji ?\n\n{word_hiragana}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_romaji)):
                     input(f"""Oupsi. C'était "{word_romaji}"\n""")
 
             elif(choose == "hf"):
-                guess = str.lower(input(f"""Write "STOP" to end the game\n\n\n\nIn french ?\n\n{word_hiragana}\n>"""))
+                guess = str.lower(input(f""""STOP" to end the game\n\n\n\nIn french ?\n\n{word_hiragana}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_fr)):
@@ -187,7 +187,7 @@ def main():
     input("""Press Enter to proceed when nothing is asked.
 ...
 """)
-    input("""This symbol ">", means a answer is expected.
+    input("""This symbol ">", means an answer is expected.
 =============================
 """)
     

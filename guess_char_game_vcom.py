@@ -69,7 +69,7 @@ Press Enter to proceed when nothing is asked.
 will reset the high score.
 ...
 """)
-    input("""This symbol ">", means a answer is expected.
+    input("""This symbol ">", means an answer is expected.
 ================================================
 """)
     function()

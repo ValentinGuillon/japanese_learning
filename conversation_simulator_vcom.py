@@ -48,15 +48,9 @@ def function(lang):
             for n in topics:
                 i -= 1
                 if(i == 0):
-                    if(lang == "r"):
-                        print(n)
-                    elif(lang == "h"):
-                        print(romaji_to_hiragana(n))
+                    print(n)
                 else:
-                    if(lang == "r"):
-                        print(n, end="\n")
-                    elif(lang == "h"):
-                        print(romaji_to_hiragana(n), end="\n")
+                    print(n, end="\n")
                     
             choose = input(">")
             print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
@@ -224,7 +218,7 @@ def main():
 Press Enter to proceed when nothing is asked.
 ...
 """)
-    input("""This symbol ">", means a answer is expected.
+    input("""This symbol ">", means an answer is expected.
 ==============================================
 """)
     langage()

@@ -7,7 +7,7 @@ def function():
         choice = input(">")
 
     replay = ""
-    while(replay == "") :
+    while(replay == "" or not replay == "n") :
         nbr = random.randint(1, 999)
         romaji = nbr_to_romaji(nbr)
         
@@ -139,7 +139,7 @@ def main():
 Press Enter to proceed when nothing is asked.
 ...
 """)
-    input("""This symbol ">", means a answer is expected.
+    input("""This symbol ">", means an answer is expected.
 ==============================================
 """)
 
