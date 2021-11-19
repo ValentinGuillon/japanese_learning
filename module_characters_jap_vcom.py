@@ -35,6 +35,7 @@ wa, wo, n = chr(12431), chr(12434), chr(12435)
 
 #...special hiraganas
 small_ya, small_yu, small_yo = chr(12419), chr(12421), chr(12423)
+small_tsu = chr(12387)
 
 kya, kyu, kyo = ki + small_ya, ki + small_yu , ki + small_yo
 gya, gyu, gyo = gi + small_ya, gi + small_yu, gi + small_yo
