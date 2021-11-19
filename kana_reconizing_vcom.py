@@ -1,18 +1,24 @@
-#This program show a japanese charactere (romaji->hiragana and vs).
+#This program show a japanese charactere (romaji=>hiragana and romaji=>hiragana).
 
 from module_characters_jap_vcom import *
 import random
 
 def function():
-    choose = input("hiragana or romaji ? (h/r)\n>")
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    choose = input("Hiragana => Romaji (h)\nRomaji => Hiragana(r)\n>")
+    while(not choose == "h" and not choose == "r"):
+        choose = input(">")
     choice = input("""
-which syllabs:
-All (Enter)
+Which syllabs:
+All (A)
 voyelles (v)
 k, s, t,
 n, h, m,
-y, r, w
+y, r, w,
+sp
 >""")
+    while(not choose == "A" and not choose == "v" and not choose == "k" and not choose == "s" and not choose == "t" and not choose == "n" and not choose == "h" and not choose == "m" and not choose == "y" and not choose == "r" and not choose == "w" and not choose == "sp"):
+        choice = input(">")
 
 
     replay = ""
@@ -22,60 +28,64 @@ y, r, w
         hiragana = "[none]"
         romaji = "[none]"
         
-        if(choice == ""):
-            i = random.randint(0, 70)
+        if(choice == "A"):
+            i = random.randint(0, len(char['hiragana']['all']) -1)
             hiragana = char['hiragana']['all'][i]
             romaji = char['romaji']['all'][i]
             
         elif(choice == "v"):
-            i = random.randint(0, 4)
+            i = random.randint(0, len(char['hiragana']['vowel']) -1)
             hiragana = char['hiragana']['vowel'][i]
             romaji = char['romaji']['vowel'][i]
         
         elif(choice == "k"):
-            i = random.randint(0, 9)
+            i = random.randint(0, len(char['hiragana']['k']) -1)
             hiragana = char['hiragana']['k'][i]
             romaji = char['romaji']['k'][i]
         
         elif(choice == "s"):
-            i = random.randint(0, 9)
+            i = random.randint(0, len(char['hiragana']['s']) -1)
             hiragana = char['hiragana']['s'][i]
             romaji = char['romaji']['s'][i]
         
         elif(choice == "t"):
-            i = random.randint(0, 9)
+            i = random.randint(0, len(char['hiragana']['t']) -1)
             hiragana = char['hiragana']['t'][i]
             romaji = char['romaji']['t'][i]
         
         elif(choice == "n"):
-            i = random.randint(0, 4)
+            i = random.randint(0, len(char['hiragana']['n']) -1)
             hiragana = char['hiragana']['n'][i]
             romaji = char['romaji']['n'][i]
         
         elif(choice == "h"):
-            i = random.randint(0, 14)
+            i = random.randint(0, len(char['hiragana']['h']) -1)
             hiragana = char['hiragana']['h'][i]
             romaji = char['romaji']['h'][i]
         
         elif(choice == "m"):
-            i = random.randint(0, 4)
+            i = random.randint(0, len(char['hiragana']['m']) -1)
             hiragana = char['hiragana']['m'][i]
             romaji = char['romaji']['m'][i]
         
         elif(choice == "y"):
-            i = random.randint(0, 2)
+            i = random.randint(0, len(char['hiragana']['y']) -1)
             hiragana = char['hiragana']['y'][i]
             romaji = char['romaji']['y'][i]
         
         elif(choice == "r"):
-            i = random.randint(0, 4)
+            i = random.randint(0, len(char['hiragana']['r']) -1)
             hiragana = char['hiragana']['r'][i]
             romaji = char['romaji']['r'][i]
         
         elif(choice == "w"):
-            i = random.randint(0, 1)
+            i = random.randint(0, len(char['hiragana']['w']) -1)
             hiragana = char['hiragana']['w'][i]
             romaji = char['romaji']['w'][i]
+        elif(choice == "sp"):
+            i = random.randint(0, len(char['hiragana']['sp']) -1)
+            hiragana = char['hiragana']['sp'][i]
+            romaji = char['romaji']['sp'][i]
 
         
         if(choose == "h"):
@@ -96,11 +106,12 @@ y, r, w
         replay = input("Again ? (Enter or n)\n>")
     
     
-    restart = ""
-    while(restart == ""):
-        restart = input("Restart ? (y/n)\n>")
+    restart = input("Restart ? (y/n)\n>")
+    while(restart == "" or not restart == "n"):
         if(restart == "y"):
             function()
+            break
+        restart = input(">")
 
 
 
@@ -115,8 +126,11 @@ def main():
             then
          in romaji
 =============================
-When there is no choices
-press Enter
+Press Enter to proceed when nothing is asked.
+...
+""")
+    input("""This symbol ">", means a answer is expected.
+=============================
 """)
     
     function()

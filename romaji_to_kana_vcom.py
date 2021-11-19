@@ -200,8 +200,11 @@ def main() :
             to
            kana
 =============================
-When there is no choices
-press Enter
+Press Enter to proceed when nothing is asked.
+...
+""")
+    input("""This symbol ">", means a answer is expected.
+=============================
 """)
     function()
     

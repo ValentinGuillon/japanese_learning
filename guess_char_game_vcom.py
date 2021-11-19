@@ -2,8 +2,10 @@ from module_characters_jap_vcom import *
 import random
 
 def function():
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     combo = 0
     max = 0
+    number = int(input("How many characters you want ?\n>"))
 
     vrai = "true"
     while(vrai == "true"):
@@ -14,10 +16,10 @@ def function():
 Record : {max}
 Score : {combo}
 =======================\n\n\n\n\n""")
-        x = 4
         hiragana = ""
         romaji = ""
         romaji_2 = ""
+        x = number
 
         while(not x == 0):
             i = random.randint(0, len(char['hiragana']['all']) -1)
@@ -35,18 +37,19 @@ Score : {combo}
         elif(reponse == "STOP"):
            break
         else:
-            input(f'Oupsi, c\'était "{romaji}"\n')
+            input(f"""Oupsi, c'était "{romaji}"\n""")
             if(max < combo):
                 max = combo
             combo = 0
 
-    print(f"{max} à la suite")
+    print(f"{max} à la suite\n")
 
-    restart = ""
-    while(restart == ""):
-        restart = input("Restart ? (y/n)\n>")
+    restart = input("Restart ? (y/n)\n>")
+    while(restart == "" or not restart == "n"):
         if(restart == "y"):
-           function()
+            function()
+            break
+        restart = input(">")
 
 
 
@@ -59,13 +62,15 @@ def main():
             Gives you multiples kanas.
          You have to write them in romaji.
 =================================================
+Press Enter to proceed when nothing is asked.
 ...
 """)
-    input("""
-This symbol ">", means you have to write.
-If there is no symbol, press Enter to proceed.
-Restart the game or exit the program,
+    input("""Restart the game or exit the program,
 will reset the high score.
+...
+""")
+    input("""This symbol ">", means a answer is expected.
+================================================
 """)
     function()
 

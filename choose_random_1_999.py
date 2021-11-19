@@ -1,7 +1,10 @@
 import random
 
-def function():                                   
-    choice = input("number or jap ? (n/j)\n>")
+def function():    
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")                               
+    choice = input("Number => Japanese (n)\nJapanese => Number (j)\n>")
+    while(not choice == "n" and not choice == "j"):
+        choice = input(">")
 
     replay = ""
     while(replay == "") :
@@ -18,11 +21,12 @@ def function():
 
         replay = input("Again ? (Enter or n)\n>")
     
-    restart = ""
-    while(restart == ""):
-        restart = input("Restart ? (y/n)\n>")
+    restart = input("Restart ? (y/n)\n>")
+    while(restart == "" or not restart == "n"):
         if(restart == "y"):
             function()
+            break
+        restart = input(">")
 
 
 
@@ -125,21 +129,20 @@ def nbr_to_romaji(x):
 
 
 
-def main() :
+def main():
     input("""
-    	
-=============================
-        This program
-          give you
-          a number
-          between
-         1 and 999
-           then
-         in romaji
-=============================
-When there is no choices
-press Enter
+==============================================
+        This program give you a number
+              between1 and 999
+               then in romaji
+==============================================
+Press Enter to proceed when nothing is asked.
+...
 """)
+    input("""This symbol ">", means a answer is expected.
+==============================================
+""")
+
     function()
     
 if __name__ == "__main__":
