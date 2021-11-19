@@ -5,7 +5,7 @@ for i in range(0x3040, 0x30a0):
     print(i, end=' ')
     print(chr(i))
 """
-#creation of all hiraganas
+#creation of all simple hiraganas
 a, i, u, e, o = chr(12354), chr(12356), chr(12358), chr(12360), chr(12362)
 #print(a, i, u, e, o) #i(0, 4)
 ka, ki ,ku, ke, ko = chr(12363), chr(12365), chr(12367), chr(12369), chr(12371)
@@ -33,6 +33,24 @@ wa, wo, n = chr(12431), chr(12434), chr(12435)
 #print(wa, wo, n) #i(68, 70)
 
 
+#...special hiraganas
+small_ya, small_yu, small_yo = chr(12419), chr(12421), chr(12423)
+
+kya, kyu, kyo = ki + small_ya, ki + small_yu , ki + small_yo
+gya, gyu, gyo = gi + small_ya, gi + small_yu, gi + small_yo
+sha, shu, sho = shi + small_ya, shi + small_yu, shi + small_yo
+cha, chu, cho = chi + small_ya, chi + small_yu, chi + small_yo
+ja, ju, jo = ji_s + small_ya, ji_s + small_yu, ji_s + small_yo
+nya, nyu, nyo = ni + small_ya, ni + small_yu, ni + small_yo
+hya, hyu, hyo = hi + small_ya, hi + small_yu, hi + small_yo
+bya, byu, byo = bi + small_ya, bi + small_yu, bi + small_yo
+pya, pyu, pyo = pi + small_ya, pi + small_yu, pi + small_yo
+mya, myu, myo = mi + small_ya, mi + small_yu, mi + small_yo
+rya, ryu, ryo = ri + small_ya, ri + small_yu, ri + small_yo
+
+
+
+
 char = {
     'romaji' : {'all' : [],
                 'vowel' : ["a", "i", "u", "e", "o"],
@@ -45,7 +63,15 @@ char = {
                 'y' : ["ya", "yu", "yo"],
                 'r' : ["ra", "ri", "ru", "re", "ro"],
                 'w' : ["wa", "wo"],
-                'only_n' : ["n"]},
+                'only_n' : ["n"],
+                'sp' : ["kya", "kyu", "kyo", "gya", "gyu", "gyo",
+                        "sha", "shu", "sho",
+                        "ja", "ju", "jo",
+                        "cha", "chu", "cho",
+                        "nya", "nyu", "nyo",
+                        "hya", "hyu", "hyo", "bya", "byu", "byo", "pya", "pyu", "pyo",
+                        "mya", "myu", "myo",
+                        "rya", "ryu", "ryo"]},
     'hiragana' : {'all' : [],
                   'vowel' : [a, i, u, e, o],
                   'k' : [ka, ki, ku, ke, ko, ga, gi, gu, ge, go],
@@ -57,7 +83,15 @@ char = {
                   'y' : [ya, yu, yo],
                   'r' : [ra, ri, ru, re, ro],
                   'w' : [wa, wo],
-                  'only_n' : [n]}
+                  'only_n' : [n],
+                  'sp' : [kya, kyu, kyo, gya, gyu, gyo,
+                          sha, shu, sho,
+                          ja, ju, jo,
+                          cha, chu, cho,
+                          nya, nyu, nyo,
+                          hya, hyu, hyo, bya, byu, byo, pya, pyu, pyo,
+                          mya, myu, myo,
+                          rya, ryu, ryo]}
     }
 
 #['romaji']['all']
@@ -83,6 +117,8 @@ for n in char['romaji']['w']:
     char['romaji']['all'].append(n)
 for n in char['romaji']['only_n']:
     char['romaji']['all'].append(n)
+for n in char['romaji']['sp']:
+    char['romaji']['all'].append(n)
 
 #['hiragana']['all']
 for n in char['hiragana']['vowel']:
@@ -107,6 +143,8 @@ for n in char['hiragana']['w']:
     char['hiragana']['all'].append(n)
 for n in char['hiragana']['only_n']:
     char['hiragana']['all'].append(n)
+for n in char['hiragana']['sp']:
+    char['hiragana']['all'].append(n)
 
 
 """
@@ -117,6 +155,6 @@ i = len(char['romaji']['all'])
 print(i)
 
 for n in range(0, i):
-    print(f"{char['romaji']['all'][n]} {char['hiragana']['all'][n]}")
+    print(char['romaji']['all'][n], char['hiragana']['all'][n])
 """
 
