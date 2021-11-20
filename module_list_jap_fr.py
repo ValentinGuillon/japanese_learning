@@ -98,6 +98,34 @@ for n in adjs_fr:
 
 
 """
+#pour vérifie que les mots correspondent
+verif_fr = all_fr
+for n in conjug_verbs_fr:
+    verif_fr.append(n)
+for n in conjug_adjs_fr:
+    verif_fr.append(n)
+for n in expressions_fr:
+    verif_fr.append(n)
+verif_jap = all_jap
+for n in conjug_verbs_jap:
+    verif_jap.append(n)
+for n in conjug_adjs_jap:
+    verif_jap.append(n)
+for n in expressions_jap:
+    verif_jap.append(n)
+
+
+for i in range(0, len(verif_fr)):
+    print(verif_fr[i], end=" =========> ")
+    print(verif_jap[i])
+    #print(verif_jap[i], end=" ::::> ")
+    #print(i)
+"""
+
+
+#pour vérifier le nombre d'éléments dans chaque liste
+"""
+print("\nTransport")
 i_fr = len(transports_fr)
 i_jap = len(transports_jap)
 print(i_fr)
@@ -105,6 +133,7 @@ print(i_jap)
 print(transports_fr[i_fr - 1])
 print(transports_fr[i_jap - 1])
 
+print("\nColors")
 i_fr = len(colors_fr)
 i_jap = len(colors_jap)
 print(i_fr)
@@ -112,6 +141,7 @@ print(i_jap)
 print(colors_fr[i_fr - 1])
 print(colors_fr[i_jap - 1])
 
+print("\nAnimals")
 i_fr = len(animals_fr)
 i_jap = len(animals_jap)
 print(i_fr)
@@ -119,6 +149,7 @@ print(i_jap)
 print(animals_fr[i_fr - 1])
 print(animals_fr[i_jap - 1])
 
+print("\nWeather")
 i_fr = len(weather_fr)
 i_jap = len(weather_jap)
 print(i_fr)
@@ -126,6 +157,7 @@ print(i_jap)
 print(weather_fr[i_fr - 1])
 print(weather_fr[i_jap - 1])
 
+print("\nClothes")
 i_fr = len(clothes_fr)
 i_jap = len(clothes_jap)
 print(i_fr)
@@ -133,6 +165,7 @@ print(i_jap)
 print(clothes_fr[i_fr - 1])
 print(clothes_fr[i_jap - 1])
 
+print("\nFood")
 i_fr = len(food_fr)
 i_jap = len(food_jap)
 print(i_fr)
@@ -147,6 +180,7 @@ print(i_jap)
 print(verbs_fr[i_fr - 1])
 print(verbs_fr[i_jap - 1])
 
+print("\nAdjectives")
 i_fr = len(adjs_fr)
 i_jap = len(adjs_jap)
 print(i_fr)
@@ -154,13 +188,7 @@ print(i_jap)
 print(adjs_fr[i_fr - 1])
 print(adjs_fr[i_jap - 1])
 
-i_fr = len(all_fr)
-i_jap = len(all_jap)
-print(i_fr)
-print(i_jap)
-print(all_fr[i_fr - 1])
-print(all_fr[i_jap - 1])
-
+print("\nConjugaison verbs")
 i_fr = len(conjug_verbs_fr)
 i_jap = len(conjug_verbs_jap)
 print(i_fr)
@@ -168,6 +196,7 @@ print(i_jap)
 print(conjug_verbs_fr[i_fr - 1])
 print(conjug_verbs_fr[i_jap - 1])
 
+print("\nConjugaison adjectives")
 i_fr = len(conjug_adjs_fr)
 i_jap = len(conjug_adjs_jap)
 print(i_fr)
@@ -175,10 +204,19 @@ print(i_jap)
 print(conjug_adjs_fr[i_fr - 1])
 print(conjug_adjs_fr[i_jap - 1])
 
+print("\nExpressions")
 i_fr = len(expressions_fr)
 i_jap = len(expressions_jap)
 print(i_fr)
 print(i_jap)
 print(expressions_fr[i_fr - 1])
 print(expressions_fr[i_jap - 1])
+
+print("\nAll")
+i_fr = len(all_fr)
+i_jap = len(all_jap)
+print(i_fr)
+print(i_jap)
+print(all_fr[i_fr - 1])
+print(all_fr[i_jap - 1])
 """
