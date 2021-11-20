@@ -37,12 +37,13 @@ def function(mod):
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     choice = input("""
 Choose the category :
-    
+
 All (but last 3) (A)
 
 Transports (t) | Colors (c)
 Animals (a)    | Weather (w)
 Clothes (cl)   | Food (f)
+Divers (d)
 
 Verbs (vb) | Adjectifs (adj)
 
@@ -50,7 +51,7 @@ Conjug of verbs (cv)
 Conjug of adjectifs (ca)
 Expressions (e)
 >""")
-    while(not choice == "A" and not choice == "t" and not choice == "c" and not choice == "a" and not choice == "w" and not choice == "cl" and not choice == "f" and not choice == "vb" and not choice == "adj" and not choice == "cv" and not choice == "ca" and not choice == "e"):
+    while(not choice == "A" and not choice == "t" and not choice == "c" and not choice == "a" and not choice == "w" and not choice == "cl" and not choice == "f" and not choice == "d" and not choice == "vb" and not choice == "adj" and not choice == "cv" and not choice == "ca" and not choice == "e"):
         choice = input(">")
 
     replay = ""
@@ -87,6 +88,10 @@ Expressions (e)
             i = random.randint(0, len(food_jap) - 1)
             word_romaji = food_jap[i]
             word_fr = food_fr[i]
+        elif(choice == "d"):
+            i = random.randint(0, len(divers_jap) - 1)
+            word_romaji = divers_jap[i]
+            word_fr = divers_fr[i]
         elif(choice == "vb"):
             i = random.randint(0, len(verbs_jap) - 1)
             word_romaji = verbs_jap[i]

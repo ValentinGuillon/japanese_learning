@@ -7,15 +7,16 @@ animals = 20
 weather = 7
 clothes = 11
 food = 34
+divers = 37
 verbs = 29
 adjs = 30
-all = 152
+all = 189
 
-conjug_verbs = 32
-conjug_adjs = 11
+conjug_verbs = 33
+conjug_adjs = 12
 
 #expressions = 32
-expressions = 0
+expressions = 1
 """
 
 
@@ -25,8 +26,9 @@ transports_jap = ["Jitensha", "Basu", "Takushî", "Fune", "Kuruma", "Chikatetsu"
 colors_jap = ["Shiro", "Chairo", "Kiiro", "Haiiro", "Ao", "Kuro", "Aka", "Orenji", "Murasaki", "Midori", "Pinku"]
 animals_jap = ["Inu", "Ahiru", "Usagi", "Saru", "Nezumi", "Uma", "Kuma", "Tora", "Raion", "Niwatori", "Shika", "Buta", "Neko", "Tori", "Kitsune", "Ushi", "Zô", "Hitsuji", "Koara", "Panda" ]
 weather_jap = ["Kaminari", "Kumori", "Hare", "Samui", "Yuki", "Atsui", "Ame"]
-clothes_jap = ["Kutsushita", "Kutsu", "Jîpan", "Sukâto", "Kôto", "Zubon", "shatsu", "Sandaru", "Tan pan", "Doresu", "Mizugi" ]
+clothes_jap = ["Kutsushita", "Kutsu", "Jîpan", "Sukâto", "Kôto", "Zubon", "Tîshatsu", "Sandaru", "Tan pan", "Doresu", "Mizugi" ]
 food_jap = ["Tamanegi", "Budô", "Kamoniku", "Orenji", "Suika", "Tômorokoshi", "Remon", "Burokkorî", "Kyûri", "Ichigo", "Ninjin", "Kokonattsu", "Jagaimo", "Bêkon", "Gyûnyû", "Kyabetsu", "Kinoko", "Kabocha", "Mizu", "Tomato", "Ocha", "Eiyô dorinku", "Jûsu", "Kohitsuji", "Ringo", "Banana", "Kôra", "Kôhî", "Sakana", "Gyûniku", "Toriniku", "Nashi", "Butaniku", "Painappuru"]
+divers_jap = ["Ai", "Ue", "Aoi", "Ie", "Iie", "Sekai", "Kagi", "Akai", "Osushi", "Kugi", "Keigo", "Saka", "Ya", "Hanaya", "Sakanaya", "Yuki", "Yoru", "Karada", "Rikai", "Ji", "Omatsuri", "Kuuki", "Tokei", "Kinoe", "Sakka", "Irasutoneitaa", "Shashinka", "Seiyuu", "Eegakantoku", "Keesan", "Kodomo no sensee", "Gaka", "Kyaku", "Jugyoe", "Ocha", "Ryokoe", "Sanmyaku"]
 verbs_jap = ["Hanasu", "Yomu", "Asobu", "Morau", "Matsu", "Omou", "Motsu", "Nomu", "Kiku", "Shinu", "Nugu", "Iu", "Kau", "Sumu", "Iku", "Noru", "Naru", "Wakaru", "Aru", "Oshieru", "Miru", "Taberu", "Iru", "Dekiru", "Kaeru", "Yameru", "Ageru", "Kuru", "Suru"]
 adjs_jap = ["Hayai", "Tanoshii", "Samui", "Sugoi", "Ii", "Kakkoii", "Warui", "Atsui", "Chiisai", "Yasui", "Omoshiroi", "Muzukashii", "Itai", "Takai", "Kowai", "Yasashii", "Atarashii", "Isogashii", "Ookii", "Oishii", "Jôzu", "Kirei", "Suki", "Kirai", "Kantan", "Hen", "Taihen", "Anzen", "Genki", "Benri"]
 conjug_verbs_jap = ["-u -> -imasu", "-u -> -imasen", "-u -> -imashita", "-u -> -imasen deshita",
@@ -52,6 +54,8 @@ for n in clothes_jap:
     all_jap.append(n)
 for n in food_jap:
     all_jap.append(n)
+for n in divers_jap:
+    all_jap.append(n)
 for n in verbs_jap:
     all_jap.append(n)
 for n in adjs_jap:
@@ -66,6 +70,7 @@ animals_fr = ["Chien", "Canard", "Lapin", "Singe", "Souris", "Cheval", "Ours", "
 weather_fr = ["Orageux", "Nuageux", "Ensoleillé", "Froid", "Enneigé", "Chaud", "Pluvieux"]
 clothes_fr = ["Chaussettes", "Chaussures", "Jeans", "Jupe", "Manteau", "Pantalon", "T-shirt", "Sandales", "Short", "Robe", "Maillot de bain" ]
 food_fr = ["Oignon", "Raisin", "Canard (viande)", "Orange", "Pastèque", "Maïs", "Citron", "Brocoli", "Concombre", "Fraise", "Carotte", "Noix de coco", "Pomme de terre", "Bécon", "Lait", "Chou", "Champignon", "Citrouille", "Eau", "Tomate", "Thé", "Boisson énergisante", "Jus", "Agneau (viande)", "Pomme", "Banane", "Cola", "Café", "Poisson (viande)", "Boeuf (viande)", "Poulet (viande)", "Poire", "Porc (viande)", "Ananas"]
+divers_fr = ["Amour", "En haut / Haut", "Bleu (adjectif)", "Maison", "Non", "Monde", "Clé", "Rouge (adjectif)", "Sushi (avec respect)", "Clou", "Entrainement", "Pente", "Magasin", "Fleuriste", "Poissonnier", "Neige", "Nuit", "Corps", "Compréhension", "Heure", "Nom d'un Festival", "Air", "Montre / Horloge", "Hier", "Écrivain", "Dessinateur", "Photographe", "Doubleur", "Réalisateur", "Policier", "Animateur pour enfants", "Peintre", "Client", "Cours", "Thé", "Voyage", "Chaîne de montagnes"]
 verbs_fr = ["Parler", "Lire", "Jouer / Se divertir", "Recevoir", "Attendre", "Penser", "Tenir / Posséder", "Boire", "Demander", "Mourir", "Se déshabiller", "Dire", "Acheter", "Vivre / Habiter", "Aller", "Monter dans", "Devenir", "Comprendre", "Être / Avoir (objet)", "Enseigner / Dire", "Regarder / Voir", "Manger", "Être / Avoir (être vivant)", "Être capable / Pouvoir", "Rentrer / Retourner", "Arrêter / Abandonner", "Donner", "Venir", "Faire"]
 adjs_fr = ["Rapide / Tôt", "Amusant", "Froid", "Incroyable / Impressionnant", "Bon / Bien / Correct", "Cool / Beau-gosse", "Mauvais", "Chaud", "Petit", "Pas cher", "Intéressant", "Difficile", "Douloureux / Aïe", "Cher / Haut", "Effrayant", "Gentil", "Neuf / Nouveau", "Occupé", "Gros / Grand", "Bon (goût)", "Habille / Doué", "Beau / Belle / Jolie", "Aimé / Être aimé", "Détester / Être détester", "Simple / Facile", "Bizarre / Étrange", "Situation difficile", "Sûr / En sécurité", "En forme / En bonne santé", "Pratique"]
 conjug_verbs_fr = ["Forme polie (verbes 1er g)", "Forme négative polie (verbes 1er g)", "Forme passé polie (verbes 1er g)", "Forme négative passé polie (verbes 1er g)",
@@ -90,6 +95,8 @@ for n in weather_fr:
 for n in clothes_fr:
     all_fr.append(n)
 for n in food_fr:
+    all_fr.append(n)
+for n in divers_fr:
     all_fr.append(n)
 for n in verbs_fr:
     all_fr.append(n)
@@ -173,6 +180,15 @@ print(i_jap)
 print(food_fr[i_fr - 1])
 print(food_fr[i_jap - 1])
 
+print("\nDivers")
+i_fr = len(divers_fr)
+i_jap = len(divers_jap)
+print(i_fr)
+print(i_jap)
+print(divers_fr[i_fr - 1])
+print(divers_fr[i_jap - 1])
+
+print("\nVerbs")
 i_fr = len(verbs_fr)
 i_jap = len(verbs_jap)
 print(i_fr)
