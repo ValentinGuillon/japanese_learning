@@ -1,6 +1,7 @@
+#kanas_generator.py
 #This program show japanese characteres (hiragana->romaji) based on an int parameter.
 
-from module_characters_jap_vcom import *
+from module_characters_jap import *
 import random
 
 def function():
@@ -57,10 +58,12 @@ def main():
           base on
         your number
 =============================
-Press Enter to proceed when nothing is asked.
+Press Enter to proceed
+when nothing is asked.
 ...
 """)
-    input("""This symbol ">", means an answer is expected.
+    input("""This symbol ">",
+means an answer is expected.
 =============================
 """)
     

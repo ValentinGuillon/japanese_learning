@@ -1,11 +1,12 @@
-from module_characters_jap_vcom import *
+#guess_char_game.py
+from module_characters_jap import *
 import random
 
 def function():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     combo = 0
     max = 0
-    number = int(input("How many characters you want ?\n>"))
+    number = int(input("How many characters ?\n>"))
 
     vrai = "true"
     while(vrai == "true"):
@@ -57,20 +58,26 @@ Score : {combo}
     
 def main():
     input("""
-=================================================
-   This program is a guessing game with score.
-            Gives you multiples kanas.
-         You have to write them in romaji.
-=================================================
-Press Enter to proceed when nothing is asked.
+=============================
+        This program
+     is a guessing game
+         with score.
+  Gives you multiples kanas.
+          You have
+   to write them in romaji.
+=============================
+Press Enter to proceed
+when nothing is asked.
 ...
 """)
-    input("""Restart the game or exit the program,
+    input("""Restart the game
+or exit the program,
 will reset the high score.
 ...
 """)
-    input("""This symbol ">", means an answer is expected.
-================================================
+    input("""This symbol ">",
+means an answer is expected.
+=============================
 """)
     function()
 

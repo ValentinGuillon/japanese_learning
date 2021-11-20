@@ -1,3 +1,4 @@
+#module_characters_jap.py
 #This module list all japanese characteres in a dictionary (romaji and hiragana). Katagana can easily get added.
 """
 #all hiragana code

@@ -1,11 +1,18 @@
-from module_list_jap_fr_vcom import *
+#jap_to_fr.py
+from module_list_jap_fr import *
 import random
-from romaji_to_kana_vcom import romaji_to_hiragana
+from romaji_to_kana import romaji_to_hiragana
 
 
 def function_mod():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
-    mod = input("Choose the program mod :\nGuess mod (g): You have to write the word to guess.\nView mod (v): Guess is in your mind. No input require.\n>")
+    mod = input("""Choose the program mod :
+Guess mod (g) | View mod (v)
+  You have    |   Guess in
+  to write    |   your mind
+  the word    |   No input
+  to guess    |   require
+>""")
     while(not mod == "g" and not mod == "v"):
         mod = input(">")
     function(mod)
@@ -184,10 +191,12 @@ def main():
 =============================
 ...
 """)
-    input("""Press Enter to proceed when nothing is asked.
+    input("""Press Enter to proceed
+when nothing is asked.
 ...
 """)
-    input("""This symbol ">", means an answer is expected.
+    input("""This symbol ">",
+means an answer is expected.
 =============================
 """)
     

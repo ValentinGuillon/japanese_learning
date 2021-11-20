@@ -1,5 +1,6 @@
+#conversation_simulator.py
 import random
-from romaji_to_kana_vcom import romaji_to_hiragana
+from romaji_to_kana import romaji_to_hiragana
 
 
 def langage():
@@ -38,7 +39,7 @@ def function(lang):
     answer = ""
     while(not topics == []):
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-        lead = input(""""STOP" to end the program.\n\n\n\nTake initiative? (y/n)\n>""")
+        lead = input(""""STOP" to end the program.\n\n\n\n\n\nTake initiative? (y/n)\n>""")
         if(lead == "STOP"):
             topics = []
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
@@ -210,16 +211,20 @@ def function(lang):
 
 def main():
     input("""
-==============================================
-     This program simule a conversation.
-          Choose on each step
-      if you ask questions or answer it
-==============================================
-Press Enter to proceed when nothing is asked.
+=============================
+         This program
+    simule a conversation.
+     Choose on each step
+    if you ask questions
+         or answer it
+=============================
+Press Enter to proceed
+when nothing is asked.
 ...
 """)
-    input("""This symbol ">", means an answer is expected.
-==============================================
+    input("""This symbol ">",
+means an answer is expected.
+=============================
 """)
     langage()
 

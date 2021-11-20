@@ -1,4 +1,5 @@
-from module_characters_jap_vcom import *
+#romaji_to_kana.py
+from module_characters_jap import *
 import string
 
 def function():
@@ -190,7 +191,8 @@ def romaji_to_hiragana(text):
 
 
 def main() :
-    input("""	
+    input("""
+    	
 =============================
         This program
           traduct
@@ -199,10 +201,12 @@ def main() :
             to
            kana
 =============================
-Press Enter to proceed when nothing is asked.
+Press Enter to proceed
+when nothing is asked.
 ...
 """)
-    input("""This symbol ">", means an answer is expected.
+    input("""This symbol ">",
+means an answer is expected.
 =============================
 """)
     function()

@@ -1,3 +1,4 @@
+#choose_random_1_999.py
 import random
 
 def function():    
@@ -131,16 +132,19 @@ def nbr_to_romaji(x):
 
 def main():
     input("""
-==============================================
-        This program give you a number
-              between1 and 999
-               then in romaji
-==============================================
-Press Enter to proceed when nothing is asked.
+=============================
+        This program
+     gives you a number
+      between1 and 999
+       then in romaji
+=============================
+Press Enter to proceed
+when nothing is asked.
 ...
 """)
-    input("""This symbol ">", means an answer is expected.
-==============================================
+    input("""This symbol ">",
+means an answer is expected.
+=============================
 """)
 
     function()
