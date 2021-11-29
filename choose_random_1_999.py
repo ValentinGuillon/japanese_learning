@@ -2,12 +2,38 @@
 import random
 from romaji_to_kana import romaji_to_hiragana
 
-def function():    
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")                               
-    choice = input("Number => Hiragana (nh)\nNumber => Romaji (nr)\nHiragana => Number (h)\nRomaji => Number (r)\n>")
-    while(not choice == "nh" and not choice == "nr" and not choice == "h" and not choice == "r"):
-        choice = input(">")
+def function_mod():
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
+    mod = input("""Choose the program mod :
+Guess mod (g) | View mod (v)
+  You have    |   Guess in
+  to write    |   your mind
+  the word    |   No input
+  to guess    |   require
+>""")
+    while(not mod == "g" and not mod == "v"):
+        mod = input(">")
+    function(mod)
 
+
+def function(mod):    
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+
+    if(mod == "v"):
+        choice = input("Number => Hiragana (nh)\nNumber => Romaji (nr)\nHiragana => Number (h)\nRomaji => Number (r)\n>")
+        while(not choice == "nh" and not choice == "nr" and not choice == "h" and not choice == "r"):
+            choice = input(">")
+
+    elif(mod == "g"):
+        choice = input("Number => Romaji (nr)\nRomaji => Number (r)\n>")
+        while(not choice == "nr" and not choice == "r"):
+            choice = input(">")
+
+
+    correct = 0
+    wrong = 0
+    streak = 0
+    current_streak = 0
     replay = ""
     while(replay == "" or not replay == "n") :
         nbr = random.randint(1, 999)
@@ -15,25 +41,62 @@ def function():
         hiragana = romaji_to_hiragana(romaji)
         
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-        if(choice == "nh"):
-            input(f"{nbr}\n")
-            input(f"{hiragana}\n")
-        elif(choice == "nr"):
-            input(f"{nbr}\n")
-            input(f"{romaji}\n")
-        elif(choice == "h"):
-            input(f"{hiragana}\n")
-            input(f"{nbr}\n")
-        elif(choice == "r"):
-            input(f"{romaji}\n")
-            input(f"{nbr}\n")
 
-        replay = input("Again ? (Enter or n)\n>")
+        if(mod == "v"):
+            if(choice == "nh"):
+                input(f"{nbr}\n")
+                input(f"{hiragana}\n")
+            elif(choice == "nr"):
+                input(f"{nbr}\n")
+                input(f"{romaji}\n")
+            elif(choice == "h"):
+                input(f"{hiragana}\n")
+                input(f"{nbr}\n")
+            elif(choice == "r"):
+                input(f"{romaji}\n")
+                input(f"{nbr}\n")
+
+            replay = input("Again ? (Enter or n)\n>")
+        
+
+        elif(mod == "g"):
+            if(choice == "nr"):
+                guess = input(f""""STOP" to end the game\n===============
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n
+In romaji ?\n\n{nbr}\n>""")
+                if(str.upper(guess) == "STOP"):
+                    break
+                if(not guess == str.lower(romaji)):
+                    input(f"""Oupsi. C'était "{romaji}"\n""")
+                    wrong += 1
+                    if(current_streak > streak):
+                        streak = current_streak
+                    current_streak = 0
+                elif(str.lower(guess) == romaji):
+                    correct += 1
+                    current_streak += 1
+
+            elif(choice == "r"):
+                guess = input(f""""STOP" to end the game\n===============
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n
+Which number is ?\n\n{romaji}\n>""")
+                if(str.upper(guess) == "STOP"):
+                    break
+                if(not guess == str(nbr)):
+                    input(f"""Oupsi. C'était "{nbr}"\n""")
+                    wrong += 1
+                    if(current_streak > streak):
+                        streak = current_streak
+                    current_streak = 0
+                elif(guess == str(nbr)):
+                    correct += 1
+                    current_streak += 1
+
     
-    restart = input("Restart ? (y/n)\n>")
+    restart = input("Restart and change mod ? (y/n)\n>")
     while(restart == "" or not restart == "n"):
         if(restart == "y"):
-            function()
+            function_mod()
             break
         restart = input(">")
 
@@ -49,8 +112,8 @@ def nbr_to_romaji(x):
     _6 = "roku" 
     _7 = "nana" 
     _8 = "hachi" 
-    _9 = "kyû"
-    _10 = "jû"
+    _9 = "kyuu"
+    _10 = "juu"
     _100 = "hyaku"
     
     #transform nbr to romaji
@@ -131,6 +194,10 @@ def nbr_to_romaji(x):
         romaji += _2
     elif(x==1):
         romaji += _1
+
+    length = len(romaji)
+    if(romaji[length - 1] == " "):
+        romaji = romaji[0:length - 1]
             
     return(romaji)
 
@@ -155,7 +222,7 @@ means an answer is expected.
 =============================
 """)
 
-    function()
+    function_mod()
     
 if __name__ == "__main__":
     main() 

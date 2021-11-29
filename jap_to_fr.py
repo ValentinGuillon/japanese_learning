@@ -54,6 +54,11 @@ Expressions (e)
     while(not choice == "A" and not choice == "t" and not choice == "c" and not choice == "a" and not choice == "w" and not choice == "cl" and not choice == "f" and not choice == "d" and not choice == "vb" and not choice == "adj" and not choice == "cv" and not choice == "ca" and not choice == "e"):
         choice = input(">")
 
+    correct = 0
+    wrong = 0
+    streak = 0
+    current_streak = 0
+
     replay = ""
     while(replay == ""):
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
@@ -145,36 +150,68 @@ Expressions (e)
         
         if(mod == "g"):
             if(choose == "fr"):
-                guess = str.lower(input(f""""STOP" to end the game\n\n\n\nIn romaji ?\n\n{word_fr}\n>"""))
+                guess = str.lower(input(f""""STOP" to end the game\n===============
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn romaji ?\n\n{word_fr}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_romaji)):
                     input(f"""Oupsi. C'était "{word_romaji}"\n""")
+                    wrong += 1
+                    if(current_streak > streak):
+                        streak = current_streak
+                    current_streak = 0
+                elif(guess == str.lower(word_romaji)):
+                    correct += 1
+                    current_streak += 1
 
             elif(choose == "rf"):
-                guess = str.lower(input(f""""STOP" to end the game\n\n\n\nIn french ?\n\n{word_romaji}\n>"""))
+                guess = str.lower(input(f""""STOP" to end the game\n===============
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn french ?\n\n{word_romaji}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_fr)):
                     input(f"""Oupsi. C'était "{word_fr}"\n""")
+                    wrong += 1
+                    if(current_streak > streak):
+                        streak = current_streak
+                    current_streak = 0
+                elif(guess == str.lower(word_fr)):
+                    correct += 1
+                    current_streak += 1
 
             elif(choose == "hr"):
-                guess = str.lower(input(f""""STOP" to end the game\n\n\n\nIn romaji ?\n\n{word_hiragana}\n>"""))
+                guess = str.lower(input(f""""STOP" to end the game\n===============
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn romaji ?\n\n{word_hiragana}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_romaji)):
                     input(f"""Oupsi. C'était "{word_romaji}"\n""")
+                    wrong += 1
+                    if(current_streak > streak):
+                        streak = current_streak
+                    current_streak = 0
+                elif(guess == str.lower(word_romaji)):
+                    correct += 1
+                    current_streak += 1
 
             elif(choose == "hf"):
-                guess = str.lower(input(f""""STOP" to end the game\n\n\n\nIn french ?\n\n{word_hiragana}\n>"""))
+                guess = str.lower(input(f""""STOP" to end the game\n===============
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn french ?\n\n{word_hiragana}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_fr)):
                     input(f"""Oupsi. C'était "{word_fr}"\n""")
+                    wrong += 1
+                    if(current_streak > streak):
+                        streak = current_streak
+                    current_streak = 0
+                elif(guess == str.lower(word_fr)):
+                    correct += 1
+                    current_streak += 1
                 
         
 
-    restart = input("Restart ? (y/n)\n>")
+    restart = input("Restart and change mod ? (y/n)\n>")
     while(restart == "" or not restart == "n"):
         if(restart == "y"):
             function_mod()

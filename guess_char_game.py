@@ -4,19 +4,17 @@ import random
 
 def function():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    combo = 0
-    max = 0
+    correct = 0
+    wrong = 0
+    streak = 0
+    current_streak = 0
     number = int(input("How many characters ?\n>"))
 
     vrai = "true"
     while(vrai == "true"):
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-        print(f"""
-"STOP" to end the game
-=======================
-Record : {max}
-Score : {combo}
-=======================\n\n\n\n\n""")
+        print(f""""STOP" to end the game\n===============
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n""")
         hiragana = ""
         romaji = ""
         romaji_2 = ""
@@ -33,17 +31,16 @@ Score : {combo}
         print(f"{hiragana}")
         reponse = input(">")
         if(reponse == romaji):
-            print("c'est bon connard")
-            combo += 1
+            correct += 1
+            current_streak += 1
         elif(reponse == "STOP"):
            break
         else:
             input(f"""Oupsi, c'était "{romaji}"\n""")
-            if(max < combo):
-                max = combo
-            combo = 0
-
-    print(f"{max} à la suite\n")
+            wrong += 1
+            if(current_streak > streak):
+                streak = current_streak
+            current_streak = 0
 
     restart = input("Restart ? (y/n)\n>")
     while(restart == "" or not restart == "n"):
