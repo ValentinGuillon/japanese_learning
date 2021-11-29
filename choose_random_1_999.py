@@ -1,22 +1,30 @@
 #choose_random_1_999.py
 import random
+from romaji_to_kana import romaji_to_hiragana
 
 def function():    
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")                               
-    choice = input("Number => Japanese (n)\nJapanese => Number (j)\n>")
-    while(not choice == "n" and not choice == "j"):
+    choice = input("Number => Hiragana (nh)\nNumber => Romaji (nr)\nHiragana => Number (h)\nRomaji => Number (r)\n>")
+    while(not choice == "nh" and not choice == "nr" and not choice == "h" and not choice == "r"):
         choice = input(">")
 
     replay = ""
     while(replay == "" or not replay == "n") :
         nbr = random.randint(1, 999)
         romaji = nbr_to_romaji(nbr)
+        hiragana = romaji_to_hiragana(romaji)
         
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-        if(choice == "n"):
+        if(choice == "nh"):
+            input(f"{nbr}\n")
+            input(f"{hiragana}\n")
+        elif(choice == "nr"):
             input(f"{nbr}\n")
             input(f"{romaji}\n")
-        elif(choice == "j"):
+        elif(choice == "h"):
+            input(f"{hiragana}\n")
+            input(f"{nbr}\n")
+        elif(choice == "r"):
             input(f"{romaji}\n")
             input(f"{nbr}\n")
 
@@ -135,8 +143,8 @@ def main():
 =============================
         This program
      gives you a number
-      between1 and 999
-       then in romaji
+    between 1 and 999
+        in japanese
 =============================
 Press Enter to proceed
 when nothing is asked.
