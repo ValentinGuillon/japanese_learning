@@ -1,5 +1,5 @@
 #guess_char_game.py
-from module_characters_jap import *
+from modules.module_characters_jap import *
 import random
 
 def function():

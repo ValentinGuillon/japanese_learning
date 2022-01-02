@@ -1,7 +1,7 @@
 #kanas_generator.py
 #This program show japanese characteres (hiragana->romaji) based on an int parameter.
 
-from module_characters_jap import *
+from modules.module_characters_jap import *
 import random
 
 def function():

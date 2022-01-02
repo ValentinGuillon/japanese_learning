@@ -1,6 +1,6 @@
 #conversation_simulator.py
 import random
-from module_romaji_to_kana import *
+from modules.module_romaji_to_kana import *
 
 
 def langage():

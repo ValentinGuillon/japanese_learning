@@ -1,6 +1,6 @@
 #choose_random_1_999.py
 import random
-from module_romaji_to_kana import *
+from modules.module_romaji_to_kana import *
 
 def function_mod():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 

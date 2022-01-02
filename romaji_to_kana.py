@@ -1,7 +1,6 @@
 #romaji_to_kana.py
-from module_characters_jap import *
-from module_romaji_to_kana import *
-import string
+from modules.module_characters_jap import *
+from modules.module_romaji_to_kana import *
 
 def function():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")

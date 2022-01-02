@@ -1,7 +1,7 @@
 #kana_reconizing.py
 #This program show a japanese charactere (romaji=>hiragana and romaji=>hiragana).
 
-from module_characters_jap import *
+from modules.module_characters_jap import *
 import random
 
 def function():
