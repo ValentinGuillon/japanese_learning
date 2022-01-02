@@ -1,4 +1,4 @@
-# programs_for_japanese
+# Japanese Learning
 This repository contains interactive programs used to my japanese's learning.<br><br>
 
 Ne sachant pas comment faire pour lancer un prog directement ici, ou même si c'est possible,<br>pour tester les programmes, il faudra les copier/coller<br>
