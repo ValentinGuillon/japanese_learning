@@ -1,7 +1,7 @@
 #jap_to_fr.py
 from module_list_jap_fr import *
 import random
-from romaji_to_kana import romaji_to_hiragana
+from module_romaji_to_kana import *
 
 
 def function_mod():
