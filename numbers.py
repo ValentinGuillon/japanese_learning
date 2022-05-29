@@ -1,6 +1,6 @@
 #choose_random_1_999.py
 import random
-from modules.module_romaji_to_kana import *
+from module_romaji_to_kana import *
 
 def function_mod():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
@@ -20,14 +20,14 @@ def function(mod):
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
     if(mod == "v"):
-        choice = input("Number => Hiragana (nh)\nNumber => Romaji (nr)\nHiragana => Number (h)\nRomaji => Number (r)\n>")
-        while(not choice == "nh" and not choice == "nr" and not choice == "h" and not choice == "r"):
-            choice = input(">")
+        lang = input("Number => Romaji (nr)\nRomaji => Number (rn)\nNumber => Hiragana (nh)\nHiragana => Number (hn)\nNumber => Katagana (nk)\nKatagana => Number (kn)\n>")
+        while(not lang == "nh" and not lang == "nr" and not lang == "hn" and not lang == "rn" and not lang == "nk" and not lang == "kn"):
+            lang = input(">")
 
     elif(mod == "g"):
-        choice = input("Number => Romaji (nr)\nRomaji => Number (r)\n>")
-        while(not choice == "nr" and not choice == "r"):
-            choice = input(">")
+        lang = input("Number => Romaji (n)\nRomaji => Number (r)\nHiragana => Number (h)\nKatagana => Number (k)\n>")
+        while(not lang == "n" and not lang == "r" and not lang == "h" and not lang == "k"):
+            lang = input(">")
 
 
     correct = 0
@@ -39,28 +39,35 @@ def function(mod):
         nbr = random.randint(1, 999)
         romaji = nbr_to_romaji(nbr)
         hiragana = romaji_to_hiragana(romaji)
+        katagana = romaji_to_katagana(romaji)
         
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
         if(mod == "v"):
-            if(choice == "nh"):
-                input(f"{nbr}\n")
-                input(f"{hiragana}\n")
-            elif(choice == "nr"):
+            if(lang == "nr"):
                 input(f"{nbr}\n")
                 input(f"{romaji}\n")
-            elif(choice == "h"):
+            elif(lang == "r"):
+                input(f"{romaji}\n")
+                input(f"{nbr}\n")
+            elif(lang == "nh"):
+                input(f"{nbr}\n")
+                input(f"{hiragana}\n")
+            elif(lang == "hn"):
                 input(f"{hiragana}\n")
                 input(f"{nbr}\n")
-            elif(choice == "r"):
-                input(f"{romaji}\n")
+            elif(lang == "nk"):
+                input(f"{nbr}\n")
+                input(f"{katagana}\n")
+            elif(lang == "kn"):
+                input(f"{katagana}\n")
                 input(f"{nbr}\n")
 
             replay = input("Again ? (Enter or n)\n>")
         
 
         elif(mod == "g"):
-            if(choice == "nr"):
+            if(lang == "n"):
                 guess = input(f""""STOP" to end the game\n===============
 Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n
 In romaji ?\n\n{nbr}\n>""")
@@ -76,10 +83,42 @@ In romaji ?\n\n{nbr}\n>""")
                     correct += 1
                     current_streak += 1
 
-            elif(choice == "r"):
+            elif(lang == "r"):
                 guess = input(f""""STOP" to end the game\n===============
 Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n
 Which number is ?\n\n{romaji}\n>""")
+                if(str.upper(guess) == "STOP"):
+                    break
+                if(not guess == str(nbr)):
+                    input(f"""Oupsi. C'était "{nbr}"\n""")
+                    wrong += 1
+                    if(current_streak > streak):
+                        streak = current_streak
+                    current_streak = 0
+                elif(guess == str(nbr)):
+                    correct += 1
+                    current_streak += 1
+
+            elif(lang == "h"):
+                guess = input(f""""STOP" to end the game\n===============
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n
+Which number is ?\n\n{hiragana}\n>""")
+                if(str.upper(guess) == "STOP"):
+                    break
+                if(not guess == str(nbr)):
+                    input(f"""Oupsi. C'était "{nbr}"\n""")
+                    wrong += 1
+                    if(current_streak > streak):
+                        streak = current_streak
+                    current_streak = 0
+                elif(guess == str(nbr)):
+                    correct += 1
+                    current_streak += 1
+
+            elif(lang == "k"):
+                guess = input(f""""STOP" to end the game\n===============
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n
+Which number is ?\n\n{katagana}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str(nbr)):

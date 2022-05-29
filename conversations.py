@@ -1,12 +1,12 @@
 #conversation_simulator.py
 import random
-from modules.module_romaji_to_kana import *
+from module_romaji_to_kana import *
 
 
 def langage():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    lang = input("Choose langage:\nRomaji (r)\nHiragana (h)\n>")
-    while(not lang == "r" and not lang == "h"):
+    lang = input("Choose langage:\nRomaji (r)\nHiragana (h)\nKatagana (k)\n>")
+    while(not lang == "r" and not lang == "h"and not lang == "k"):
         lang = input(">")
     function(lang)
 
@@ -63,6 +63,8 @@ def function(lang):
                         print(n)
                     elif(lang == "h"):
                         print(romaji_to_hiragana(n))
+                    elif(lang == "k"):
+                        print(romaji_to_katagana(n))
                 answer = random.choice(a_job)
                 print("")
                 input("answering...")
@@ -71,6 +73,8 @@ def function(lang):
                     print(answer)
                 elif(lang == "h"):
                     print(romaji_to_hiragana(answer))
+                elif(lang == "k"):
+                    print(romaji_to_katagana(answer))
                 input("")
                     
             elif(choose == "c"):
@@ -81,6 +85,8 @@ def function(lang):
                         print(n)
                     elif(lang == "h"):
                         print(romaji_to_hiragana(n))
+                    elif(lang == "k"):
+                        print(romaji_to_katagana(n))
                 answer = random.choice(a_country)
                 print("")
                 input("answering...")
@@ -89,6 +95,8 @@ def function(lang):
                     print(answer)
                 elif(lang == "h"):
                     print(romaji_to_hiragana(answer))
+                elif(lang == "k"):
+                    print(romaji_to_katagana(answer))
                 input("")
                     
             elif(choose == "fhmm"):
@@ -99,6 +107,8 @@ def function(lang):
                         print(n)
                     elif(lang == "h"):
                         print(romaji_to_hiragana(n))
+                    elif(lang == "k"):
+                        print(romaji_to_katagana(n))
                 answer = random.choice(a_family_howmany)
                 print("")
                 input("answering...")
@@ -107,6 +117,8 @@ def function(lang):
                     print(answer)
                 elif(lang == "h"):
                     print(romaji_to_hiragana(answer))
+                elif(lang == "k"):
+                    print(romaji_to_katagana(answer))
                 input("")
                     
             elif(choose == "fw"):
@@ -117,6 +129,8 @@ def function(lang):
                         print(n)
                     elif(lang == "h"):
                         print(romaji_to_hiragana(n))
+                    elif(lang == "k"):
+                        print(romaji_to_katagana(n))
                 answer = random.choice(a_family_who)
                 print("")
                 input("answering...")
@@ -125,6 +139,8 @@ def function(lang):
                     print(answer)
                 elif(lang == "h"):
                     print(romaji_to_hiragana(answer))
+                elif(lang == "k"):
+                    print(romaji_to_katagana(answer))
                 input("")
             
             
@@ -137,6 +153,8 @@ def function(lang):
                     print(f"Com :\n{question}")
                 elif(lang == "h"):
                     print(f"Com :\n{romaji_to_hiragana(question)}")
+                elif(lang == "k"):
+                    print(f"Com :\n{romaji_to_katagana(question)}")
                 input("")
                 print("Me :")
                 for n in a_job:
@@ -144,6 +162,8 @@ def function(lang):
                         print(n)
                     elif(lang == "h"):
                         print(romaji_to_hiragana(n))
+                    elif(lang == "k"):
+                        print(romaji_to_katagana(n))
                 input("")
 
             elif(question == "country"):
@@ -153,6 +173,8 @@ def function(lang):
                     print(f"Com :\n{question}")
                 elif(lang == "h"):
                     print(f"Com :\n{romaji_to_hiragana(question)}")
+                elif(lang == "k"):
+                    print(f"Com :\n{romaji_to_katagana(question)}")
                 input("")
                 print("Me :")
                 for n in a_country:
@@ -160,6 +182,8 @@ def function(lang):
                         print(n)
                     elif(lang == "h"):
                         print(romaji_to_hiragana(n))
+                    elif(lang == "k"):
+                        print(romaji_to_katagana(n))
                 input("")
 
             elif(question == "family how many members"):
@@ -169,6 +193,8 @@ def function(lang):
                     print(f"Com :\n{question}")
                 elif(lang == "h"):
                     print(f"Com :\n{romaji_to_hiragana(question)}")
+                elif(lang == "k"):
+                    print(f"Com :\n{romaji_to_katagana(question)}")
                 input("")
                 print("Me :")
                 for n in a_family_howmany:
@@ -176,6 +202,8 @@ def function(lang):
                         print(n)
                     elif(lang == "h"):
                         print(romaji_to_hiragana(n))
+                    elif(lang == "k"):
+                        print(romaji_to_katagana(n))
                 input("")
 
             elif(question == "family who"):
@@ -185,6 +213,8 @@ def function(lang):
                     print(f"Com :\n{question}")
                 elif(lang == "h"):
                     print(f"Com :\n{romaji_to_hiragana(question)}")
+                elif(lang == "k"):
+                    print(f"Com :\n{romaji_to_katagana(question)}")
                 input("")
                 print("Me :")
                 for n in a_family_who:
@@ -192,6 +222,8 @@ def function(lang):
                         print(n)
                     elif(lang == "h"):
                         print(romaji_to_hiragana(n))
+                    elif(lang == "k"):
+                        print(romaji_to_katagana(n))
                 input("")
             
 

@@ -1,7 +1,7 @@
 #jap_to_fr.py
-from modules.module_list_jap_fr import *
+from module_list_jap_fr import *
 import random
-from modules.module_romaji_to_kana import *
+from module_romaji_to_kana import *
 
 
 def function_mod():
@@ -22,16 +22,16 @@ Guess mod (g) | View mod (v)
 def function(mod):
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     if(mod == "g"):
-        choose = input("Language mod :\nFrench => Romaji (fr)\nRomaji => French (rf)\nHiragana => Romaji (hr)\nHiragana => French (hf)\n>")
+        choose = input("Language mod :\nFrench => Romaji (fr)\nRomaji => French (rf)\nHiragana => Romaji (hr)\nHiragana => French (hf)\nKatagana => Romaji (kr)\nKatagana => French (kf)\n>")
         #Katagana => Romaji, Katagana => French
-        while(not choose == "fr" and not choose == "rf" and not choose == "hr" and not choose == "hf"):
+        while(not choose == "fr" and not choose == "rf" and not choose == "hr" and not choose == "hf" and not choose == "kr" and not choose == "kf"):
             choose = input(">")
     
     if(mod == "v"):
-        choose = input("Language mod :\nFrench => Hiragana => Romaji (fhr)\nFrench => Romaji => Hiragana (frh)\nRomaji => Hiragana => French (rhf)\nHiragana => Romaji => French (hrf)\n>")
+        choose = input("Language mod :\nHiragana:\nFrench => Hiragana => Romaji (fhr)\nFrench => Romaji => Hiragana (frh)\nRomaji => Hiragana => French (rhf)\nHiragana => Romaji => French (hrf)\n\nKatagana :\nFrench => Katagana => Romaji (fkr)\nFrench => Romaji => Katagana (frk)\nRomaji => Katagana => French (rkf)\nKatagana => Romaji => French (krf)\n>")
         #, French => Katagana => Romaji, , French => Romaji => Katagana
         #, Romaji => Katagana => French, , Katagana => Romaji => French
-        while(not choose == "fhr" and not choose == "frh" and not choose == "rhf" and not choose == "hrf"):
+        while(not choose == "fhr" and not choose == "frh" and not choose == "rhf" and not choose == "hrf" and not choose == "fkr" and not choose == "frk" and not choose == "rkf" and not choose == "krf"):
             choose = input(">")
 
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
@@ -123,6 +123,7 @@ Expressions (e)
             function(mod)
         
         word_hiragana = romaji_to_hiragana(word_romaji)
+        word_katagana = romaji_to_katagana(word_romaji)
 
         if(mod == "v"):
             if(choose == "fhr"):
@@ -145,9 +146,31 @@ Expressions (e)
                 input(f"{word_romaji}\n")
                 input(f"{word_fr}\n")
 
+            elif(choose == "fkr"):
+                input(f"{word_fr}\n")
+                input(f"{word_katagana}\n")
+                input(f"{word_romaji}\n")
+
+            elif(choose == "frk"):
+                input(f"{word_fr}\n")
+                input(f"{word_romaji}\n")
+                input(f"{word_katagana}\n")
+
+            elif(choose == "rkf"):
+                input(f"{word_romaji}\n")
+                input(f"{word_katagana}\n")
+                input(f"{word_fr}\n")
+
+            elif(choose == "krf"):
+                input(f"{word_katagana}\n")
+                input(f"{word_romaji}\n")
+                input(f"{word_fr}\n")
+                
+
             print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
             replay = input("Again ? (Enter or n)\n>")
-        
+
+
         if(mod == "g"):
             if(choose == "fr"):
                 guess = str.lower(input(f""""STOP" to end the game\n===============
@@ -208,8 +231,37 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
                 elif(guess == str.lower(word_fr)):
                     correct += 1
                     current_streak += 1
+
+            elif(choose == "kr"):
+                guess = str.lower(input(f""""STOP" to end the game\n===============
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn romaji ?\n\n{word_katagana}\n>"""))
+                if(str.upper(guess) == "STOP"):
+                    break
+                if(not guess == str.lower(word_romaji)):
+                    input(f"""Oupsi. C'était "{word_romaji}"\n""")
+                    wrong += 1
+                    if(current_streak > streak):
+                        streak = current_streak
+                    current_streak = 0
+                elif(guess == str.lower(word_romaji)):
+                    correct += 1
+                    current_streak += 1
+
+            elif(choose == "kf"):
+                guess = str.lower(input(f""""STOP" to end the game\n===============
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn french ?\n\n{word_katagana}\n>"""))
+                if(str.upper(guess) == "STOP"):
+                    break
+                if(not guess == str.lower(word_fr)):
+                    input(f"""Oupsi. C'était "{word_fr}"\n""")
+                    wrong += 1
+                    if(current_streak > streak):
+                        streak = current_streak
+                    current_streak = 0
+                elif(guess == str.lower(word_fr)):
+                    correct += 1
+                    current_streak += 1
                 
-        
 
     restart = input("Restart and change mod ? (y/n)\n>")
     while(restart == "" or not restart == "n"):

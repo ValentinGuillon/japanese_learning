@@ -1,11 +1,13 @@
 #kanas_generator.py
 #This program show japanese characteres (hiragana->romaji) based on an int parameter.
 
-from modules.module_characters_jap import *
+from module_characters_jap import *
 import random
 
 def function():
-    choose = input("Kana => Romaji (k)\nRomaji => Kana (r)\n>")
+    lang = input("Hiragana => Romaji (hr)\nRomaji => Hiragana (rh)\nKatagana => Romaji (kr)\nRomaji => Katagana (rk)\n>")
+    while(not lang == "hr" and not lang == "rh" and not lang == "kr" and not lang == "rk"):
+        lang = input(">")
     nbr = int(input("How many?\n>"))
 
     
@@ -17,22 +19,33 @@ def function():
         romaji = ""
         kana = ""
     
+        #affichage de la suite à deviner, et création de la réponse
         while(x > 0):
-            i = random.randint(0, 70)
-            if(choose == "k"):
+            i = random.randint(0, len(char['romaji']['all']) - 1)
+            if(lang == "hr"):
                 print(char['hiragana']['all'][i], end = ' ')
                 romaji += char['romaji']['all'][i] + " "
 
-            elif(choose == "r"):
+            elif(lang == "kr"):
+                print(char['katagana']['all'][i], end = ' ')
+                romaji += char['romaji']['all'][i] + " "
+            
+            elif(lang == "rh"):
                 print(char['romaji']['all'][i], end = ' ')
                 kana += char['hiragana']['all'][i] + " "
+            
+            elif(lang == "rk"):
+                print(char['romaji']['all'][i], end = ' ')
+                kana += char['katagana']['all'][i] + " "
 
             x -= 1
 
         input("\n")
-        if(choose == "k"):
+
+        #affichage de la réponse
+        if(lang == "hr" or lang == "kr"):
             input(f"{romaji}\n")
-        elif(choose == "r"):
+        elif(lang == "rh" or lang == "rk"):
             input(f"{kana}\n")
 
         replay = input("Again ? (Enter or n)\n>")

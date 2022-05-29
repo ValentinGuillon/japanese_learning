@@ -1,9 +1,14 @@
 #guess_char_game.py
-from modules.module_characters_jap import *
+from module_characters_jap import *
 import random
 
 def function():
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    lang = input("Hiragana (h)\nKatagana(k)\n>")
+    while(not lang == "h" and not lang == "k"):
+        lang = input(">")
+    
     correct = 0
     wrong = 0
     streak = 0
@@ -15,20 +20,25 @@ def function():
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
         print(f""""STOP" to end the game\n===============
 Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n""")
-        hiragana = ""
+        kana = ""
         romaji = ""
         romaji_2 = ""
         x = number
 
         while(not x == 0):
-            i = random.randint(0, len(char['hiragana']['all']) -1)
-            hiragana += char['hiragana']['all'][i]
+            if (lang == "h"):
+                i = random.randint(0, len(char['hiragana']['all']) -1)
+                kana += char['hiragana']['all'][i]
+            elif (lang == "k"):
+                i = random.randint(0, len(char['katagana']['all']) -1)
+                kana += char['katagana']['all'][i]
+
             romaji += char['romaji']['all'][i]
             romaji_2 += char['romaji']['all'][i] + " "
             x -= 1
             
         
-        print(f"{hiragana}")
+        print(f"{kana}")
         reponse = input(">")
         if(reponse == romaji):
             correct += 1
