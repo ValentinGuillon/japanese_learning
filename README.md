@@ -2,16 +2,16 @@
 This repository contains interactive programs used to my japanese's learning.<br><br>
 
 Ne sachant pas comment faire pour lancer un prog directement ici, ou même si c'est possible,<br>pour tester les programmes, il faudra les copier/coller<br>
-IMPORTANT:<br>Si vous le faites, il vous faudra obligatoirement les modules "characters_jap" et "list_jap_fr", mais aussi "romaji_to_kana"<br><br>
+IMPORTANT:<br>Si vous le faites, il vous faudra obligatoirement les modules "characters_jap" et "list_jap_fr", mais aussi "romaji_to_kana" (tous ne sont pas indispensable pour chaque programme, mais comme ça, pas de soucis)<br><br>
 
 
-L'affichage des programmes est adapté au format des téléphones.<br>
+L'affichage des programmes est adapté au format des téléphones. (du mien en tout cas)<br>
 
 Tous les programmes se "rejoue" instantanément.<br>
 Par exemple, le prog' "numbers" va afficher un nombre en Japonais, puis en français, et rebelotte.<br>
 La plupart des programmes permettent le choix de la langue.<br>
 Par exemple, en choississant le Français, le programme affichera d'abord les mots en Français, puis en Japonais.<br>
-Tous programmes ont un mode "view" et/ou un mode "game".<br>
+Tous programmes ont un mode "view" et/ou un mode "game" (ou "guess").<br>
 "view" permet au joueur de n'avoir quasi rien à faire, hormis appuyer sur Entrée pour passer à la suite du programme.<br>
 "game" demande au joueur d'écrire une réponse.
 
@@ -20,16 +20,9 @@ Comme c'est un peu le bazar dans le rangement des programmes,<br>voici quelques 
 <ul>
   <b>Les modules</b>
   <ul>
-    <li><em>module_characters_jap.py</em><br>Listes des charactères, en romaji et en hiragana</li>
+    <li><em>module_characters_jap.py</em><br>Listes des charactères, en romaji, hiragana et katagana</li>
     <li><em>module_list_jap_fr.py</em><br> Listes de mots, en Français et en Japonais (romaji)</li>
-  </ul>
-</ul>
-
-<br>
-<ul>
-  <b>Les outils</b><br>
-  <ul>
-    <li><em>romaji_to_kana.py</em><br>Ce programme est un "traducteur". Vous rentrez un mot ou une phrase en romaji, et le programme vous la ressort en kana (attention cependant, il n'est pas entièrement fiable dès qu'il s'agit de charactères complexes ou de double voyelles/consonnes)</li>
+    <li><em>module_romaji_to_kana.py</em><br>Ce programme est un "traducteur". Il reçoit un mot ou une phrase en romaji, et le retourne en kana (attention cependant, il n'est pas entièrement fiable dès qu'il s'agit de charactères complexes ou de double voyelles/consonnes)</li>
   </ul>
 </ul>
 
