@@ -26,10 +26,14 @@ sp
     stop = ""
     while(not stop == "STOP"):
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\"STOP\" to end\n\n\n\n\n")
-        i = 0        
+        i = 0
+        i_hira = 0
+        i_kata = 0
         hiragana = "[none]"
         katagana = "[none]"
         romaji = "[none]"
+        romaji_hira = "[none]"
+        romaji_kata = "[none]"
         
         #gererate characters based on category
         if(category == "A"):
@@ -49,7 +53,7 @@ sp
                 hiragana = "none"
                 katagana = char['katagana']['miss'][i]
                 romaji = char['romaji']['kata_miss'][i]
-            if(lang == "gr" or "rg"):
+            if(lang == "gr" or lang == "rg"):
                 i_hira = random.randint(0, len(char['hiragana']['miss']) -1)
                 i_kata = random.randint(0, len(char['katagana']['miss']) -1)
                 hiragana = char['hiragana']['miss'][i_hira]
@@ -195,11 +199,19 @@ sp
                         stop = input(f"{char['katagana']['all'][32]}\n")
             else:
                 if(random.randint(0, 1)):
-                    stop = input(f"{romaji_hira} (hira)\n")
+                    if(category == "M"):
+                        stop = input(f"{romaji_hira} (hira)\n")
+                    else:
+                        stop = input(f"{romaji} (hira)\n")
+
                     if(not stop == "STOP"):
                         stop = input(f"{hiragana}\n")
                 else:
-                    stop = input(f"{romaji_kata} (kata)\n")
+                    if(category == "M"):
+                        stop = input(f"{romaji_kata} (kata)\n")
+                    else:
+                        stop = input(f"{romaji} (kata)\n")
+                        
                     if(not stop == "STOP"):
                         stop = input(f"{katagana}\n")
         
