@@ -5,8 +5,8 @@ import random
 def function():
     
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    lang = input("Hiragana (h)\nKatagana(k)\n>")
-    while(not lang == "h" and not lang == "k"):
+    lang = input("Hiragana (h)\nKatagana (k)\nBoth (g)\n>")
+    while(not lang == "h" and not lang == "k" and not lang == "g"):
         lang = input(">")
     
     correct = 0
@@ -32,6 +32,13 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
             elif (lang == "k"):
                 i = random.randint(0, len(char['katagana']['all']) -1)
                 kana += char['katagana']['all'][i]
+            elif (lang == "g"):
+                if(random.randint(0, 1)):
+                    i = random.randint(0, len(char['hiragana']['all']) -1)
+                    kana += char['hiragana']['all'][i]
+                else:
+                    i = random.randint(0, len(char['katagana']['all']) -1)
+                    kana += char['katagana']['all'][i]
 
             romaji += char['romaji']['all'][i]
             romaji_2 += char['romaji']['all'][i] + " "

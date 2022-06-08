@@ -6,136 +6,206 @@ import random
 
 def function():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    choose = input("Hiragana => Romaji (hr)\nRomaji => Hiragana(rh)\nKatagana => Romaji (kr)\nRomaji => Katagana(rk)\n>")
-    while(not choose == "hr" and not choose == "rh" and not choose == "kr" and not choose == "rk"):
-        choose = input(">")
-    choice = input("""
+    lang = input("Hiragana => Romaji (hr)\nRomaji => Hiragana(rh)\nKatagana => Romaji (kr)\nRomaji => Katagana(rk)\nHira/Kata => Romaji (gr)\nRomaji => Hira/Kata (rg)\n>")
+    while(not lang == "hr" and not lang == "rh" and not lang == "kr" and not lang == "rk" and not lang == "gr" and not lang == "rg"):
+        lang = input(">")
+    category = input("""
 Which syllabs:
 All (A)
+Miss(M)
 voyelles (v)
 k, s, t,
 n, h, m,
 y, r, w,
 sp
 >""")
-    while(not choice == "A" and not choice == "v" and not choice == "k" and not choice == "s" and not choice == "t" and not choice == "n" and not choice == "h" and not choice == "m" and not choice == "y" and not choice == "r" and not choice == "w" and not choice == "sp"):
-        choice = input(">")
+    while(not category == "A" and not category == "M" and not category == "v" and not category == "k" and not category == "s" and not category == "t" and not category == "n" and not category == "h" and not category == "m" and not category == "y" and not category == "r" and not category == "w" and not category == "sp"):
+        category = input(">")
 
 
-    replay = ""
-    while(replay == ""):
-        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    stop = ""
+    while(not stop == "STOP"):
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\"STOP\" to end\n\n\n\n\n")
         i = 0        
         hiragana = "[none]"
         katagana = "[none]"
         romaji = "[none]"
         
-        if(choice == "A"):
+        #gererate characters based on category
+        if(category == "A"):
             i = random.randint(0, len(char['hiragana']['all']) -1)
             hiragana = char['hiragana']['all'][i]
             katagana = char['katagana']['all'][i]
             romaji = char['romaji']['all'][i]
+
+        elif(category == "M"):
+            if(lang == "hr" or lang == "rh"):
+                i = random.randint(0, len(char['hiragana']['miss']) -1)
+                hiragana = char['hiragana']['miss'][i]
+                katagana = "none"
+                romaji = char['romaji']['hira_miss'][i]
+            if(lang == "kr" or lang == "rk"):
+                i = random.randint(0, len(char['katagana']['miss']) -1)
+                hiragana = "none"
+                katagana = char['katagana']['miss'][i]
+                romaji = char['romaji']['kata_miss'][i]
+            if(lang == "gr" or "rg"):
+                i_hira = random.randint(0, len(char['hiragana']['miss']) -1)
+                i_kata = random.randint(0, len(char['katagana']['miss']) -1)
+                hiragana = char['hiragana']['miss'][i_hira]
+                katagana = char['katagana']['miss'][i_kata]
+                romaji_hira = char['romaji']['hira_miss'][i_hira]
+                romaji_kata = char['romaji']['kata_miss'][i_kata]
+
             
-        elif(choice == "v"):
+            
+        elif(category == "v"):
             i = random.randint(0, len(char['hiragana']['vowel']) -1)
             hiragana = char['hiragana']['vowel'][i]
             katagana = char['katagana']['vowel'][i]
             romaji = char['romaji']['vowel'][i]
         
-        elif(choice == "k"):
+        elif(category == "k"):
             i = random.randint(0, len(char['hiragana']['k']) -1)
             hiragana = char['hiragana']['k'][i]
             katagana = char['katagana']['k'][i]
             romaji = char['romaji']['k'][i]
         
-        elif(choice == "s"):
+        elif(category == "s"):
             i = random.randint(0, len(char['hiragana']['s']) -1)
             hiragana = char['hiragana']['s'][i]
             katagana = char['katagana']['s'][i]
             romaji = char['romaji']['s'][i]
         
-        elif(choice == "t"):
+        elif(category == "t"):
             i = random.randint(0, len(char['hiragana']['t']) -1)
             hiragana = char['hiragana']['t'][i]
             katagana = char['katagana']['t'][i]
             romaji = char['romaji']['t'][i]
         
-        elif(choice == "n"):
+        elif(category == "n"):
             i = random.randint(0, len(char['hiragana']['n']) -1)
             hiragana = char['hiragana']['n'][i]
             katagana = char['katagana']['n'][i]
             romaji = char['romaji']['n'][i]
         
-        elif(choice == "h"):
+        elif(category == "h"):
             i = random.randint(0, len(char['hiragana']['h']) -1)
             hiragana = char['hiragana']['h'][i]
             katagana = char['katagana']['h'][i]
             romaji = char['romaji']['h'][i]
         
-        elif(choice == "m"):
+        elif(category == "m"):
             i = random.randint(0, len(char['hiragana']['m']) -1)
             hiragana = char['hiragana']['m'][i]
             katagana = char['katagana']['m'][i]
             romaji = char['romaji']['m'][i]
         
-        elif(choice == "y"):
+        elif(category == "y"):
             i = random.randint(0, len(char['hiragana']['y']) -1)
             hiragana = char['hiragana']['y'][i]
             katagana = char['katagana']['y'][i]
             romaji = char['romaji']['y'][i]
         
-        elif(choice == "r"):
+        elif(category == "r"):
             i = random.randint(0, len(char['hiragana']['r']) -1)
             hiragana = char['hiragana']['r'][i]
             katagana = char['katagana']['r'][i]
             romaji = char['romaji']['r'][i]
         
-        elif(choice == "w"):
+        elif(category == "w"):
             i = random.randint(0, len(char['hiragana']['w']) -1)
             hiragana = char['hiragana']['w'][i]
             katagana = char['katagana']['w'][i]
             romaji = char['romaji']['w'][i]
-        elif(choice == "sp"):
+        elif(category == "sp"):
             i = random.randint(0, len(char['hiragana']['sp']) -1)
             hiragana = char['hiragana']['sp'][i]
             katagana = char['katagana']['sp'][i]
             romaji = char['romaji']['sp'][i]
 
         
-        if(choose == "hr"):
-            input(f"{hiragana}\n")
-            input(f"{romaji}\n")    
+        #print based on language
+        if(lang == "hr"):
+            stop = input(f"{hiragana}\n")
+            if(not stop == "STOP"):
+                stop = input(f"{romaji}\n")
 
-        elif(choose == "kr"):
-            input(f"{katagana}\n")
-            input(f"{romaji}\n")
-                    
-        elif(choose == "rh"):
+        elif(lang == "kr"):
+            stop = input(f"{katagana}\n")
+            if(not stop == "STOP"):
+                stop = input(f"{romaji}\n")
+                
+        elif(lang == "gr"):
+            if(random.randint(0, 1)):
+                stop = input(f"{hiragana}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{romaji}\n")
+            else:
+                stop = input(f"{katagana}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{romaji}\n")
+
+        elif(lang == "rh"):
             if(romaji == "ji"):
-                input("ji\n")
-                input(f"{char['hiragana']['all'][21]}\n")
+                stop = input("ji\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{char['hiragana']['all'][21]}\n")
             elif(romaji == "zu"):
-                input("zu\n")
-                input(f"{char['hiragana']['all'][32]}\n")
-            else:    
-                input(f"{romaji}\n")
-                input(f"{hiragana}\n")
+                stop = input("zu\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{char['hiragana']['all'][32]}\n")
+            else:
+                stop = input(f"{romaji}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{hiragana}\n")
                     
-        elif(choose == "rk"):
+        elif(lang == "rk"):
             if(romaji == "ji"):
-                input("ji\n")
-                input(f"{char['katagana']['all'][21]}\n")
+                stop = input("ji\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{char['katagana']['all'][21]}\n")
             elif(romaji == "zu"):
-                input("zu\n")
-                input(f"{char['katagana']['all'][32]}\n")
+                stop = input("zu\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{char['katagana']['all'][32]}\n")
             else:    
-                input(f"{romaji}\n")
-                input(f"{katagana}\n")
+                stop = input(f"{romaji}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{katagana}\n")
+                    
+        elif(lang == "rg"):
+            if(romaji == "ji"):
+                if(random.randint(0, 1)):
+                    stop = input("ji (hira)\n")
+                    if(not stop == "STOP"):
+                        stop = input(f"{char['hiragana']['all'][21]}\n")
+                else:
+                    stop = input("ji (kata)\n")
+                    if(not stop == "STOP"):
+                        stop = input(f"{char['katagana']['all'][21]}\n")
+            elif(romaji == "zu"):
+                if(random.randint(0, 1)):
+                    stop = input("zu (hira)\n")
+                    if(not stop == "STOP"):
+                        stop = input(f"{char['hiragana']['all'][32]}\n")
+                else:
+                    stop = input("zu (kata)\n")
+                    if(not stop == "STOP"):
+                        stop = input(f"{char['katagana']['all'][32]}\n")
+            else:
+                if(random.randint(0, 1)):
+                    stop = input(f"{romaji_hira} (hira)\n")
+                    if(not stop == "STOP"):
+                        stop = input(f"{hiragana}\n")
+                else:
+                    stop = input(f"{romaji_kata} (kata)\n")
+                    if(not stop == "STOP"):
+                        stop = input(f"{katagana}\n")
         
-        replay = input("Again ? (Enter or n)\n>")
     
     
-    restart = input("Restart ? (y/n)\n>")
+    restart = input("\n\nRestart ? (y/n)\n>")
     while(restart == "" or not restart == "n"):
         if(restart == "y"):
             function()

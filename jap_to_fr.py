@@ -6,7 +6,7 @@ from module_romaji_to_kana import *
 
 def function_mod():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
-    mod = input("""Choose the program mod :
+    mod = input("""lang the program mod :
 Guess mod (g) | View mod (v)
   You have    |   Guess in
   to write    |   your mind
@@ -22,21 +22,21 @@ Guess mod (g) | View mod (v)
 def function(mod):
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     if(mod == "g"):
-        choose = input("Language mod :\nFrench => Romaji (fr)\nRomaji => French (rf)\nHiragana => Romaji (hr)\nHiragana => French (hf)\nKatagana => Romaji (kr)\nKatagana => French (kf)\n>")
+        lang = input("Language mod :\nFrench => Romaji (fr)\nRomaji => French (rf)\nHiragana => Romaji (hr)\nHiragana => French (hf)\nKatagana => Romaji (kr)\nKatagana => French (kf)\n>")
         #Katagana => Romaji, Katagana => French
-        while(not choose == "fr" and not choose == "rf" and not choose == "hr" and not choose == "hf" and not choose == "kr" and not choose == "kf"):
-            choose = input(">")
+        while(not lang == "fr" and not lang == "rf" and not lang == "hr" and not lang == "hf" and not lang == "kr" and not lang == "kf"):
+            lang = input(">")
     
     if(mod == "v"):
-        choose = input("Language mod :\nHiragana:\nFrench => Hiragana => Romaji (fhr)\nFrench => Romaji => Hiragana (frh)\nRomaji => Hiragana => French (rhf)\nHiragana => Romaji => French (hrf)\n\nKatagana :\nFrench => Katagana => Romaji (fkr)\nFrench => Romaji => Katagana (frk)\nRomaji => Katagana => French (rkf)\nKatagana => Romaji => French (krf)\n>")
+        lang = input("Language mod :\nHiragana:\nFrench => Hiragana => Romaji (fhr)\nFrench => Romaji => Hiragana (frh)\nRomaji => Hiragana => French (rhf)\nHiragana => Romaji => French (hrf)\n\nKatagana :\nFrench => Katagana => Romaji (fkr)\nFrench => Romaji => Katagana (frk)\nRomaji => Katagana => French (rkf)\nKatagana => Romaji => French (krf)\n>")
         #, French => Katagana => Romaji, , French => Romaji => Katagana
         #, Romaji => Katagana => French, , Katagana => Romaji => French
-        while(not choose == "fhr" and not choose == "frh" and not choose == "rhf" and not choose == "hrf" and not choose == "fkr" and not choose == "frk" and not choose == "rkf" and not choose == "krf"):
-            choose = input(">")
+        while(not lang == "fhr" and not lang == "frh" and not lang == "rhf" and not lang == "hrf" and not lang == "fkr" and not lang == "frk" and not lang == "rkf" and not lang == "krf"):
+            lang = input(">")
 
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    choice = input("""
-Choose the category :
+    category = input("""
+lang the category :
 
 All (but last 3) (A)
 
@@ -51,69 +51,69 @@ Conjug of verbs (cv)
 Conjug of adjectifs (ca)
 Expressions (e)
 >""")
-    while(not choice == "A" and not choice == "t" and not choice == "c" and not choice == "a" and not choice == "w" and not choice == "cl" and not choice == "f" and not choice == "d" and not choice == "vb" and not choice == "adj" and not choice == "cv" and not choice == "ca" and not choice == "e"):
-        choice = input(">")
+    while(not category == "A" and not category == "t" and not category == "c" and not category == "a" and not category == "w" and not category == "cl" and not category == "f" and not category == "d" and not category == "vb" and not category == "adj" and not category == "cv" and not category == "ca" and not category == "e"):
+        category = input(">")
 
     correct = 0
     wrong = 0
     streak = 0
     current_streak = 0
 
-    replay = ""
-    while(replay == ""):
-        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
+    stop = ""
+    while(not stop == "STOP"):
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\"STOP\" to end\n\n\n\n\n") 
         word_romaji = "[none]"
         word_fr = "[none]"
         
-        if(choice == "A"):
+        if(category == "A"):
             i = random.randint(0, len(all_jap) - 1)
             word_romaji = all_jap[i]
             word_fr = all_fr[i]
-        elif(choice == "t"):
+        elif(category == "t"):
             i = random.randint(0, len(transports_jap) - 1)
             word_romaji = transports_jap[i]
             word_fr = transports_fr[i]
-        elif(choice == "c"):
+        elif(category == "c"):
             i = random.randint(0, len(colors_jap) - 1)
             word_romaji = colors_jap[i]
             word_fr = colors_fr[i]
-        elif(choice == "a"):
+        elif(category == "a"):
             i = random.randint(0, len(animals_jap) - 1)
             word_romaji = animals_jap[i]
             word_fr = animals_fr[i]
-        elif(choice == "w"):
+        elif(category == "w"):
             i = random.randint(0, len(weather_jap) - 1)
             word_romaji = weather_jap[i]
             word_fr = weather_fr[i]
-        elif(choice == "cl"):
+        elif(category == "cl"):
             i = random.randint(0, len(clothes_jap) - 1)
             word_romaji = clothes_jap[i]
             word_fr = clothes_fr[i]
-        elif(choice == "f"):
+        elif(category == "f"):
             i = random.randint(0, len(food_jap) - 1)
             word_romaji = food_jap[i]
             word_fr = food_fr[i]
-        elif(choice == "d"):
+        elif(category == "d"):
             i = random.randint(0, len(divers_jap) - 1)
             word_romaji = divers_jap[i]
             word_fr = divers_fr[i]
-        elif(choice == "vb"):
+        elif(category == "vb"):
             i = random.randint(0, len(verbs_jap) - 1)
             word_romaji = verbs_jap[i]
             word_fr = verbs_fr[i]
-        elif(choice == "adj"):
+        elif(category == "adj"):
             i = random.randint(0, len(adjs_jap) - 1)
             word_romaji = adjs_jap[i]
             word_fr = adjs_fr[i]
-        elif(choice == "cv"):
+        elif(category == "cv"):
             i = random.randint(0, len(conjug_verbs_jap) - 1)
             word_romaji = conjug_verbs_jap[i]
             word_fr = conjug_verbs_fr[i]
-        elif(choice == "ca"):
+        elif(category == "ca"):
             i = random.randint(0, len(conjug_adjs_jap) - 1)
             word_romaji = conjug_adjs_jap[i]
             word_fr = conjug_adjs_fr[i]
-        elif(choice == "e"):
+        elif(category == "e"):
             i = random.randint(0, len(expressions_jap) - 1)
             word_romaji = expressions_jap[i]
             word_fr = expressions_fr[i]
@@ -126,53 +126,67 @@ Expressions (e)
         word_katagana = romaji_to_katagana(word_romaji)
 
         if(mod == "v"):
-            if(choose == "fhr"):
-                input(f"{word_fr}\n") 
-                input(f"{word_hiragana}\n")
-                input(f"{word_romaji}\n")
+            if(lang == "fhr"):
+                stop = input(f"{word_fr}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_hiragana}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_romaji}\n")
 
-            elif(choose == "frh"):
-                input(f"{word_fr}\n")
-                input(f"{word_romaji}\n")
-                input(f"{word_hiragana}\n")
+            elif(lang == "frh"):
+                stop = input(f"{word_fr}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_romaji}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_hiragana}\n")
             
-            elif(choose == "rhf"):
-                input(f"{word_romaji}\n")
-                input(f"{word_hiragana}\n")
-                input(f"{word_fr}\n")
+            elif(lang == "rhf"):
+                stop = input(f"{word_romaji}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_hiragana}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_fr}\n")
 
-            elif(choose == "hrf"):
-                input(f"{word_hiragana}\n")
-                input(f"{word_romaji}\n")
-                input(f"{word_fr}\n")
+            elif(lang == "hrf"):
+                stop = input(f"{word_hiragana}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_romaji}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_fr}\n")
 
-            elif(choose == "fkr"):
-                input(f"{word_fr}\n")
-                input(f"{word_katagana}\n")
-                input(f"{word_romaji}\n")
+            elif(lang == "fkr"):
+                stop = input(f"{word_fr}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_katagana}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_romaji}\n")
 
-            elif(choose == "frk"):
-                input(f"{word_fr}\n")
-                input(f"{word_romaji}\n")
-                input(f"{word_katagana}\n")
+            elif(lang == "frk"):
+                stop = input(f"{word_fr}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_romaji}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_katagana}\n")
 
-            elif(choose == "rkf"):
-                input(f"{word_romaji}\n")
-                input(f"{word_katagana}\n")
-                input(f"{word_fr}\n")
+            elif(lang == "rkf"):
+                stop = input(f"{word_romaji}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_katagana}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_fr}\n")
 
-            elif(choose == "krf"):
-                input(f"{word_katagana}\n")
-                input(f"{word_romaji}\n")
-                input(f"{word_fr}\n")
+            elif(lang == "krf"):
+                stop = input(f"{word_katagana}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_romaji}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{word_fr}\n")
                 
 
-            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
-            replay = input("Again ? (Enter or n)\n>")
 
 
         if(mod == "g"):
-            if(choose == "fr"):
+            if(lang == "fr"):
                 guess = str.lower(input(f""""STOP" to end the game\n===============
 Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn romaji ?\n\n{word_fr}\n>"""))
                 if(str.upper(guess) == "STOP"):
@@ -187,7 +201,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
                     correct += 1
                     current_streak += 1
 
-            elif(choose == "rf"):
+            elif(lang == "rf"):
                 guess = str.lower(input(f""""STOP" to end the game\n===============
 Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn french ?\n\n{word_romaji}\n>"""))
                 if(str.upper(guess) == "STOP"):
@@ -202,7 +216,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
                     correct += 1
                     current_streak += 1
 
-            elif(choose == "hr"):
+            elif(lang == "hr"):
                 guess = str.lower(input(f""""STOP" to end the game\n===============
 Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn romaji ?\n\n{word_hiragana}\n>"""))
                 if(str.upper(guess) == "STOP"):
@@ -217,7 +231,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
                     correct += 1
                     current_streak += 1
 
-            elif(choose == "hf"):
+            elif(lang == "hf"):
                 guess = str.lower(input(f""""STOP" to end the game\n===============
 Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn french ?\n\n{word_hiragana}\n>"""))
                 if(str.upper(guess) == "STOP"):
@@ -232,7 +246,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
                     correct += 1
                     current_streak += 1
 
-            elif(choose == "kr"):
+            elif(lang == "kr"):
                 guess = str.lower(input(f""""STOP" to end the game\n===============
 Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn romaji ?\n\n{word_katagana}\n>"""))
                 if(str.upper(guess) == "STOP"):
@@ -247,7 +261,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
                     correct += 1
                     current_streak += 1
 
-            elif(choose == "kf"):
+            elif(lang == "kf"):
                 guess = str.lower(input(f""""STOP" to end the game\n===============
 Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn french ?\n\n{word_katagana}\n>"""))
                 if(str.upper(guess) == "STOP"):
@@ -263,7 +277,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
                     current_streak += 1
                 
 
-    restart = input("Restart and change mod ? (y/n)\n>")
+    restart = input("\n\nRestart and change mod ? (y/n)\n>")
     while(restart == "" or not restart == "n"):
         if(restart == "y"):
             function_mod()

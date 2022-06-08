@@ -34,36 +34,41 @@ def function(mod):
     wrong = 0
     streak = 0
     current_streak = 0
-    replay = ""
-    while(replay == "" or not replay == "n") :
+    stop = ""
+    while(not stop == "STOP") :
         nbr = random.randint(1, 999)
         romaji = nbr_to_romaji(nbr)
         hiragana = romaji_to_hiragana(romaji)
         katagana = romaji_to_katagana(romaji)
         
-        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\"STOP\" to end\n\n\n\n\n")
 
         if(mod == "v"):
             if(lang == "nr"):
-                input(f"{nbr}\n")
-                input(f"{romaji}\n")
+                stop = input(f"{nbr}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{romaji}\n")
             elif(lang == "r"):
-                input(f"{romaji}\n")
-                input(f"{nbr}\n")
+                stop = input(f"{romaji}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{nbr}\n")
             elif(lang == "nh"):
-                input(f"{nbr}\n")
-                input(f"{hiragana}\n")
+                stop = input(f"{nbr}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{hiragana}\n")
             elif(lang == "hn"):
-                input(f"{hiragana}\n")
-                input(f"{nbr}\n")
+                stop = input(f"{hiragana}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{nbr}\n")
             elif(lang == "nk"):
-                input(f"{nbr}\n")
-                input(f"{katagana}\n")
+                stop = input(f"{nbr}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{katagana}\n")
             elif(lang == "kn"):
-                input(f"{katagana}\n")
-                input(f"{nbr}\n")
+                stop = input(f"{katagana}\n")
+                if(not stop == "STOP"):
+                    stop = input(f"{nbr}\n")
 
-            replay = input("Again ? (Enter or n)\n>")
         
 
         elif(mod == "g"):
@@ -132,7 +137,7 @@ Which number is ?\n\n{katagana}\n>""")
                     current_streak += 1
 
     
-    restart = input("Restart and change mod ? (y/n)\n>")
+    restart = input("\n\nRestart and change mod ? (y/n)\n>")
     while(restart == "" or not restart == "n"):
         if(restart == "y"):
             function_mod()

@@ -11,9 +11,9 @@ def function():
     nbr = int(input("How many?\n>"))
 
     
-    replay = ""
-    while(replay == ""):
-        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    stop = ""
+    while(not stop == "STOP"):
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\"STOP\" to end\n\n\n\n\n")
 
         x = nbr
         romaji = ""
@@ -40,17 +40,16 @@ def function():
 
             x -= 1
 
-        input("\n")
+        stop = input("\n")
 
         #affichage de la réponse
-        if(lang == "hr" or lang == "kr"):
-            input(f"{romaji}\n")
-        elif(lang == "rh" or lang == "rk"):
-            input(f"{kana}\n")
+        if((lang == "hr" or lang == "kr") and not stop == "STOP"):
+            stop = input(f"{romaji}\n")
+        elif((lang == "rh" or lang == "rk") and not stop == "STOP"):
+            stop = input(f"{kana}\n")
 
-        replay = input("Again ? (Enter or n)\n>")
     
-    restart = input("Restart ? (y/n)\n>")
+    restart = input("\n\nRestart ? (y/n)\n>")
     while(restart == "" or not restart == "n"):
         if(restart == "y"):
             function()
