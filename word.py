@@ -6,7 +6,7 @@ from module_romaji_to_kana import *
 
 def function_mod():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
-    mod = input("""lang the program mod :
+    mod = input("""Program mod :
 Guess mod (g) | View mod (v)
   You have    |   Guess in
   to write    |   your mind
@@ -22,7 +22,7 @@ Guess mod (g) | View mod (v)
 def function(mod):
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     if(mod == "g"):
-        lang = input("Language mod :\nFrench => Romaji (fr)\nRomaji => French (rf)\nHiragana => Romaji (hr)\nHiragana => French (hf)\nKatagana => Romaji (kr)\nKatagana => French (kf)\n>")
+        lang = input("Langage mod :\nFrench => Romaji (fr)\nRomaji => French (rf)\nHiragana => Romaji (hr)\nHiragana => French (hf)\nKatagana => Romaji (kr)\nKatagana => French (kf)\n>")
         #Katagana => Romaji, Katagana => French
         while(not lang == "fr" and not lang == "rf" and not lang == "hr" and not lang == "hf" and not lang == "kr" and not lang == "kf"):
             lang = input(">")
@@ -36,7 +36,7 @@ def function(mod):
 
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     category = input("""
-lang the category :
+Choose the category :
 
 All (but last 3) (A)
 
