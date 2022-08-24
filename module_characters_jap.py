@@ -121,9 +121,7 @@ char = {
                         "nya", "nyu", "nyo",
                         "hya", "hyu", "hyo", "bya", "byu", "byo", "pya", "pyu", "pyo",
                         "mya", "myu", "myo",
-                        "rya", "ryu", "ryo"],
-                'hira_miss' : ["none"],
-                'kata_miss' : ["u", "o", "ne", "ma", "mu", "mo", "yo", "ru", "re", "wa", "wo", "n"]},
+                        "rya", "ryu", "ryo"]},
     'hiragana' : {'all' : [],
                   'vowel' : [hira_a, hira_i, hira_u, hira_e, hira_o],
                   'k' : [hira_ka, hira_ki, hira_ku, hira_ke, hira_ko, hira_ga, hira_gi, hira_gu, hira_ge, hira_go],
@@ -143,8 +141,7 @@ char = {
                           hira_nya, hira_nyu, hira_nyo,
                           hira_hya, hira_hyu, hira_hyo, hira_bya, hira_byu, hira_byo, hira_pya, hira_pyu, hira_pyo,
                           hira_mya, hira_myu, hira_myo,
-                          hira_rya, hira_ryu, hira_ryo],
-                  'miss' : ["none"]},
+                          hira_rya, hira_ryu, hira_ryo]},
     'katagana' : {'all' : [],
                   'vowel' : [kata_a, kata_i, kata_u, kata_e, kata_o],
                   'k' : [kata_ka, kata_ki, kata_ku, kata_ke, kata_ko, kata_ga, kata_gi, kata_gu, kata_ge, kata_go],
@@ -164,8 +161,7 @@ char = {
                           kata_nya, kata_nyu, kata_nyo,
                           kata_hya, kata_hyu, kata_hyo, kata_bya, kata_byu, kata_byo, kata_pya, kata_pyu, kata_pyo,
                           kata_mya, kata_myu, kata_myo,
-                          kata_rya, kata_ryu, kata_ryo],
-                  'miss' : [kata_u, kata_o, kata_ne, kata_ma, kata_mu, kata_mo, kata_yo, kata_ru, kata_re, kata_wa, kata_wo, kata_n]}
+                          kata_rya, kata_ryu, kata_ryo]}
     }
 
 #['romaji']['all']

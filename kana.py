@@ -33,8 +33,8 @@ def function():
 
     family = 'A'
     if(input("All characters ? (y/n)\n>") == 'n'):
-        while (not family == 'a' and not family == 'v' and not family == 'k' and not family == 's' and not family == 't' and not family == 'n' and not family == 'h' and not family == 'm' and not family == 'r' and not family == 'w'):
-            family = input("Choose the range :\n All (a)\n Vowels (v)\n K/G (k)\n S/Z (s)\n T/D (t)\n N (n)\n H/B/P (h)\n M (m)\n R (r)\n W/N (w)\n>")
+        while (not family == 'a' and not family == 'v' and not family == 'k' and not family == 's' and not family == 't' and not family == 'n' and not family == 'h' and not family == 'm' and not family == 'r' and not family == 'w' and not family == 'c'):
+            family = input("Choose the range :\n All (a)\n Vowels (v)\n K/G (k)\n S/Z (s)\n T/D (t)\n N (n)\n H/B/P (h)\n M (m)\n R (r)\n W/N (w)\n Combi (c)\n>")
 
 
     nbr = int(input("How much characters ?\n>"))
@@ -55,6 +55,12 @@ def function():
             else:
                 rand_kana = 'k'
     
+        if (lang[0] == 'r'):
+            if (rand_kana == 'h'):
+                print("(Hiragana)")
+            if (rand_kana == 'k'):
+                print("(Katakana)")
+
         #printing of characters, then creation of the traducted characters
         while(x > 0):
             if (family == 'A' or 'a'):
@@ -77,6 +83,9 @@ def function():
                 i = random.randint(63, 67)
             if (family == 'w'):
                 i = random.randint(68, 70)
+            if (family == 'c'):
+                i = random.randint(71, 103)
+            
             
             #kana => romaji
             if(lang[0] == 'k'):
@@ -89,30 +98,12 @@ def function():
             #romaji => kana
             if(lang[0] == 'r'):
                 print(char['romaji']['all'][i], end = ' ')
-                if(lang[1] == 'h'):
+                if(rand_kana == 'h'):
                     kana += char['hiragana']['all'][i] + " "
-                if(lang[1] == 'k'):
+                if(rand_kana == 'k'):
                     kana += char['katagana']['all'][i] + " "
 
                 
-
-            '''
-            if(lang == "hr"):
-                print(char['hiragana']['all'][i], end = ' ')
-                romaji += char['romaji']['all'][i] + " "
-
-            elif(lang == "kr"):
-                print(char['katagana']['all'][i], end = ' ')
-                romaji += char['romaji']['all'][i] + " "
-            
-            elif(lang == "rh"):
-                print(char['romaji']['all'][i], end = ' ')
-                kana += char['hiragana']['all'][i] + " "
-            
-            elif(lang == "rk"):
-                print(char['romaji']['all'][i], end = ' ')
-                kana += char['katagana']['all'][i] + " "
-            '''
 
             x -= 1
 
