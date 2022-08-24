@@ -1,19 +1,43 @@
-#guess_char_game.py
+#kana_guess-game.py
 from module_characters_jap import *
 import random
 
+
+def presentation():
+    input("""
+=============================
+        This program
+     is a guessing game
+         with score.
+  Gives you multiples kana.
+          You have
+   to write them in romaji.
+=============================
+Press Enter to proceed
+when nothing is asked.
+...
+""")
+    input("""Restart the game
+or exit the program,
+will reset the high score.
+...
+""")
+    input("""This symbol ">",
+means an answer is expected.
+=============================
+""")
+
 def function():
-    
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    lang = input("Hiragana (h)\nKatagana (k)\nBoth (g)\n>")
-    while(not lang == "h" and not lang == "k" and not lang == "g"):
+    lang = input("Hiragana (h)\nKatagana (k)\nBoth (b)\n>")
+    while(not lang == "h" and not lang == "k" and not lang == "b"):
         lang = input(">")
     
     correct = 0
     wrong = 0
     streak = 0
     current_streak = 0
-    number = int(input("How many characters ?\n>"))
+    number = int(input("How much characters ?\n>"))
 
     vrai = "true"
     while(vrai == "true"):
@@ -24,21 +48,30 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
         romaji = ""
         romaji_2 = ""
         x = number
+        rand_lang = lang
+
+        if(lang == 'b'):
+            if(random.randint(0, 1) == 0):
+                rand_lang = 'h'
+            else:
+                rand_lang = 'k'
 
         while(not x == 0):
-            if (lang == "h"):
+            if (rand_lang == 'h'):
                 i = random.randint(0, len(char['hiragana']['all']) -1)
                 kana += char['hiragana']['all'][i]
-            elif (lang == "k"):
+            elif (rand_lang == 'k'):
                 i = random.randint(0, len(char['katagana']['all']) -1)
                 kana += char['katagana']['all'][i]
-            elif (lang == "g"):
+            '''
+            elif (lang == "b"):
                 if(random.randint(0, 1)):
                     i = random.randint(0, len(char['hiragana']['all']) -1)
                     kana += char['hiragana']['all'][i]
                 else:
                     i = random.randint(0, len(char['katagana']['all']) -1)
                     kana += char['katagana']['all'][i]
+            '''
 
             romaji += char['romaji']['all'][i]
             romaji_2 += char['romaji']['all'][i] + " "
@@ -53,7 +86,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
         elif(reponse == "STOP"):
            break
         else:
-            input(f"""Oupsi, c'était "{romaji}"\n""")
+            input(f"""Oupsi, it was "{romaji}"\n""")
             wrong += 1
             if(current_streak > streak):
                 streak = current_streak
@@ -71,28 +104,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
 
     
 def main():
-    input("""
-=============================
-        This program
-     is a guessing game
-         with score.
-  Gives you multiples kanas.
-          You have
-   to write them in romaji.
-=============================
-Press Enter to proceed
-when nothing is asked.
-...
-""")
-    input("""Restart the game
-or exit the program,
-will reset the high score.
-...
-""")
-    input("""This symbol ">",
-means an answer is expected.
-=============================
-""")
+    presentation()
     function()
 
 if __name__=="__main__":
