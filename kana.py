@@ -11,10 +11,10 @@ def presentation():
         This program
           show you
           multiple
-           kanas
+            kana
      (in jap or romaji)
           then the
-         traduction
+         translation
 =============================
 Press Enter to proceed
 when nothing is asked.
@@ -37,7 +37,7 @@ def function():
             family = input("Choose the range :\n All (a)\n Vowels (v)\n K/G (k)\n S/Z (s)\n T/D (t)\n N (n)\n H/B/P (h)\n M (m)\n R (r)\n W/N (w)\n Combi (c)\n>")
 
 
-    nbr = int(input("How much characters ?\n>"))
+    nbr = int(input("How much ?\n>"))
 
     
     stop = ""

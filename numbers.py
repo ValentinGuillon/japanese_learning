@@ -2,6 +2,24 @@
 import random
 from module_romaji_to_kana import *
 
+
+def presentation():
+    input("""
+=============================
+        This program
+     gives you a number
+     between 1 and 999
+        in japanese
+=============================
+Press Enter to proceed
+when nothing is asked.
+...
+""")
+    input("""This symbol ">",
+means an answer is expected.
+=============================
+""")
+
 def function_mod():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
     mod = input("""Choose the program mod :
@@ -48,7 +66,7 @@ def function(mod):
                 stop = input(f"{nbr}\n")
                 if(not stop == "STOP"):
                     stop = input(f"{romaji}\n")
-            elif(lang == "r"):
+            elif(lang == "rn"):
                 stop = input(f"{romaji}\n")
                 if(not stop == "STOP"):
                     stop = input(f"{nbr}\n")
@@ -73,9 +91,9 @@ def function(mod):
 
         elif(mod == "g"):
             if(lang == "n"):
-                guess = input(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n
-In romaji ?\n\n{nbr}\n>""")
+                guess = input(f"""\n===============
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n===============\n\n\n\n
+In romaji ?\n\n {nbr}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(romaji)):
@@ -89,9 +107,9 @@ In romaji ?\n\n{nbr}\n>""")
                     current_streak += 1
 
             elif(lang == "r"):
-                guess = input(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n
-Which number is ?\n\n{romaji}\n>""")
+                guess = input(f"""\n===============
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n===============\n\n\n\n
+Which number is ?\n\n {romaji}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str(nbr)):
@@ -105,9 +123,9 @@ Which number is ?\n\n{romaji}\n>""")
                     current_streak += 1
 
             elif(lang == "h"):
-                guess = input(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n
-Which number is ?\n\n{hira}\n>""")
+                guess = input(f"""\n===============
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n===============\n\n\n\n
+Which number is ?\n\n {hira}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str(nbr)):
@@ -121,9 +139,9 @@ Which number is ?\n\n{hira}\n>""")
                     current_streak += 1
 
             elif(lang == "k"):
-                guess = input(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n
-Which number is ?\n\n{kata}\n>""")
+                guess = input(f"""\n===============
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n===============\n\n\n\n
+Which number is ?\n\n {kata}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str(nbr)):
@@ -250,22 +268,7 @@ def nbr_to_romaji(x):
 
 
 def main():
-    input("""
-=============================
-        This program
-     gives you a number
-    between 1 and 999
-        in japanese
-=============================
-Press Enter to proceed
-when nothing is asked.
-...
-""")
-    input("""This symbol ">",
-means an answer is expected.
-=============================
-""")
-
+    presentation()
     function_mod()
     
 if __name__ == "__main__":

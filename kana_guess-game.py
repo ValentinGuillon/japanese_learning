@@ -29,7 +29,7 @@ means an answer is expected.
 
 def function():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    lang = input("Hiragana (h)\nkatakana (k)\nBoth (b)\n>")
+    lang = input("Which kana ?\n Hiragana (h)\n Katakana (k)\n Both (b)\n>")
     while(not lang == "h" and not lang == "k" and not lang == "b"):
         lang = input(">")
     
@@ -37,13 +37,13 @@ def function():
     wrong = 0
     streak = 0
     current_streak = 0
-    number = int(input("How much characters ?\n>"))
+    number = int(input("How much ?\n>"))
 
     vrai = "true"
     while(vrai == "true"):
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-        print(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n""")
+        print(f""""STOP" to end\n===============
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n===============\n\n\n\n""")
         kana = ""
         romaji = ""
         x = number
@@ -67,7 +67,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
             x -= 1
             
         
-        print(f"{kana}")
+        print(f" {kana}")
         user_answer = input(">")
         if(user_answer == romaji):
             correct += 1
@@ -81,7 +81,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
                 streak = current_streak
             current_streak = 0
 
-    restart = input("Restart ? (y/n)\n>")
+    restart = input(" Restart ? (y/n)\n>")
     while(restart == "" or not restart == "n"):
         if(restart == "y"):
             function()
