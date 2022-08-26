@@ -1,25 +1,36 @@
 #module_romaji_to_kana.py
-#This module have a fonction to traducts romaji input to hiragana or katagana
+#This module have a fonction to translate romaji input to hiragana or katagana
+
+#note
+#put that on a fonction ? : (ligne 35 and 47 adn more lol)
+#for y in char['romaji']['all']:
+#    if(y == x):
+#        c = char['hiragana']['all'][j]
+#        break
+#    j += 1
+
 
 from module_characters_jap import *
 import string
 
+#this fonction made his way on the word letter by letter. When the end of a syllab is reached, the corresponding kana is added to a list ("to_hiragana"), until the final letter. Then return the completed list.
 def romaji_to_hiragana(text):
-    text = text.lower()
-    all = string.ascii_lowercase
-    vowels = "a" + "e" + "i" + "o" + "u"
-    vowels_circumflex = "â" + "ê" + "î" + "ô" + "û"
-    consonnes = "b" + "c" + "d" + "f" + "g" + "h" + "j" + "k" + "l" + "m" + "n" + "p" + "q" + "r" + "s" + "t" + "v" + "w" + "x" + "y" + "z"
+    text = text.lower() #romaji text to transform into kana
+    all = string.ascii_lowercase #all alphabetical letters
+    vowels = "a" + "i" + "u" + "e" + "o"
+    vowels_circumflex = "â" + "î" + "û" + "ê" + "ô"
+    consonants = "k" + "g" + "s" + "z" + "t" + "c" + "h" + "d" + "j" + "n" + "h" + "f" + "b" + "p" + "m" + "y" + "r" + "w" + "n"
 
-    to_hiragana = ""
-    c = "" 
-    text = " " + text #c'est pour les cas où la première lettre et la dernière sont deux mêmes consonnes. Parceque dans la suite, le prog fait des vérif' sur le i-1, et si c'est la première lettre, ça va regarder la dernière lettre.
-    i = 0
+    to_hiragana = "" #consecutively stores kana, then finaly return it
+    c = "" #kana that will be added to "to_hiragana"
+    text = " " + text #will be removed at the end. It's for the case when the first and last letters are the sames consonant. Because on the program, it check i-1 on list, and for the first letter, it will check the last (and we don't wan't that)
+    
+    i = 0 #position on the word
     for x in text:
-        j = 0
-        #if is "n"
-        if(x == "n"): 
-            #if is "n" on the last character
+        j = 0 #position on the romaji/hira/kata syllabs list
+        #the checked letter is a "n" (this part is for identify if it's a solo "n")
+        if(x == "n"):
+            #the "n" is the last letter on the word
             if(len(text[i:]) == 1):
                 j = 0
                 for y in char['romaji']['all']:
@@ -29,9 +40,8 @@ def romaji_to_hiragana(text):
                     j += 1
                     
                 to_hiragana += c
-                #print(c)
             
-            #if is "n + not vowel"
+            #the "n" IS NOT followed by a vowel
             elif(not text[i+1] in vowels and not text[i+1] in vowels_circumflex):
                 j = 0
                 for y in char['romaji']['all']:
@@ -41,23 +51,23 @@ def romaji_to_hiragana(text):
                     j += 1
                     
                 to_hiragana += c
-                #print(c)
 
-        #if is "vowel_circumflex"
+        #the checked letter is a "vowel" with an circumflex
         elif(x in vowels_circumflex): 
+            #change the vowel circumflex to a simple vowel
             if(x == "â"):
                 x = "a"
-            elif(x == "ê"):
-                x = "e"
             elif(x == "î"):
                 x = "i"
-            elif(x == "ô"):
-                x = "o"
             elif(x == "û"):
                 x = "u"
+            elif(x == "ê"):
+                x = "e"
+            elif(x == "ô"):
+                x = "o"
 
-            #if is "vowel_circumflex" solo
-            if(not text[i-1] in consonnes):
+            #the vowel IS NOT after a consonant (so it's NOT a consonant-vowel syllab, just a single vowel)
+            if(not text[i-1] in consonants):
                 j = 0
                 for y in char['romaji']['all']:
                     if(y == x):
@@ -65,11 +75,10 @@ def romaji_to_hiragana(text):
                         break
                     j += 1
                 to_hiragana += c
-                #print(c)
             
-            #if is "cons + vowel_circumflex"
-            elif(text[i-1] in consonnes):
-                #if is "cons + cons + vowel_circumflex" and consonnes are same
+            #the vowel IS after a consonant
+            elif(text[i-1] in consonants):
+                #the vowel is after two same consonants
                 if(text[i-2] == text[i-1]):
                     c = text[i-1] + x
                     j = 0
@@ -79,10 +88,9 @@ def romaji_to_hiragana(text):
                             break
                         j += 1
                     to_hiragana += hira_small_tsu + c
-                    #print(c)
 
-                #if is "cons1 + cons2 + vowel_circumflex" and cons1 is not "n"
-                elif(text[i-2] in consonnes and not text[i-2] == "n"):
+                #the vowel is after two (different) consonants, but the first in not a "n"
+                elif(text[i-2] in consonants and not text[i-2] == "n"):
                     c = text[i-2] + text[i-1] + x
                     j = 0
                     for y in char['romaji']['all']:
@@ -91,8 +99,8 @@ def romaji_to_hiragana(text):
                             break
                         j += 1
                     to_hiragana += c
-                    #print(c)
 
+                #the vowel is after only one consonant
                 else:
                     c = text[i-1] + x
                     j = 0
@@ -102,7 +110,13 @@ def romaji_to_hiragana(text):
                             break
                         j += 1
                     to_hiragana += c
-                    #print(c)
+
+            #because th vowel is circumflex, we have to add a vowel kana
+            #(don't forget the rule for the double vowel, with "e" and "o")
+            if(x == "e"):
+                x = "i"
+            elif(x == "o"):
+                x = "u"
 
             j = 0
             for y in char['romaji']['all']:
@@ -113,10 +127,10 @@ def romaji_to_hiragana(text):
             to_hiragana += c
 
 
-        #if is "vowel"
+        #the checked letter is a "vowel" (without circumflex)
         elif(x in vowels): 
-            #if is not "cons + vowel"
-            if(not text[i-1] in consonnes):
+            #the vowel IS NOT after a consonant (so it's NOT a consonant-vowel syllab, just a single vowel)
+            if(not text[i-1] in consonants):
                 j = 0
                 for y in char['romaji']['all']:
                     if(y == x):
@@ -124,12 +138,11 @@ def romaji_to_hiragana(text):
                         break
                     j += 1
                 to_hiragana += c
-                #print(c)
 
-            #if is "cons + vowel"    
-            elif(text[i-1] in consonnes):
-                #if is "cons + cons + vowel" and consonnes are same
-                if(text[i-2] in consonnes and text[i-2] == text[i-1]): 
+            #the vowel IS after a consonant   
+            elif(text[i-1] in consonants):
+                #the vowel is after two same consonants
+                if(text[i-2] in consonants and text[i-2] == text[i-1]): 
                     c = text[i-1] + x
                     j = 0
                     for y in char['romaji']['all']:
@@ -139,10 +152,9 @@ def romaji_to_hiragana(text):
                         j += 1
                     
                     to_hiragana += hira_small_tsu + c
-                    #print(c)
 
-                #if is "cons + cons + vowel" and cons1 is not "n"
-                elif(text[i-2] in consonnes and not text[i-2] == "n"): 
+                #the vowel is after two (different) consonants, but the first in not a "n"
+                elif(text[i-2] in consonants and not text[i-2] == "n"): 
                     c = text[i-2] + text[i-1] + x
                     j = 0
                     for y in char['romaji']['all']:
@@ -152,7 +164,8 @@ def romaji_to_hiragana(text):
                         j += 1
                     
                     to_hiragana += c
-                    #print(c)
+
+                #the vowel is after only one consonant
                 else:
                     c = text[i-1] + x
                     j = 0
@@ -170,29 +183,30 @@ def romaji_to_hiragana(text):
             #print(x)
         i += 1
     
-    to_hiragana = to_hiragana[1:] #et mtn on enlève l'espace du début
+    to_hiragana = to_hiragana[1:] #on enlève l'espace du début
     return(to_hiragana)
 
 
 
 
-
+#this fonction made his way on the word letter by letter. When the end of a syllab is reached, the corresponding kana is added to a list ("to_katagana"), until the final letter. Then return the completed list.
 def romaji_to_katagana(text):
-    text = text.lower()
-    all = string.ascii_lowercase
-    vowels = "a" + "e" + "i" + "o" + "u"
-    vowels_circumflex = "â" + "ê" + "î" + "ô" + "û"
-    consonnes = "b" + "c" + "d" + "f" + "g" + "h" + "j" + "k" + "l" + "m" + "n" + "p" + "q" + "r" + "s" + "t" + "v" + "w" + "x" + "y" + "z"
+    text = text.lower() #romaji text to transform into kana
+    all = string.ascii_lowercase #all alphabetical letters
+    vowels = "a" + "i" + "u" + "e" + "o"
+    vowels_circumflex = "â" + "î" + "û" + "ê" + "ô"
+    consonants = "k" + "g" + "s" + "z" + "t" + "c" + "h" + "d" + "j" + "n" + "h" + "f" + "b" + "p" + "m" + "y" + "r" + "w" + "n"
 
-    to_katagana = ""
-    c = "" 
-    text = " " + text #c'est pour les cas où la première lettre et la dernière sont deux mêmes consonnes. Parceque dans la suite, le prog fait des vérif' sur le i-1, et si c'est la première lettre, ça va regarder la dernière lettre.
-    i = 0
+    to_katagana = "" #consecutively stores kana, then finaly return it
+    c = "" #kana that will be added to "to_katagana"
+    text = " " + text #will be removed at the end. It's for the case when the first and last letters are the sames consonant. Because on the program, it check i-1 on list, and for the first letter, it will check the last (and we don't wan't that)
+    
+    i = 0 #position on the word
     for x in text:
-        j = 0
-        #if is "n"
-        if(x == "n"): 
-            #if is "n" on the last character
+        j = 0 #position on the romaji/hira/kata syllabs list
+        #the checked letter is a "n" (this part is for identify if it's a solo "n")
+        if(x == "n"):
+            #the "n" is the last letter on the word
             if(len(text[i:]) == 1):
                 j = 0
                 for y in char['romaji']['all']:
@@ -202,9 +216,8 @@ def romaji_to_katagana(text):
                     j += 1
                     
                 to_katagana += c
-                #print(c)
             
-            #if is "n + not vowel"
+            #the "n" IS NOT followed by a vowel
             elif(not text[i+1] in vowels and not text[i+1] in vowels_circumflex):
                 j = 0
                 for y in char['romaji']['all']:
@@ -214,23 +227,23 @@ def romaji_to_katagana(text):
                     j += 1
                     
                 to_katagana += c
-                #print(c)
 
-        #if is "vowel_circumflex"
+        #the checked letter is a "vowel" with an circumflex
         elif(x in vowels_circumflex): 
+            #change the vowel circumflex to a simple vowel
             if(x == "â"):
                 x = "a"
-            elif(x == "ê"):
-                x = "e"
             elif(x == "î"):
                 x = "i"
-            elif(x == "ô"):
-                x = "o"
             elif(x == "û"):
                 x = "u"
+            elif(x == "ê"):
+                x = "e"
+            elif(x == "ô"):
+                x = "o"
 
-            #if is "vowel_circumflex" solo
-            if(not text[i-1] in consonnes):
+            #the vowel IS NOT after a consonant (so it's NOT a consonant-vowel syllab, just a single vowel)
+            if(not text[i-1] in consonants):
                 j = 0
                 for y in char['romaji']['all']:
                     if(y == x):
@@ -238,11 +251,10 @@ def romaji_to_katagana(text):
                         break
                     j += 1
                 to_katagana += c
-                #print(c)
             
-            #if is "cons + vowel_circumflex"
-            elif(text[i-1] in consonnes):
-                #if is "cons + cons + vowel_circumflex" and consonnes are same
+            #the vowel IS after a consonant
+            elif(text[i-1] in consonants):
+                #the vowel is after two same consonants
                 if(text[i-2] == text[i-1]):
                     c = text[i-1] + x
                     j = 0
@@ -251,11 +263,10 @@ def romaji_to_katagana(text):
                             c = char['katagana']['all'][j]
                             break
                         j += 1
-                    to_katagana += kata_small_tsu + c
-                    #print(c)
+                    to_katagana += hira_small_tsu + c
 
-                #if is "cons1 + cons2 + vowel_circumflex" and cons1 is not "n"
-                elif(text[i-2] in consonnes and not text[i-2] == "n"):
+                #the vowel is after two (different) consonants, but the first in not a "n"
+                elif(text[i-2] in consonants and not text[i-2] == "n"):
                     c = text[i-2] + text[i-1] + x
                     j = 0
                     for y in char['romaji']['all']:
@@ -264,8 +275,8 @@ def romaji_to_katagana(text):
                             break
                         j += 1
                     to_katagana += c
-                    #print(c)
 
+                #the vowel is after only one consonant
                 else:
                     c = text[i-1] + x
                     j = 0
@@ -275,7 +286,13 @@ def romaji_to_katagana(text):
                             break
                         j += 1
                     to_katagana += c
-                    #print(c)
+
+            #because th vowel is circumflex, we have to add a vowel kana
+            #(don't forget the rule for the double vowel, with "e" and "o")
+            if(x == "e"):
+                x = "i"
+            elif(x == "o"):
+                x = "u"
 
             j = 0
             for y in char['romaji']['all']:
@@ -286,10 +303,10 @@ def romaji_to_katagana(text):
             to_katagana += c
 
 
-        #if is "vowel"
+        #the checked letter is a "vowel" (without circumflex)
         elif(x in vowels): 
-            #if is not "cons + vowel"
-            if(not text[i-1] in consonnes):
+            #the vowel IS NOT after a consonant (so it's NOT a consonant-vowel syllab, just a single vowel)
+            if(not text[i-1] in consonants):
                 j = 0
                 for y in char['romaji']['all']:
                     if(y == x):
@@ -297,12 +314,11 @@ def romaji_to_katagana(text):
                         break
                     j += 1
                 to_katagana += c
-                #print(c)
 
-            #if is "cons + vowel"    
-            elif(text[i-1] in consonnes):
-                #if is "cons + cons + vowel" and consonnes are same
-                if(text[i-2] in consonnes and text[i-2] == text[i-1]): 
+            #the vowel IS after a consonant   
+            elif(text[i-1] in consonants):
+                #the vowel is after two same consonants
+                if(text[i-2] in consonants and text[i-2] == text[i-1]): 
                     c = text[i-1] + x
                     j = 0
                     for y in char['romaji']['all']:
@@ -311,11 +327,10 @@ def romaji_to_katagana(text):
                             break
                         j += 1
                     
-                    to_katagana += kata_small_tsu + c
-                    #print(c)
+                    to_katagana += hira_small_tsu + c
 
-                #if is "cons + cons + vowel" and cons1 is not "n"
-                elif(text[i-2] in consonnes and not text[i-2] == "n"): 
+                #the vowel is after two (different) consonants, but the first in not a "n"
+                elif(text[i-2] in consonants and not text[i-2] == "n"): 
                     c = text[i-2] + text[i-1] + x
                     j = 0
                     for y in char['romaji']['all']:
@@ -325,7 +340,8 @@ def romaji_to_katagana(text):
                         j += 1
                     
                     to_katagana += c
-                    #print(c)
+
+                #the vowel is after only one consonant
                 else:
                     c = text[i-1] + x
                     j = 0
@@ -343,5 +359,5 @@ def romaji_to_katagana(text):
             #print(x)
         i += 1
     
-    to_katagana = to_katagana[1:] #et mtn on enlève l'espace du début
+    to_katagana = to_katagana[1:] #on enlève l'espace du début
     return(to_katagana)
