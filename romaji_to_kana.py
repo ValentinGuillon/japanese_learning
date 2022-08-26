@@ -3,19 +3,19 @@ from module_characters_jap import *
 from module_romaji_to_kana import *
 
 def function():
-    lang = input("Romaji => Hiragana (h)\nRomaji => Katagana(k)\n>")
+    lang = input("Romaji => Hiragana (h)\nRomaji => katakana(k)\n>")
     while(not lang == "h" and not lang == "k"):
         lang = input(">")
 
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     text = input("Write your sentence/word\n(romaji only)\n>")
-    to_hiragana = romaji_to_hiragana(text)
-    to_katagana = romaji_to_katagana(text)
+    to_hira = romaji_to_hira(text)
+    to_kata = romaji_to_kata(text)
     input("traducting...")
     if (lang == "h"):
-        input(f"{to_hiragana}\n")
+        input(f"{to_hira}\n")
     elif (lang == "k"):
-        input(f"{to_katagana}\n")
+        input(f"{to_kata}\n")
     
     restart = ""
     while(restart == ""):

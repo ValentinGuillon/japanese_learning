@@ -20,12 +20,12 @@ def function(mod):
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
     if(mod == "v"):
-        lang = input("Number => Romaji (nr)\nRomaji => Number (rn)\nNumber => Hiragana (nh)\nHiragana => Number (hn)\nNumber => Katagana (nk)\nKatagana => Number (kn)\n>")
+        lang = input("Number => Romaji (nr)\nRomaji => Number (rn)\nNumber => Hiragana (nh)\nHiragana => Number (hn)\nNumber => katakana (nk)\nkatakana => Number (kn)\n>")
         while(not lang == "nh" and not lang == "nr" and not lang == "hn" and not lang == "rn" and not lang == "nk" and not lang == "kn"):
             lang = input(">")
 
     elif(mod == "g"):
-        lang = input("Number => Romaji (n)\nRomaji => Number (r)\nHiragana => Number (h)\nKatagana => Number (k)\n>")
+        lang = input("Number => Romaji (n)\nRomaji => Number (r)\nHiragana => Number (h)\nkatakana => Number (k)\n>")
         while(not lang == "n" and not lang == "r" and not lang == "h" and not lang == "k"):
             lang = input(">")
 
@@ -38,8 +38,8 @@ def function(mod):
     while(not stop == "STOP") :
         nbr = random.randint(1, 999)
         romaji = nbr_to_romaji(nbr)
-        hiragana = romaji_to_hiragana(romaji)
-        katagana = romaji_to_katagana(romaji)
+        hira = romaji_to_hira(romaji)
+        kata = romaji_to_kata(romaji)
         
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\"STOP\" to end\n\n\n\n\n")
 
@@ -55,17 +55,17 @@ def function(mod):
             elif(lang == "nh"):
                 stop = input(f"{nbr}\n")
                 if(not stop == "STOP"):
-                    stop = input(f"{hiragana}\n")
+                    stop = input(f"{hira}\n")
             elif(lang == "hn"):
-                stop = input(f"{hiragana}\n")
+                stop = input(f"{hira}\n")
                 if(not stop == "STOP"):
                     stop = input(f"{nbr}\n")
             elif(lang == "nk"):
                 stop = input(f"{nbr}\n")
                 if(not stop == "STOP"):
-                    stop = input(f"{katagana}\n")
+                    stop = input(f"{kata}\n")
             elif(lang == "kn"):
-                stop = input(f"{katagana}\n")
+                stop = input(f"{kata}\n")
                 if(not stop == "STOP"):
                     stop = input(f"{nbr}\n")
 
@@ -107,7 +107,7 @@ Which number is ?\n\n{romaji}\n>""")
             elif(lang == "h"):
                 guess = input(f""""STOP" to end the game\n===============
 Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n
-Which number is ?\n\n{hiragana}\n>""")
+Which number is ?\n\n{hira}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str(nbr)):
@@ -123,7 +123,7 @@ Which number is ?\n\n{hiragana}\n>""")
             elif(lang == "k"):
                 guess = input(f""""STOP" to end the game\n===============
 Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n
-Which number is ?\n\n{katagana}\n>""")
+Which number is ?\n\n{kata}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str(nbr)):

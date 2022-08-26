@@ -1,5 +1,5 @@
 #module_characters_jap.py
-#This module list all japanese characteres in a dictionary (romaji and hiragana and katagana).
+#This module list all japanese characteres in a dictionary (romaji and hiragana and katakana).
 
 '''
 #all hiragana code
@@ -56,7 +56,7 @@ hira_rya, hira_ryu, hira_ryo = hira_ri + hira_small_ya, hira_ri + hira_small_yu,
 
 
 
-#creation of all simple kataganas
+#creation of all simple katakanas
 kata_a, kata_i, kata_u, kata_e, kata_o = chr(12450), chr(12452), chr(12454), chr(12456), chr(12458)
 #print(a, i, u, e, o) #i(0, 4)
 kata_ka, kata_ki ,kata_ku, kata_ke, kata_ko = chr(12459), chr(12461), chr(12463), chr(12465), chr(12467)
@@ -84,7 +84,7 @@ kata_wa, kata_wo, kata_n = chr(12527), chr(12530), chr(12531)
 #print(wa, wo, n) #i(68, 70)
 
 
-#...special kataganas
+#...special katakanas
 kata_small_ya, kata_small_yu, kata_small_yo = chr(12515), chr(12517), chr(12519)
 kata_small_tsu = chr(12483)
 
@@ -126,7 +126,7 @@ char = {
                         "hya", "hyu", "hyo", "bya", "byu", "byo", "pya", "pyu", "pyo",
                         "mya", "myu", "myo",
                         "rya", "ryu", "ryo"]},
-    'hiragana' : {'all' : [],
+    'hira' : {'all' : [],
                   'vowel' : [hira_a, hira_i, hira_u, hira_e, hira_o],
                   'k' : [hira_ka, hira_ki, hira_ku, hira_ke, hira_ko, hira_ga, hira_gi, hira_gu, hira_ge, hira_go],
                   's' : [hira_sa, hira_shi, hira_su, hira_se, hira_so, hira_za, hira_ji_s, hira_zu_s, hira_ze, hira_zo],
@@ -146,7 +146,7 @@ char = {
                           hira_hya, hira_hyu, hira_hyo, hira_bya, hira_byu, hira_byo, hira_pya, hira_pyu, hira_pyo,
                           hira_mya, hira_myu, hira_myo,
                           hira_rya, hira_ryu, hira_ryo]},
-    'katagana' : {'all' : [],
+    'kata' : {'all' : [],
                   'vowel' : [kata_a, kata_i, kata_u, kata_e, kata_o],
                   'k' : [kata_ka, kata_ki, kata_ku, kata_ke, kata_ko, kata_ga, kata_gi, kata_gu, kata_ge, kata_go],
                   's' : [kata_sa, kata_shi, kata_su, kata_se, kata_so, kata_za, kata_ji_s, kata_zu_s, kata_ze, kata_zo],
@@ -194,65 +194,65 @@ for n in char['romaji']['only_n']:
 for n in char['romaji']['sp']:
     char['romaji']['all'].append(n)
 
-#['hiragana']['all']
-for n in char['hiragana']['vowel']:
-    char['hiragana']['all'].append(n)
-for n in char['hiragana']['k']:
-    char['hiragana']['all'].append(n)
-for n in char['hiragana']['s']:
-    char['hiragana']['all'].append(n)
-for n in char['hiragana']['t']:
-    char['hiragana']['all'].append(n)
-for n in char['hiragana']['n']:
-    char['hiragana']['all'].append(n)
-for n in char['hiragana']['h']:
-    char['hiragana']['all'].append(n)
-for n in char['hiragana']['m']:
-    char['hiragana']['all'].append(n)
-for n in char['hiragana']['y']:
-    char['hiragana']['all'].append(n)
-for n in char['hiragana']['r']:
-    char['hiragana']['all'].append(n)
-for n in char['hiragana']['w']:
-    char['hiragana']['all'].append(n)
-for n in char['hiragana']['only_n']:
-    char['hiragana']['all'].append(n)
-for n in char['hiragana']['sp']:
-    char['hiragana']['all'].append(n)
+#['hira']['all']
+for n in char['hira']['vowel']:
+    char['hira']['all'].append(n)
+for n in char['hira']['k']:
+    char['hira']['all'].append(n)
+for n in char['hira']['s']:
+    char['hira']['all'].append(n)
+for n in char['hira']['t']:
+    char['hira']['all'].append(n)
+for n in char['hira']['n']:
+    char['hira']['all'].append(n)
+for n in char['hira']['h']:
+    char['hira']['all'].append(n)
+for n in char['hira']['m']:
+    char['hira']['all'].append(n)
+for n in char['hira']['y']:
+    char['hira']['all'].append(n)
+for n in char['hira']['r']:
+    char['hira']['all'].append(n)
+for n in char['hira']['w']:
+    char['hira']['all'].append(n)
+for n in char['hira']['only_n']:
+    char['hira']['all'].append(n)
+for n in char['hira']['sp']:
+    char['hira']['all'].append(n)
 
-#['katagana']['all']
-for n in char['katagana']['vowel']:
-    char['katagana']['all'].append(n)
-for n in char['katagana']['k']:
-    char['katagana']['all'].append(n)
-for n in char['katagana']['s']:
-    char['katagana']['all'].append(n)
-for n in char['katagana']['t']:
-    char['katagana']['all'].append(n)
-for n in char['katagana']['n']:
-    char['katagana']['all'].append(n)
-for n in char['katagana']['h']:
-    char['katagana']['all'].append(n)
-for n in char['katagana']['m']:
-    char['katagana']['all'].append(n)
-for n in char['katagana']['y']:
-    char['katagana']['all'].append(n)
-for n in char['katagana']['r']:
-    char['katagana']['all'].append(n)
-for n in char['katagana']['w']:
-    char['katagana']['all'].append(n)
-for n in char['katagana']['only_n']:
-    char['katagana']['all'].append(n)
-for n in char['katagana']['sp']:
-    char['katagana']['all'].append(n)
+#['kata']['all']
+for n in char['kata']['vowel']:
+    char['kata']['all'].append(n)
+for n in char['kata']['k']:
+    char['kata']['all'].append(n)
+for n in char['kata']['s']:
+    char['kata']['all'].append(n)
+for n in char['kata']['t']:
+    char['kata']['all'].append(n)
+for n in char['kata']['n']:
+    char['kata']['all'].append(n)
+for n in char['kata']['h']:
+    char['kata']['all'].append(n)
+for n in char['kata']['m']:
+    char['kata']['all'].append(n)
+for n in char['kata']['y']:
+    char['kata']['all'].append(n)
+for n in char['kata']['r']:
+    char['kata']['all'].append(n)
+for n in char['kata']['w']:
+    char['kata']['all'].append(n)
+for n in char['kata']['only_n']:
+    char['kata']['all'].append(n)
+for n in char['kata']['sp']:
+    char['kata']['all'].append(n)
 
 
 '''
-#pour verifier que tout les characteres correspondent en romaji et hiragana et katagana
+#pour verifier que tout les characteres correspondent en romaji et hiragana et katakana
 n = len(char['romaji']['all'])
 print(n)
 
 for i in range(0, n):
-    print(char['romaji']['all'][i], char['hiragana']['all'][i], char['katagana']['all'][i])
+    print(char['romaji']['all'][i], char['hiragana']['all'][i], char['kata']['all'][i])
 '''
 

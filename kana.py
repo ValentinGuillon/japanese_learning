@@ -64,7 +64,7 @@ def function():
         #printing of characters, then creation of the traducted characters
         while(x > 0):
             if (family == 'A' or 'a'):
-                i = random.randint(0, len(char['hiragana']['all']) -1)
+                i = random.randint(0, len(char['hira']['all']) -1)
             if (family == 'v'):
                 i = random.randint(0, 4)
             if (family == 'k'):
@@ -90,18 +90,18 @@ def function():
             #kana => romaji
             if(lang[0] == 'k'):
                 if(rand_kana == 'h'):
-                    print(char['hiragana']['all'][i], end = ' ')
+                    print(char['hira']['all'][i], end = ' ')
                 if(rand_kana == 'k'):
-                    print(char['katagana']['all'][i], end = ' ')
+                    print(char['kata']['all'][i], end = ' ')
                 romaji += char['romaji']['all'][i] + " "
             
             #romaji => kana
             if(lang[0] == 'r'):
                 print(char['romaji']['all'][i], end = ' ')
                 if(rand_kana == 'h'):
-                    kana += char['hiragana']['all'][i] + " "
+                    kana += char['hira']['all'][i] + " "
                 if(rand_kana == 'k'):
-                    kana += char['katagana']['all'][i] + " "
+                    kana += char['kata']['all'][i] + " "
 
                 
 

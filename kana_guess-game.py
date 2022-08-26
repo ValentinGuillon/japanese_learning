@@ -29,7 +29,7 @@ means an answer is expected.
 
 def function():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    lang = input("Hiragana (h)\nKatagana (k)\nBoth (b)\n>")
+    lang = input("Hiragana (h)\nkatakana (k)\nBoth (b)\n>")
     while(not lang == "h" and not lang == "k" and not lang == "b"):
         lang = input(">")
     
@@ -46,7 +46,6 @@ def function():
 Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\n""")
         kana = ""
         romaji = ""
-        romaji_2 = ""
         x = number
         rand_lang = lang
 
@@ -58,32 +57,22 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
 
         while(not x == 0):
             if (rand_lang == 'h'):
-                i = random.randint(0, len(char['hiragana']['all']) -1)
-                kana += char['hiragana']['all'][i]
+                i = random.randint(0, len(char['hira']['all']) -1)
+                kana += char['hira']['all'][i]
             elif (rand_lang == 'k'):
-                i = random.randint(0, len(char['katagana']['all']) -1)
-                kana += char['katagana']['all'][i]
-            '''
-            elif (lang == "b"):
-                if(random.randint(0, 1)):
-                    i = random.randint(0, len(char['hiragana']['all']) -1)
-                    kana += char['hiragana']['all'][i]
-                else:
-                    i = random.randint(0, len(char['katagana']['all']) -1)
-                    kana += char['katagana']['all'][i]
-            '''
+                i = random.randint(0, len(char['kata']['all']) -1)
+                kana += char['kata']['all'][i]
 
             romaji += char['romaji']['all'][i]
-            romaji_2 += char['romaji']['all'][i] + " "
             x -= 1
             
         
         print(f"{kana}")
-        reponse = input(">")
-        if(reponse == romaji):
+        user_answer = input(">")
+        if(user_answer == romaji):
             correct += 1
             current_streak += 1
-        elif(reponse == "STOP"):
+        elif(user_answer == "STOP"):
            break
         else:
             input(f"""Oupsi, it was "{romaji}"\n""")

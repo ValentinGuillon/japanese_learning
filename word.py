@@ -22,15 +22,15 @@ Guess mod (g) | View mod (v)
 def function(mod):
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     if(mod == "g"):
-        lang = input("Langage mod :\nFrench => Romaji (fr)\nRomaji => French (rf)\nHiragana => Romaji (hr)\nHiragana => French (hf)\nKatagana => Romaji (kr)\nKatagana => French (kf)\n>")
-        #Katagana => Romaji, Katagana => French
+        lang = input("Langage mod :\nFrench => Romaji (fr)\nRomaji => French (rf)\nHiragana => Romaji (hr)\nHiragana => French (hf)\nkatakana => Romaji (kr)\nkatakana => French (kf)\n>")
+        #katakana => Romaji, katakana => French
         while(not lang == "fr" and not lang == "rf" and not lang == "hr" and not lang == "hf" and not lang == "kr" and not lang == "kf"):
             lang = input(">")
     
     if(mod == "v"):
-        lang = input("Language mod :\nHiragana:\nFrench => Hiragana => Romaji (fhr)\nFrench => Romaji => Hiragana (frh)\nRomaji => Hiragana => French (rhf)\nHiragana => Romaji => French (hrf)\n\nKatagana :\nFrench => Katagana => Romaji (fkr)\nFrench => Romaji => Katagana (frk)\nRomaji => Katagana => French (rkf)\nKatagana => Romaji => French (krf)\n>")
-        #, French => Katagana => Romaji, , French => Romaji => Katagana
-        #, Romaji => Katagana => French, , Katagana => Romaji => French
+        lang = input("Language mod :\nHiragana:\nFrench => Hiragana => Romaji (fhr)\nFrench => Romaji => Hiragana (frh)\nRomaji => Hiragana => French (rhf)\nHiragana => Romaji => French (hrf)\n\nkatakana :\nFrench => katakana => Romaji (fkr)\nFrench => Romaji => katakana (frk)\nRomaji => katakana => French (rkf)\nkatakana => Romaji => French (krf)\n>")
+        #, French => katakana => Romaji, , French => Romaji => katakana
+        #, Romaji => katakana => French, , katakana => Romaji => French
         while(not lang == "fhr" and not lang == "frh" and not lang == "rhf" and not lang == "hrf" and not lang == "fkr" and not lang == "frk" and not lang == "rkf" and not lang == "krf"):
             lang = input(">")
 
@@ -122,14 +122,14 @@ Expressions (e)
             print("Restarting...")
             function(mod)
         
-        word_hiragana = romaji_to_hiragana(word_romaji)
-        word_katagana = romaji_to_katagana(word_romaji)
+        word_hira = romaji_to_hira(word_romaji)
+        word_kata = romaji_to_kata(word_romaji)
 
         if(mod == "v"):
             if(lang == "fhr"):
                 stop = input(f"{word_fr}\n")
                 if(not stop == "STOP"):
-                    stop = input(f"{word_hiragana}\n")
+                    stop = input(f"{word_hira}\n")
                 if(not stop == "STOP"):
                     stop = input(f"{word_romaji}\n")
 
@@ -138,17 +138,17 @@ Expressions (e)
                 if(not stop == "STOP"):
                     stop = input(f"{word_romaji}\n")
                 if(not stop == "STOP"):
-                    stop = input(f"{word_hiragana}\n")
+                    stop = input(f"{word_hira}\n")
             
             elif(lang == "rhf"):
                 stop = input(f"{word_romaji}\n")
                 if(not stop == "STOP"):
-                    stop = input(f"{word_hiragana}\n")
+                    stop = input(f"{word_hira}\n")
                 if(not stop == "STOP"):
                     stop = input(f"{word_fr}\n")
 
             elif(lang == "hrf"):
-                stop = input(f"{word_hiragana}\n")
+                stop = input(f"{word_hira}\n")
                 if(not stop == "STOP"):
                     stop = input(f"{word_romaji}\n")
                 if(not stop == "STOP"):
@@ -157,7 +157,7 @@ Expressions (e)
             elif(lang == "fkr"):
                 stop = input(f"{word_fr}\n")
                 if(not stop == "STOP"):
-                    stop = input(f"{word_katagana}\n")
+                    stop = input(f"{word_kata}\n")
                 if(not stop == "STOP"):
                     stop = input(f"{word_romaji}\n")
 
@@ -166,17 +166,17 @@ Expressions (e)
                 if(not stop == "STOP"):
                     stop = input(f"{word_romaji}\n")
                 if(not stop == "STOP"):
-                    stop = input(f"{word_katagana}\n")
+                    stop = input(f"{word_kata}\n")
 
             elif(lang == "rkf"):
                 stop = input(f"{word_romaji}\n")
                 if(not stop == "STOP"):
-                    stop = input(f"{word_katagana}\n")
+                    stop = input(f"{word_kata}\n")
                 if(not stop == "STOP"):
                     stop = input(f"{word_fr}\n")
 
             elif(lang == "krf"):
-                stop = input(f"{word_katagana}\n")
+                stop = input(f"{word_kata}\n")
                 if(not stop == "STOP"):
                     stop = input(f"{word_romaji}\n")
                 if(not stop == "STOP"):
@@ -218,7 +218,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
 
             elif(lang == "hr"):
                 guess = str.lower(input(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn romaji ?\n\n{word_hiragana}\n>"""))
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn romaji ?\n\n{word_hira}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_romaji)):
@@ -233,7 +233,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
 
             elif(lang == "hf"):
                 guess = str.lower(input(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn french ?\n\n{word_hiragana}\n>"""))
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn french ?\n\n{word_hira}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_fr)):
@@ -248,7 +248,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
 
             elif(lang == "kr"):
                 guess = str.lower(input(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn romaji ?\n\n{word_katagana}\n>"""))
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn romaji ?\n\n{word_kata}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_romaji)):
@@ -263,7 +263,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
 
             elif(lang == "kf"):
                 guess = str.lower(input(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn french ?\n\n{word_katagana}\n>"""))
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn french ?\n\n{word_kata}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_fr)):
