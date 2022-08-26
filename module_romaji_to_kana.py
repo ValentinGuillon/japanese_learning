@@ -97,6 +97,12 @@ def romaji_to_hira(text):
         elif(x in vowels): 
             #the vowel IS NOT after a consonant (so it's NOT a consonant-vowel syllab, just a single vowel)
             if(not text[i-1] in consonants):
+                if(text[i-1] in vowels):
+                    if(x == "e"):
+                        x = "i"
+                    elif(x == "o"):
+                        x = "u"
+
                 c = find_kana('hira', x)
                 to_hira += c
 
@@ -204,11 +210,18 @@ def romaji_to_kata(text):
 
 
         #the checked letter is a "vowel" (without circumflex)
-        elif(x in vowels): 
+        elif(x in vowels):
             #the vowel IS NOT after a consonant (so it's NOT a consonant-vowel syllab, just a single vowel)
             if(not text[i-1] in consonants):
-                c = find_kana('kata', x)
-                to_kata += c
+                if(text[i-1] in vowels and x == text[i-1]):
+                    to_kata += kata_long_vowel
+                elif(text[i-1] in vowels):
+                    c = find_kana('kata', x)
+                    to_kata += c
+
+                else:
+                    c = find_kana('kata', x)
+                    to_kata += c
 
             #the vowel IS after a consonant   
             elif(text[i-1] in consonants):
