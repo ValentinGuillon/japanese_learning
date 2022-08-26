@@ -1,12 +1,13 @@
 #module_characters_jap.py
 #This module list all japanese characteres in a dictionary (romaji and hiragana and katagana).
 
-"""
+'''
 #all hiragana code
-for i in range(0x3040, 0x30a0):
+for i in range(0x3040, 0x31a0):
     print(i, end=' ')
     print(chr(i))
-"""
+'''
+
 
 #creation of all simple hiraganas
 hira_a, hira_i, hira_u, hira_e, hira_o = chr(12354), chr(12356), chr(12358), chr(12360), chr(12362)
@@ -54,6 +55,7 @@ hira_rya, hira_ryu, hira_ryo = hira_ri + hira_small_ya, hira_ri + hira_small_yu,
 
 
 
+
 #creation of all simple kataganas
 kata_a, kata_i, kata_u, kata_e, kata_o = chr(12450), chr(12452), chr(12454), chr(12456), chr(12458)
 #print(a, i, u, e, o) #i(0, 4)
@@ -97,6 +99,8 @@ kata_bya, kata_byu, kata_byo = kata_bi + kata_small_ya, kata_bi + kata_small_yu,
 kata_pya, kata_pyu, kata_pyo = kata_pi + kata_small_ya, kata_pi + kata_small_yu, kata_pi + kata_small_yo
 kata_mya, kata_myu, kata_myo = kata_mi + kata_small_ya, kata_mi + kata_small_yu, kata_mi + kata_small_yo
 kata_rya, kata_ryu, kata_ryo = kata_ri + kata_small_ya, kata_ri + kata_small_yu, kata_ri + hira_small_yo
+
+kata_long_vowel = chr(12540)
 
 
 
