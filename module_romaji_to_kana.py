@@ -14,6 +14,8 @@ def find_kana(kana_lang, x):
         j += 1
     return 0
 
+
+
 #this fonction made his way on the word letter by letter. When the end of a syllab is reached, the corresponding kana is added to a list ("to_hiragana"), until the final letter. Then return the completed list.
 def romaji_to_hiragana(text):
     text = text.lower() #romaji text to transform into kana
@@ -237,3 +239,40 @@ def romaji_to_katagana(text):
     
     to_katagana = to_katagana[1:] #on enlève l'espace du début
     return(to_katagana)
+
+
+'''
+#il faut prendre en compte les kana spéciaux, et là, flemme
+def kana_to_romaji(text):
+    romaji = "" #'text' change into romaji
+    c = "" #kana
+    i = 0 #position on 'text'
+    j = 0 #position on the romaji/hira/kata syllabs list
+    founded = 0 #bool to tell if the kana was find or not
+    double_consonant = 0 #there will be a consonnat to double
+
+    while (not len(text[i:]) == 0) :
+        j = 0
+        founded = 0
+
+        for x in char['hiragana']['all']:
+            if(x == text[i]):
+                c = char[romaji]['all'][j]
+                founded = 1
+                break
+            j += 1
+        
+        if(founded == 0):
+            for x in char['katagana']['all']:
+                if(x == text[i]):
+                    c = char[romaji]['all'][j]
+                    founded = 1
+                    break
+                j += 1
+        
+        if(founded == 0):
+
+
+        
+        i += 1
+'''
