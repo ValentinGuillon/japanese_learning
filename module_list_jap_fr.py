@@ -22,7 +22,7 @@ expressions = 1
 
 #mots jap
 all_jap = []
-transports_jap = ["Jitensha", "Basu", "Takushî", "Fune", "Kuruma", "Chikatetsu", "Hikôki", "Densha", "Baiku", "Sukûtâ"]
+transports_jap = ["Kuruma", "Sukûtâ", "Jitensha", "Takushî", "Chikatetsu", "Densha", "Hikôki", "Fune", "Baiku", "Basu"]
 colors_jap = ["Shiro", "Chairo", "Kiiro", "Haiiro", "Ao", "Kuro", "Aka", "Orenji", "Murasaki", "Midori", "Pinku"]
 animals_jap = ["Inu", "Ahiru", "Usagi", "Saru", "Nezumi", "Uma", "Kuma", "Tora", "Raion", "Niwatori", "Shika", "Buta", "Neko", "Tori", "Kitsune", "Ushi", "Zô", "Hitsuji", "Koara", "Panda" ]
 weather_jap = ["Kaminari", "Kumori", "Hare", "Samui", "Yuki", "Atsui", "Ame"]
@@ -64,7 +64,7 @@ for n in adjs_jap:
 
 #mots fr
 all_fr = []
-transports_fr = ["Vélo", "Bus", "Taxi", "Bateau", "Voiture", "Métro", "Avion", "Train", "Moto", "Scooter"]
+transports_fr = ["Voiture", "Scooter", "Vélo", "Taxi", "Métro", "Train", "Avion", "Bateau", "Moto", "Bus"]
 colors_fr = ["Blanc", "Marron", "Jaune", "Gris", "Bleu", "Noir", "Rouge", "Orange", "Violet", "Vert", "Rose"]
 animals_fr = ["Chien", "Canard", "Lapin", "Singe", "Souris", "Cheval", "Ours", "Tigre", "Lion", "Poulet", "Biche", "Cochon", "Chat", "Oiseau", "Renard", "Vache", "Éléphant", "Mouton", "Koala", "Panda" ]
 weather_fr = ["Orageux", "Nuageux", "Ensoleillé", "Froid", "Enneigé", "Chaud", "Pluvieux"]
