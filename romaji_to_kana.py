@@ -2,6 +2,19 @@
 from module_characters_jap import *
 from module_romaji_to_kana import *
 
+#add lasts kana to the 'all' list
+for n in char['romaji']['sp']:
+    char['romaji']['all'].append(n)
+for n in char['romaji']['sp+']:
+    char['romaji']['all'].append(n)
+for n in char['hira']['sp']:
+    char['hira']['all'].append(n)
+for n in char['hira']['sp+']:
+    char['hira']['all'].append(n)
+for n in char['kata']['sp']:
+    char['kata']['all'].append(n)
+for n in char['kata']['sp+']:
+    char['kata']['all'].append(n)
 
 def presentation():
     input("""

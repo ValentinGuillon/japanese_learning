@@ -7,10 +7,11 @@ animals = 20
 weather = 7
 clothes = 11
 food = 34
+house = 21
 divers = 37
 verbs = 29
 adjs = 30
-all = 189
+all = 210
 
 conjug_verbs = 33
 conjug_adjs = 12
@@ -28,6 +29,7 @@ animals_jap = ["Inu", "Ahiru", "Usagi", "Saru", "Nezumi", "Uma", "Kuma", "Tora",
 weather_jap = ["Kaminari", "Kumori", "Hare", "Samui", "Yuki", "Atsui", "Ame"]
 clothes_jap = ["Kutsushita", "Kutsu", "Jîpan", "Sukâto", "Kôto", "Zubon", "Tîshatsu", "Sandaru", "Tan pan", "Doresu", "Mizugi" ]
 food_jap = ["Tamanegi", "Budô", "Kamoniku", "Orenji", "Suika", "Tômorokoshi", "Remon", "Burokkorî", "Kyûri", "Ichigo", "Ninjin", "Kokonattsu", "Jagaimo", "Bêkon", "Gyûnyû", "Kyabetsu", "Kinoko", "Kabocha", "Mizu", "Tomato", "Ocha", "Eiyô dorinku", "Jûsu", "Kohitsuji", "Ringo", "Banana", "Kôra", "Kôhî", "Sakana", "Gyûniku", "Toriniku", "Nashi", "Butaniku", "Painappuru"]
+house_jap = ["Eakon", "Kamera", "Karendâ", "Kurejittokâdo", "Konpyûta", "Sutereo / Sutereofonikku", "Supûn", "Sofâ", "Têburu", "Terebi / Terebijon", "Toire / Toiretto", "Doa", "Naifu", "Nôto", "Fôku", "Beddo", "Pasokon", "Pen / Bôrupen", "Rajio", "Ranpu", "Rimokon"]
 divers_jap = ["Ai", "Ue", "Aoi", "Ie", "Iie", "Sekai", "Kagi", "Akai", "Osushi", "Kugi", "Keigo", "Saka", "Ya", "Hanaya", "Sakanaya", "Yuki", "Yoru", "Karada", "Rikai", "Ji", "Omatsuri", "Kuuki", "Tokei", "Kinoe", "Sakka", "Irasutoneitaa", "Shashinka", "Seiyuu", "Eegakantoku", "Keesan", "Kodomo no sensee", "Gaka", "Kyaku", "Jugyoe", "Ocha", "Ryokoe", "Sanmyaku"]
 verbs_jap = ["Hanasu", "Yomu", "Asobu", "Morau", "Matsu", "Omou", "Motsu", "Nomu", "Kiku", "Shinu", "Nugu", "Iu", "Kau", "Sumu", "Iku", "Noru", "Naru", "Wakaru", "Aru", "Oshieru", "Miru", "Taberu", "Iru", "Dekiru", "Kaeru", "Yameru", "Ageru", "Kuru", "Suru"]
 adjs_jap = ["Hayai", "Tanoshii", "Samui", "Sugoi", "Ii", "Kakkoii", "Warui", "Atsui", "Chiisai", "Yasui", "Omoshiroi", "Muzukashii", "Itai", "Takai", "Kowai", "Yasashii", "Atarashii", "Isogashii", "Ookii", "Oishii", "Jôzu", "Kirei", "Suki", "Kirai", "Kantan", "Hen", "Taihen", "Anzen", "Genki", "Benri"]
@@ -54,6 +56,8 @@ for n in clothes_jap:
     all_jap.append(n)
 for n in food_jap:
     all_jap.append(n)
+for n in house_jap:
+    all_jap.append(n)
 for n in divers_jap:
     all_jap.append(n)
 for n in verbs_jap:
@@ -70,6 +74,7 @@ animals_fr = ["Chien", "Canard", "Lapin", "Singe", "Souris", "Cheval", "Ours", "
 weather_fr = ["Orageux", "Nuageux", "Ensoleillé", "Froid", "Enneigé", "Chaud", "Pluvieux"]
 clothes_fr = ["Chaussettes", "Chaussures", "Jeans", "Jupe", "Manteau", "Pantalon", "T-shirt", "Sandales", "Short", "Robe", "Maillot de bain" ]
 food_fr = ["Oignon", "Raisin", "Canard (viande)", "Orange", "Pastèque", "Maïs", "Citron", "Brocoli", "Concombre", "Fraise", "Carotte", "Noix de coco", "Pomme de terre", "Bécon", "Lait", "Chou", "Champignon", "Citrouille", "Eau", "Tomate", "Thé", "Boisson énergisante", "Jus", "Agneau (viande)", "Pomme", "Banane", "Cola", "Café", "Poisson (viande)", "Boeuf (viande)", "Poulet (viande)", "Poire", "Porc (viande)", "Ananas"]
+house_fr = ["Climatiseur", "Appareil photo", "Calendrier", "Carte de paiement", "Ordinateur", "Chaîne Hi-Fi", "Cuillère", "Canapé", "Table", "Télévision", "Toilettes", "Porte", "Couteau", "Cahier", "Fourchette", "Lit", "PC (Ordi portable)", "Stylo / Stylo-bille", "Radio", "Lampe", "Télécommande"]
 divers_fr = ["Amour", "En haut / Haut", "Bleu (adjectif)", "Maison", "Non", "Monde", "Clé", "Rouge (adjectif)", "Sushi (avec respect)", "Clou", "Entrainement", "Pente", "Magasin", "Fleuriste", "Poissonnier", "Neige", "Nuit", "Corps", "Compréhension", "Heure", "Nom d'un Festival", "Air", "Montre / Horloge", "Hier", "Écrivain", "Dessinateur", "Photographe", "Doubleur", "Réalisateur", "Policier", "Animateur pour enfants", "Peintre", "Client", "Cours", "Thé", "Voyage", "Chaîne de montagnes"]
 verbs_fr = ["Parler", "Lire", "Jouer / Se divertir", "Recevoir", "Attendre", "Penser", "Tenir / Posséder", "Boire", "Demander", "Mourir", "Se déshabiller", "Dire", "Acheter", "Vivre / Habiter", "Aller", "Monter dans", "Devenir", "Comprendre", "Être / Avoir (objet)", "Enseigner / Dire", "Regarder / Voir", "Manger", "Être / Avoir (être vivant)", "Être capable / Pouvoir", "Rentrer / Retourner", "Arrêter / Abandonner", "Donner", "Venir", "Faire"]
 adjs_fr = ["Rapide / Tôt", "Amusant", "Froid", "Incroyable / Impressionnant", "Bon / Bien / Correct", "Cool / Beau-gosse", "Mauvais", "Chaud", "Petit", "Pas cher", "Intéressant", "Difficile", "Douloureux / Aïe", "Cher / Haut", "Effrayant", "Gentil", "Neuf / Nouveau", "Occupé", "Gros / Grand", "Bon (goût)", "Habille / Doué", "Beau / Belle / Jolie", "Aimé / Être aimé", "Détester / Être détester", "Simple / Facile", "Bizarre / Étrange", "Situation difficile", "Sûr / En sécurité", "En forme / En bonne santé", "Pratique"]
@@ -95,6 +100,8 @@ for n in weather_fr:
 for n in clothes_fr:
     all_fr.append(n)
 for n in food_fr:
+    all_fr.append(n)
+for n in house_fr:
     all_fr.append(n)
 for n in divers_fr:
     all_fr.append(n)
@@ -131,14 +138,14 @@ for i in range(0, len(verif_fr)):
 
 
 #pour vérifier le nombre d'éléments dans chaque liste
-"""
+'''
 print("\nTransport")
 i_fr = len(transports_fr)
 i_jap = len(transports_jap)
 print(i_fr)
 print(i_jap)
 print(transports_fr[i_fr - 1])
-print(transports_fr[i_jap - 1])
+print(transports_jap[i_jap - 1])
 
 print("\nColors")
 i_fr = len(colors_fr)
@@ -146,7 +153,7 @@ i_jap = len(colors_jap)
 print(i_fr)
 print(i_jap)
 print(colors_fr[i_fr - 1])
-print(colors_fr[i_jap - 1])
+print(colors_jap[i_jap - 1])
 
 print("\nAnimals")
 i_fr = len(animals_fr)
@@ -154,7 +161,7 @@ i_jap = len(animals_jap)
 print(i_fr)
 print(i_jap)
 print(animals_fr[i_fr - 1])
-print(animals_fr[i_jap - 1])
+print(animals_jap[i_jap - 1])
 
 print("\nWeather")
 i_fr = len(weather_fr)
@@ -162,7 +169,7 @@ i_jap = len(weather_jap)
 print(i_fr)
 print(i_jap)
 print(weather_fr[i_fr - 1])
-print(weather_fr[i_jap - 1])
+print(weather_jap[i_jap - 1])
 
 print("\nClothes")
 i_fr = len(clothes_fr)
@@ -170,7 +177,7 @@ i_jap = len(clothes_jap)
 print(i_fr)
 print(i_jap)
 print(clothes_fr[i_fr - 1])
-print(clothes_fr[i_jap - 1])
+print(clothes_jap[i_jap - 1])
 
 print("\nFood")
 i_fr = len(food_fr)
@@ -178,7 +185,15 @@ i_jap = len(food_jap)
 print(i_fr)
 print(i_jap)
 print(food_fr[i_fr - 1])
-print(food_fr[i_jap - 1])
+print(food_jap[i_jap - 1])
+
+print("\nHouse")
+i_fr = len(house_fr)
+i_jap = len(house_jap)
+print(i_fr)
+print(i_jap)
+print(house_fr[i_fr - 1])
+print(house_jap[i_jap - 1])
 
 print("\nDivers")
 i_fr = len(divers_fr)
@@ -186,7 +201,7 @@ i_jap = len(divers_jap)
 print(i_fr)
 print(i_jap)
 print(divers_fr[i_fr - 1])
-print(divers_fr[i_jap - 1])
+print(divers_jap[i_jap - 1])
 
 print("\nVerbs")
 i_fr = len(verbs_fr)
@@ -194,7 +209,7 @@ i_jap = len(verbs_jap)
 print(i_fr)
 print(i_jap)
 print(verbs_fr[i_fr - 1])
-print(verbs_fr[i_jap - 1])
+print(verbs_jap[i_jap - 1])
 
 print("\nAdjectives")
 i_fr = len(adjs_fr)
@@ -202,7 +217,7 @@ i_jap = len(adjs_jap)
 print(i_fr)
 print(i_jap)
 print(adjs_fr[i_fr - 1])
-print(adjs_fr[i_jap - 1])
+print(adjs_jap[i_jap - 1])
 
 print("\nConjugaison verbs")
 i_fr = len(conjug_verbs_fr)
@@ -210,7 +225,7 @@ i_jap = len(conjug_verbs_jap)
 print(i_fr)
 print(i_jap)
 print(conjug_verbs_fr[i_fr - 1])
-print(conjug_verbs_fr[i_jap - 1])
+print(conjug_verbs_jap[i_jap - 1])
 
 print("\nConjugaison adjectives")
 i_fr = len(conjug_adjs_fr)
@@ -218,7 +233,7 @@ i_jap = len(conjug_adjs_jap)
 print(i_fr)
 print(i_jap)
 print(conjug_adjs_fr[i_fr - 1])
-print(conjug_adjs_fr[i_jap - 1])
+print(conjug_adjs_jap[i_jap - 1])
 
 print("\nExpressions")
 i_fr = len(expressions_fr)
@@ -226,7 +241,7 @@ i_jap = len(expressions_jap)
 print(i_fr)
 print(i_jap)
 print(expressions_fr[i_fr - 1])
-print(expressions_fr[i_jap - 1])
+print(expressions_jap[i_jap - 1])
 
 print("\nAll")
 i_fr = len(all_fr)
@@ -234,5 +249,5 @@ i_jap = len(all_jap)
 print(i_fr)
 print(i_jap)
 print(all_fr[i_fr - 1])
-print(all_fr[i_jap - 1])
-"""
+print(all_jap[i_jap - 1])
+'''

@@ -4,6 +4,26 @@ import random
 from module_romaji_to_kana import *
 
 
+def presentation():
+    input("""
+=============================
+        This program
+         gives you
+           a word
+            then
+       a translation
+=============================
+...
+""")
+    input("""Press Enter to proceed
+when nothing is asked.
+...
+""")
+    input("""This symbol ">",
+means an answer is expected.
+=============================
+""")
+
 def function_mod():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
     mod = input("""Program mod :
@@ -28,7 +48,11 @@ def function(mod):
             lang = input(">")
     
     if(mod == "v"):
-        lang = input("Language mod :\nHiragana:\nFrench => Hiragana => Romaji (fhr)\nFrench => Romaji => Hiragana (frh)\nRomaji => Hiragana => French (rhf)\nHiragana => Romaji => French (hrf)\n\nkatakana :\nFrench => katakana => Romaji (fkr)\nFrench => Romaji => katakana (frk)\nRomaji => katakana => French (rkf)\nkatakana => Romaji => French (krf)\n>")
+        '''
+        lang = input("Language mod :\nHiragana:\nFrench => Hiragana => Romaji (fhr)\nFrench => Romaji => Hiragana (frh)\nRomaji => Hiragana => French (rhf)\nHiragana => Romaji => French (hrf)\n\nkatakana :\nFrench => katakana => Romaji (fkr)\nFrench => Romaji => katakana (frk)\nRomaji => katakana => French (rkf)\nkatakana => Romaji => French (krf)\n>")'''
+
+        lang = input("Language mod :\n(choose 3 langage) (ex : fhr)\n(can only have 1 kana type)\n\n French (f)\n Romaji (r)\n Hiragana (h)\n Katakana (k)\n>")
+        
         #, French => katakana => Romaji, , French => Romaji => katakana
         #, Romaji => katakana => French, , katakana => Romaji => French
         while(not lang == "fhr" and not lang == "frh" and not lang == "rhf" and not lang == "hrf" and not lang == "fkr" and not lang == "frk" and not lang == "rkf" and not lang == "krf"):
@@ -38,11 +62,12 @@ def function(mod):
     category = input("""
 Choose the category :
 
-All (but last 3) (A)
+All (A) (exept 3 lasts)
 
 Transports (t) | Colors (c)
 Animals (a)    | Weather (w)
 Clothes (cl)   | Food (f)
+House (h)
 Divers (d)
 
 Verbs (vb) | Adjectifs (adj)
@@ -51,7 +76,7 @@ Conjug of verbs (cv)
 Conjug of adjectifs (ca)
 Expressions (e)
 >""")
-    while(not category == "A" and not category == "t" and not category == "c" and not category == "a" and not category == "w" and not category == "cl" and not category == "f" and not category == "d" and not category == "vb" and not category == "adj" and not category == "cv" and not category == "ca" and not category == "e"):
+    while(not category == "A" and not category == "t" and not category == "c" and not category == "a" and not category == "w" and not category == "cl" and not category == "f" and not category == "h" and not category == "d" and not category == "vb" and not category == "adj" and not category == "cv" and not category == "ca" and not category == "e"):
         category = input(">")
 
     correct = 0
@@ -93,6 +118,10 @@ Expressions (e)
             i = random.randint(0, len(food_jap) - 1)
             word_romaji = food_jap[i]
             word_fr = food_fr[i]
+        elif(category == "h"):
+            i = random.randint(0, len(house_jap) - 1)
+            word_romaji = house_jap[i]
+            word_fr = house_fr[i]
         elif(category == "d"):
             i = random.randint(0, len(divers_jap) - 1)
             word_romaji = divers_jap[i]
@@ -289,25 +318,7 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
 
 
 def main():
-    input("""
-=============================
-        This program
-         gives you
-           a word
-            then
-       a translation
-=============================
-...
-""")
-    input("""Press Enter to proceed
-when nothing is asked.
-...
-""")
-    input("""This symbol ">",
-means an answer is expected.
-=============================
-""")
-    
+    presentation()    
     function_mod()
 
 if __name__ == "__main__":

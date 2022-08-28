@@ -1,12 +1,21 @@
 #module_characters_jap.py
 #This module list all japanese characteres in a dictionary (romaji and hiragana and katakana).
 
+
+#japanese code
 '''
-#all hiragana code
-for i in range(0x3040, 0x31a0):
+#hiragana
+print("\n--------HIRAGANA")
+for i in range(0x3041, 0x30a0):
+    print(i, end=' ')
+    print(chr(i))
+#katakana
+print("\n--------KATAKANA")
+for i in range(0x30a1, 0x30ff):
     print(i, end=' ')
     print(chr(i))
 '''
+
 
 
 #creation of all simple hiraganas
@@ -40,6 +49,10 @@ hira_wa, hira_wo, hira_n = chr(12431), chr(12434), chr(12435)
 #...special hiraganas
 hira_small_ya, hira_small_yu, hira_small_yo = chr(12419), chr(12421), chr(12423)
 hira_small_tsu = chr(12387)
+hira_small_a, hira_small_i, hira_small_u, hira_small_e, hira_small_o = chr(12353), chr(12355), chr(12357), chr(12359), chr(12361)
+hira_vu = chr(12436)
+hira_va, hira_vi, hira_ve, hira_vo = hira_vu + hira_small_a, hira_vu + hira_small_i, hira_vu + hira_small_e, hira_vu + hira_small_o
+
 
 hira_kya, hira_kyu, hira_kyo = hira_ki + hira_small_ya, hira_ki + hira_small_yu , hira_ki + hira_small_yo
 hira_gya, hira_gyu, hira_gyo = hira_gi + hira_small_ya, hira_gi + hira_small_yu, hira_gi + hira_small_yo
@@ -52,6 +65,27 @@ hira_bya, hira_byu, hira_byo = hira_bi + hira_small_ya, hira_bi + hira_small_yu,
 hira_pya, hira_pyu, hira_pyo = hira_pi + hira_small_ya, hira_pi + hira_small_yu, hira_pi + hira_small_yo
 hira_mya, hira_myu, hira_myo = hira_mi + hira_small_ya, hira_mi + hira_small_yu, hira_mi + hira_small_yo
 hira_rya, hira_ryu, hira_ryo = hira_ri + hira_small_ya, hira_ri + hira_small_yu, hira_ri + hira_small_yo
+
+#i know those kana doesn't exist (in hiragana)
+hira_fa, hira_fi, hira_fe, hira_fo = hira_fu + hira_small_a, hira_fu + hira_small_i, hira_fu + hira_small_e, hira_fu + hira_small_o
+
+hira_wi, hira_we = hira_u + hira_small_i, hira_u + hira_small_e
+
+hira_she = hira_shi + hira_small_e
+hira_je = hira_ji_s + hira_small_e
+hira_che = hira_chi + hira_small_e
+hira_ti = hira_te + hira_small_i
+hira_di = hira_de + hira_small_i
+hira_tu = hira_to + hira_small_u
+hira_du = hira_do + hira_small_u
+hira_tsa, hira_tsi, hira_tse, hira_tso = hira_tsu + hira_small_a, hira_tsu + hira_small_i, hira_tsu + hira_small_e, hira_tsu + hira_small_o
+
+hira_si = hira_su + hira_small_i
+hira_zi = hira_zu_s + hira_small_i
+hira_dyu = hira_de + hira_small_yu
+hira_tyu = hira_te + hira_small_yu
+hira_kwo = hira_ku + hira_small_o
+
 
 
 
@@ -87,6 +121,9 @@ kata_wa, kata_wo, kata_n = chr(12527), chr(12530), chr(12531)
 #...special katakanas
 kata_small_ya, kata_small_yu, kata_small_yo = chr(12515), chr(12517), chr(12519)
 kata_small_tsu = chr(12483)
+kata_small_a, kata_small_i, kata_small_u, kata_small_e, kata_small_o = chr(12449), chr(12451), chr(12453), chr(12455), chr(12457)
+kata_vu = chr(12532)
+kata_va, kata_vi, kata_ve, kata_vo = kata_vu + kata_small_a, kata_vu + kata_small_i, kata_vu + kata_small_e, kata_vu + kata_small_o
 
 kata_kya, kata_kyu, kata_kyo = kata_ki + kata_small_ya, kata_ki + kata_small_yu , kata_ki + kata_small_yo
 kata_gya, kata_gyu, kata_gyo = kata_gi + kata_small_ya, kata_gi + kata_small_yu, kata_gi + kata_small_yo
@@ -98,9 +135,30 @@ kata_hya, kata_hyu, kata_hyo = kata_hi + kata_small_ya, kata_hi + kata_small_yu,
 kata_bya, kata_byu, kata_byo = kata_bi + kata_small_ya, kata_bi + kata_small_yu, kata_bi + kata_small_yo
 kata_pya, kata_pyu, kata_pyo = kata_pi + kata_small_ya, kata_pi + kata_small_yu, kata_pi + kata_small_yo
 kata_mya, kata_myu, kata_myo = kata_mi + kata_small_ya, kata_mi + kata_small_yu, kata_mi + kata_small_yo
-kata_rya, kata_ryu, kata_ryo = kata_ri + kata_small_ya, kata_ri + kata_small_yu, kata_ri + hira_small_yo
+kata_rya, kata_ryu, kata_ryo = kata_ri + kata_small_ya, kata_ri + kata_small_yu, kata_ri + kata_small_yo
 
 kata_long_vowel = chr(12540)
+
+kata_fa, kata_fi, kata_fe, kata_fo = kata_fu + kata_small_a, kata_fu + kata_small_i, kata_fu + kata_small_e, kata_fu + kata_small_o
+
+kata_wi, kata_we = kata_u + kata_small_i, kata_u + kata_small_e
+#"wo" writed "u + small_o" exist, but i cannot implement it (because "wo already exist")
+
+kata_she = kata_shi + kata_small_e
+kata_je = kata_ji_s + kata_small_e
+kata_che = kata_chi + kata_small_e
+kata_ti = kata_te + kata_small_i
+kata_di = kata_de + kata_small_i
+kata_tu = kata_to + kata_small_u
+kata_du = kata_do + kata_small_u
+kata_tsa, kata_tsi, kata_tse, kata_tso = kata_tsu + kata_small_a, kata_tsu + kata_small_i, kata_tsu + kata_small_e, kata_tsu + kata_small_o
+
+kata_si = kata_su + kata_small_i
+kata_zi = kata_zu_s + kata_small_i
+kata_dyu = kata_de + kata_small_yu
+kata_tyu = kata_te + kata_small_yu
+kata_kwo = kata_ku + kata_small_o
+
 
 
 
@@ -123,9 +181,16 @@ char = {
                         "ja", "ju", "jo",
                         "cha", "chu", "cho",
                         "nya", "nyu", "nyo",
-                        "hya", "hyu", "hyo", "bya", "byu", "byo", "pya", "pyu", "pyo",
-                        "mya", "myu", "myo",
-                        "rya", "ryu", "ryo"]},
+                        "hya", "hyu", "hyo", "bya", "byu", "byo", "pya", "pyu", "pyo"],
+                'sp+' : ["fa", "fi", "fe", "fo",
+                         "mya", "myu", "myo",
+                         "rya", "ryu", "ryo",
+                         "va", "vi", "vu", "ve", "vo",
+                         "wi", "we",
+                         "she", "je", "che",
+                         "ti", "di", "tu", "du",
+                         "tsa", "tsi", "tse", "tso",
+                         "si", "zi", "dyu", "tyu", "kwo"]},
     'hira' : {'all' : [],
                   'vowel' : [hira_a, hira_i, hira_u, hira_e, hira_o],
                   'k' : [hira_ka, hira_ki, hira_ku, hira_ke, hira_ko, hira_ga, hira_gi, hira_gu, hira_ge, hira_go],
@@ -143,9 +208,16 @@ char = {
                           hira_ja, hira_ju, hira_jo,
                           hira_cha, hira_chu, hira_cho,
                           hira_nya, hira_nyu, hira_nyo,
-                          hira_hya, hira_hyu, hira_hyo, hira_bya, hira_byu, hira_byo, hira_pya, hira_pyu, hira_pyo,
-                          hira_mya, hira_myu, hira_myo,
-                          hira_rya, hira_ryu, hira_ryo]},
+                          hira_hya, hira_hyu, hira_hyo, hira_bya, hira_byu, hira_byo, hira_pya, hira_pyu, hira_pyo],
+                  'sp+' : [hira_fa, hira_fi, hira_fe, hira_fo,
+                           hira_mya, hira_myu, hira_myo,
+                           hira_rya, hira_ryu, hira_ryo,
+                           hira_va, hira_vi, hira_vu, hira_ve, hira_vo,
+                           hira_wi, hira_we,
+                           hira_she, hira_je, hira_che,
+                           hira_ti, hira_di, hira_tu, hira_du,
+                           hira_tsa, hira_tsi, hira_tse, hira_tso,
+                           hira_si, hira_zi, hira_dyu, hira_tyu, hira_kwo]},
     'kata' : {'all' : [],
                   'vowel' : [kata_a, kata_i, kata_u, kata_e, kata_o],
                   'k' : [kata_ka, kata_ki, kata_ku, kata_ke, kata_ko, kata_ga, kata_gi, kata_gu, kata_ge, kata_go],
@@ -163,9 +235,16 @@ char = {
                           kata_ja, kata_ju, kata_jo,
                           kata_cha, kata_chu, kata_cho,
                           kata_nya, kata_nyu, kata_nyo,
-                          kata_hya, kata_hyu, kata_hyo, kata_bya, kata_byu, kata_byo, kata_pya, kata_pyu, kata_pyo,
-                          kata_mya, kata_myu, kata_myo,
-                          kata_rya, kata_ryu, kata_ryo]}
+                          kata_hya, kata_hyu, kata_hyo, kata_bya, kata_byu, kata_byo, kata_pya, kata_pyu, kata_pyo],
+                  'sp+' : [kata_fa, kata_fi, kata_fe, kata_fo,
+                           kata_mya, kata_myu, kata_myo,
+                           kata_rya, kata_ryu, kata_ryo,
+                           kata_va, kata_vi, kata_vu, kata_ve, kata_vo,
+                           kata_wi, kata_we,
+                           kata_she, kata_je, kata_che,
+                           kata_ti, kata_di, kata_tu, kata_du,
+                           kata_tsa, kata_tsi, kata_tse, kata_tso,
+                           kata_si, kata_zi, kata_dyu, kata_tyu, kata_kwo]}
     }
 
 #['romaji']['all']
@@ -191,8 +270,6 @@ for n in char['romaji']['w']:
     char['romaji']['all'].append(n)
 for n in char['romaji']['only_n']:
     char['romaji']['all'].append(n)
-for n in char['romaji']['sp']:
-    char['romaji']['all'].append(n)
 
 #['hira']['all']
 for n in char['hira']['vowel']:
@@ -216,8 +293,6 @@ for n in char['hira']['r']:
 for n in char['hira']['w']:
     char['hira']['all'].append(n)
 for n in char['hira']['only_n']:
-    char['hira']['all'].append(n)
-for n in char['hira']['sp']:
     char['hira']['all'].append(n)
 
 #['kata']['all']
@@ -243,16 +318,28 @@ for n in char['kata']['w']:
     char['kata']['all'].append(n)
 for n in char['kata']['only_n']:
     char['kata']['all'].append(n)
-for n in char['kata']['sp']:
-    char['kata']['all'].append(n)
 
+
+
+#pour verifier que tout les characteres correspondent en romaji et hiragana et katakana
 
 '''
-#pour verifier que tout les characteres correspondent en romaji et hiragana et katakana
+for n in char['romaji']['sp']:
+    char['romaji']['all'].append(n)
+for n in char['romaji']['sp+']:
+    char['romaji']['all'].append(n)
+for n in char['hira']['sp']:
+    char['hira']['all'].append(n)
+for n in char['hira']['sp+']:
+    char['hira']['all'].append(n)
+for n in char['kata']['sp']:
+    char['kata']['all'].append(n)
+for n in char['kata']['sp+']:
+    char['kata']['all'].append(n)
+
 n = len(char['romaji']['all'])
 print(n)
 
 for i in range(0, n):
-    print(char['romaji']['all'][i], char['hiragana']['all'][i], char['kata']['all'][i])
+    print(char['romaji']['all'][i], char['hira']['all'][i], char['kata']['all'][i])
 '''
-

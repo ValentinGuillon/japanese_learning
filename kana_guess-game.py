@@ -27,17 +27,38 @@ means an answer is expected.
 =============================
 """)
 
-def function():
+def function(combi_added, combiplus_added):
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     lang = input("Which kana ?\n Hiragana (h)\n Katakana (k)\n Both (b)\n>")
     while(not lang == "h" and not lang == "k" and not lang == "b"):
         lang = input(">")
     
+    if(combi_added == 0):
+        if(input("Add combi kana ? (y/n)\n>") == 'y'):
+            combi_added = 1
+            for n in char['romaji']['sp']:
+                char['romaji']['all'].append(n)
+            for n in char['hira']['sp']:
+                char['hira']['all'].append(n)
+            for n in char['kata']['sp']:
+                char['kata']['all'].append(n)
+    if(combiplus_added == 0):
+        if(input("Add combi+ kana ? (y/n)\n>") == 'y'):
+            combiplus_added = 1
+            for n in char['romaji']['sp+']:
+                char['romaji']['all'].append(n)
+            for n in char['hira']['sp+']:
+                char['hira']['all'].append(n)
+            for n in char['kata']['sp+']:
+                char['kata']['all'].append(n)
+
+    number = int(input("How much ?\n>"))
+
+
     correct = 0
     wrong = 0
     streak = 0
     current_streak = 0
-    number = int(input("How much ?\n>"))
 
     vrai = "true"
     while(vrai == "true"):
@@ -84,7 +105,7 @@ def function():
     restart = input(" Restart ? (y/n)\n>")
     while(restart == "" or not restart == "n"):
         if(restart == "y"):
-            function()
+            function(combi_added, combiplus_added)
             break
         restart = input(">")
 
@@ -94,7 +115,7 @@ def function():
     
 def main():
     presentation()
-    function()
+    function(0, 0)
 
 if __name__=="__main__":
     main()

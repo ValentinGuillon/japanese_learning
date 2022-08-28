@@ -4,6 +4,7 @@
 from module_characters_jap import *
 import random
 
+
 def presentation():
     input("""
     	
@@ -26,15 +27,68 @@ means an answer is expected.
 """)
 
 #ask first langage (jap or romaji), then program loop (possibility of restart the fonction during the loop)
-def function():
+def function(combi_added, combiplus_added):
     print("\n\n\n\n\n\n\n\n")
     lang = input("What do you want to see ?\n Kana (k)\n Romaji (r)\n>")
     lang += input("Which kind of kana ?\n Hiragana (h)\n Katakana (k)\n Both (b)\n>")
 
     family = 'A'
     if(input("All characters ? (y/n)\n>") == 'n'):
-        while (not family == 'a' and not family == 'v' and not family == 'k' and not family == 's' and not family == 't' and not family == 'n' and not family == 'h' and not family == 'm' and not family == 'r' and not family == 'w' and not family == 'c'):
-            family = input("Choose the range :\n All (a)\n Vowels (v)\n K/G (k)\n S/Z (s)\n T/D (t)\n N (n)\n H/B/P (h)\n M (m)\n R (r)\n W/N (w)\n Combi (c)\n>")
+        while (not family == 'a' and not family == 'v' and not family == 'k' and not family == 's' and not family == 't' and not family == 'n' and not family == 'h' and not family == 'm' and not family == 'r' and not family == 'w' and not family == 'c' and not family == 'C'):
+            family = input("Choose the range :\n All (a)\n Vowels (v)\n K/G (k)\n S/Z (s)\n T/D (t)\n N (n)\n H/B/P (h)\n M (m)\n R (r)\n W/N (w)\n Combi (c)\n Combi+ (C)\n>")
+    
+    else:
+        if(combi_added == 0):
+            if(input("Add combi kana ? (y/n)\n>") == 'y'):
+                combi_added = 1
+                for n in char['romaji']['sp']:
+                    char['romaji']['all'].append(n)
+                for n in char['hira']['sp']:
+                    char['hira']['all'].append(n)
+                for n in char['kata']['sp']:
+                    char['kata']['all'].append(n)
+        if(combiplus_added == 0):
+            if(input("Add combi+ kana ? (y/n)\n>") == 'y'):
+                combi_added = 1
+                combiplus_added = 1
+                for n in char['romaji']['sp']:
+                    char['romaji']['all'].append(n)
+                for n in char['hira']['sp']:
+                    char['hira']['all'].append(n)
+                for n in char['kata']['sp']:
+                    char['kata']['all'].append(n)
+                for n in char['romaji']['sp+']:
+                    char['romaji']['all'].append(n)
+                for n in char['hira']['sp+']:
+                    char['hira']['all'].append(n)
+                for n in char['kata']['sp+']:
+                    char['kata']['all'].append(n)
+
+    if(family == 'c' and combi_added == 0):
+        combi_added = 1
+        for n in char['romaji']['sp']:
+            char['romaji']['all'].append(n)
+        for n in char['hira']['sp']:
+            char['hira']['all'].append(n)
+        for n in char['kata']['sp']:
+            char['kata']['all'].append(n)
+    if(family == 'C' and combiplus_added == 0):
+        combi_added = 1
+        combiplus_added = 1
+        for n in char['romaji']['sp']:
+            char['romaji']['all'].append(n)
+        for n in char['hira']['sp']:
+            char['hira']['all'].append(n)
+        for n in char['kata']['sp']:
+            char['kata']['all'].append(n)
+        for n in char['romaji']['sp+']:
+            char['romaji']['all'].append(n)
+        for n in char['hira']['sp+']:
+            char['hira']['all'].append(n)
+        for n in char['kata']['sp+']:
+            char['kata']['all'].append(n)
+
+
 
 
     nbr = int(input("How much ?\n>"))
@@ -84,7 +138,10 @@ def function():
             if (family == 'w'):
                 i = random.randint(68, 70)
             if (family == 'c'):
-                i = random.randint(71, 103)
+                i = random.randint(71, 97)
+            if (family == 'C'):
+                i = random.randint(98, 130)
+            
             
             
             #kana => romaji
@@ -119,7 +176,7 @@ def function():
     restart = input("\n\nRestart ? (y/n)\n>")
     while(restart == "" or not restart == "n"):
         if(restart == "y"):
-            function()
+            function(combi_added, combiplus_added)
             break
         restart = input(">")
 
@@ -129,7 +186,7 @@ def function():
 
 def main():
     presentation()
-    function()
+    function(0, 0)
 
 if __name__ == "__main__":
     main() 

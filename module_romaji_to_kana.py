@@ -22,7 +22,7 @@ def romaji_to_hira(text):
     all = string.ascii_lowercase #all alphabetical letters
     vowels = "a" + "i" + "u" + "e" + "o"
     vowels_circumflex = "â" + "î" + "û" + "ê" + "ô"
-    consonants = "k" + "g" + "s" + "z" + "t" + "c" + "h" + "d" + "j" + "n" + "h" + "f" + "b" + "p" + "m" + "y" + "r" + "w" + "n"
+    consonants = "k" + "g" + "s" + "z" + "t" + "c" + "h" + "d" + "j" + "n" + "h" + "f" + "b" + "p" + "m" + "y" + "r" + "w" + "n" + "v"
 
     to_hira = "" #consecutively stores kana, then finaly return it
     c = "" #kana that will be added to "to_hira"
@@ -32,19 +32,27 @@ def romaji_to_hira(text):
     for x in text:
         j = 0 #position on the romaji/hira/kata syllabs list
         #the checked letter is a "n" (this part is for identify if it's a solo "n")
-        if(x == "n"):
+
+        if(x in consonants and text[i-1] == x):
+            to_hira += hira_small_tsu
+
+        elif(x == "n"):
             #the "n" is the last letter on the word
             if(len(text[i:]) == 1):
                 c = find_kana('hira', x)
                 to_hira += c
             
+            elif(text[i+1] == 'n'):
+                pass
+                #do nothing, because a double n, so it will be checked as a double letter (for the "small tsu")
+
             #the "n" IS NOT followed by a vowel
             elif(not text[i+1] in vowels and not text[i+1] in vowels_circumflex):
                 c = find_kana('hira', x)
                 to_hira += c
 
         #the checked letter is a "vowel" with an circumflex
-        elif(x in vowels_circumflex): 
+        elif(x in vowels_circumflex):
             #change the vowel circumflex to a simple vowel
             if(x == "â"):
                 x = "a"
@@ -68,7 +76,7 @@ def romaji_to_hira(text):
                 if(text[i-2] == text[i-1]):
                     c = text[i-1] + x
                     c = find_kana('hira', c)
-                    to_hira += hira_small_tsu + c
+                    to_hira += c
 
                 #the vowel is after two (different) consonants, but the first in not a "n"
                 elif(text[i-2] in consonants and not text[i-2] == "n"):
@@ -94,10 +102,10 @@ def romaji_to_hira(text):
 
 
         #the checked letter is a "vowel" (without circumflex)
-        elif(x in vowels): 
+        elif(x in vowels):
             #the vowel IS NOT after a consonant (so it's NOT a consonant-vowel syllab, just a single vowel)
-            if(not text[i-1] in consonants):
-                if(text[i-1] in vowels):
+            if(not text[i-1] in consonants and not text[i-1] in vowels_circumflex):
+                if(text[i-1] == x):
                     if(x == "e"):
                         x = "i"
                     elif(x == "o"):
@@ -112,7 +120,8 @@ def romaji_to_hira(text):
                 if(text[i-2] in consonants and text[i-2] == text[i-1]): 
                     c = text[i-1] + x
                     c = find_kana('hira', c)
-                    to_hira += hira_small_tsu + c
+                    to_hira += c
+                    
 
                 #the vowel is after two (different) consonants, but the first in not a "n"
                 elif(text[i-2] in consonants and not text[i-2] == "n"): 
@@ -125,13 +134,17 @@ def romaji_to_hira(text):
                     c = text[i-1] + x
                     c = find_kana('hira', c)
                     to_hira += c
-                    #print(c)
 
         #if is space or not a letter (!&@...)            
         elif(not x in all): 
             to_hira += x
-            #print(x)
+
+        else:
+            #print("--------do nothing\n")
+            pass
+
         i += 1
+
     
     to_hira = to_hira[1:] #on enlève l'espace du début
     return(to_hira)
@@ -145,7 +158,7 @@ def romaji_to_kata(text):
     all = string.ascii_lowercase #all alphabetical letters
     vowels = "a" + "i" + "u" + "e" + "o"
     vowels_circumflex = "â" + "î" + "û" + "ê" + "ô"
-    consonants = "k" + "g" + "s" + "z" + "t" + "c" + "h" + "d" + "j" + "n" + "h" + "f" + "b" + "p" + "m" + "y" + "r" + "w" + "n"
+    consonants = "k" + "g" + "s" + "z" + "t" + "c" + "h" + "d" + "j" + "n" + "h" + "f" + "b" + "p" + "m" + "y" + "r" + "w" + "n" + "v"
 
     to_kata = "" #consecutively stores kana, then finaly return it
     c = "" #kana that will be added to "to_kata"
@@ -155,11 +168,20 @@ def romaji_to_kata(text):
     for x in text:
         j = 0 #position on the romaji/hira/kata syllabs list
         #the checked letter is a "n" (this part is for identify if it's a solo "n")
-        if(x == "n"):
+
+        if(x in consonants and text[i-1] == x):
+            to_kata += kata_small_tsu
+
+
+        elif(x == "n"):
             #the "n" is the last letter on the word
             if(len(text[i:]) == 1):
                 c = find_kana('kata', x)
                 to_kata += c
+
+            elif(text[i+1] == 'n'):
+                pass
+                #do nothing, because a double n, so it will be checked as a double letter (for the "small tsu")
             
             #the "n" IS NOT followed by a vowel
             elif(not text[i+1] in vowels and not text[i+1] in vowels_circumflex):
@@ -191,7 +213,7 @@ def romaji_to_kata(text):
                 if(text[i-2] == text[i-1]):
                     c = text[i-1] + x
                     c = find_kana('kata', c)
-                    to_kata += kata_small_tsu + c
+                    to_kata += c
 
                 #the vowel is after two (different) consonants, but the first in not a "n"
                 elif(text[i-2] in consonants and not text[i-2] == "n"):
@@ -216,8 +238,13 @@ def romaji_to_kata(text):
                 if(text[i-1] in vowels and x == text[i-1]):
                     to_kata += kata_long_vowel
                 elif(text[i-1] in vowels):
-                    c = find_kana('kata', x)
-                    to_kata += c
+                    if(text[i-1] == 'e' and x == "i"):
+                        to_kata += kata_long_vowel
+                    elif(text[i-1] == 'o' and x == "u"):
+                        to_kata += kata_long_vowel
+                    else:
+                        c = find_kana('kata', x)
+                        to_kata += c
 
                 else:
                     c = find_kana('kata', x)
@@ -229,7 +256,7 @@ def romaji_to_kata(text):
                 if(text[i-2] in consonants and text[i-2] == text[i-1]): 
                     c = text[i-1] + x
                     c = find_kana('kata', c)
-                    to_kata += kata_small_tsu + c
+                    to_kata += c
 
                 #the vowel is after two (different) consonants, but the first in not a "n"
                 elif(text[i-2] in consonants and not text[i-2] == "n"): 
@@ -255,7 +282,7 @@ def romaji_to_kata(text):
 
 
 '''
-#il faut prendre en compte les kana spéciaux, et là, flemme
+#il faut prendre en compte les kana spéciaux pour cette partie, et là, flemme
 def kana_to_romaji(text):
     romaji = "" #'text' change into romaji
     c = "" #kana
