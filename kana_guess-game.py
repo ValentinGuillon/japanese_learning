@@ -36,24 +36,26 @@ def function(combi_added, combiplus_added):
     if(combi_added == 0):
         if(input("Add combi kana ? (y/n)\n>") == 'y'):
             combi_added = 1
-            for n in char['romaji']['sp']:
-                char['romaji']['all'].append(n)
-            for n in char['hira']['sp']:
-                char['hira']['all'].append(n)
-            for n in char['kata']['sp']:
-                char['kata']['all'].append(n)
+            for n in char['sp']:
+                char['all'].append(n)
     if(combiplus_added == 0):
         if(input("Add combi+ kana ? (y/n)\n>") == 'y'):
+            combi_added = 1
             combiplus_added = 1
-            for n in char['romaji']['sp+']:
-                char['romaji']['all'].append(n)
-            for n in char['hira']['sp+']:
-                char['hira']['all'].append(n)
-            for n in char['kata']['sp+']:
-                char['kata']['all'].append(n)
+            for n in char['sp']:
+                char['all'].append(n)
+            for n in char['sp+']:
+                char['all'].append(n)
 
     number = int(input("How much ?\n>"))
 
+
+    """
+    for n in char['sp']:
+        char['all'].append(n)
+    for n in char['sp+']:
+        char['all'].append(n)
+    """
 
     correct = 0
     wrong = 0
@@ -63,8 +65,8 @@ def function(combi_added, combiplus_added):
     vrai = "true"
     while(vrai == "true"):
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-        print(f""""STOP" to end\n===============
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n===============\n\n\n\n""")
+        print(f""""STOP" to end\n=============================
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n=============================\n\n\n\n""")
         kana = ""
         romaji = ""
         x = number
@@ -77,15 +79,17 @@ def function(combi_added, combiplus_added):
                 rand_lang = 'k'
 
         while(not x == 0):
-            if (rand_lang == 'h'):
-                i = random.randint(0, len(char['hira']['all']) -1)
-                kana += char['hira']['all'][i]
-            elif (rand_lang == 'k'):
-                i = random.randint(0, len(char['kata']['all']) -1)
-                kana += char['kata']['all'][i]
+            i = random.randint(0, len(char['all']) -1)
+            if(char['all'][i].roma != ""):
+                romaji += char['all'][i].roma
 
-            romaji += char['romaji']['all'][i]
-            x -= 1
+                if (rand_lang == 'h'):
+                    kana += char['all'][i].hira
+                elif (rand_lang == 'k'):
+                    kana += char['all'][i].kata
+                    
+                x -= 1
+
             
         
         print(f" {kana}")

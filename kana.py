@@ -33,7 +33,7 @@ def function(combi_added, combiplus_added):
     lang += input("Which kind of kana ?\n Hiragana (h)\n Katakana (k)\n Both (b)\n>")
 
     family = 'A'
-    if(input("All characters ? (y/n)\n>") == 'n'):
+    if(input("Choose a kana category ? (y/n)\n>") == 'y'):
         while (not family == 'a' and not family == 'v' and not family == 'k' and not family == 's' and not family == 't' and not family == 'n' and not family == 'h' and not family == 'm' and not family == 'r' and not family == 'w' and not family == 'c' and not family == 'C'):
             family = input("Choose the range :\n All (a)\n Vowels (v)\n K/G (k)\n S/Z (s)\n T/D (t)\n N (n)\n H/B/P (h)\n M (m)\n R (r)\n W/N (w)\n Combi (c)\n Combi+ (C)\n>")
     
@@ -41,52 +41,28 @@ def function(combi_added, combiplus_added):
         if(combi_added == 0):
             if(input("Add combi kana ? (y/n)\n>") == 'y'):
                 combi_added = 1
-                for n in char['romaji']['sp']:
-                    char['romaji']['all'].append(n)
-                for n in char['hira']['sp']:
-                    char['hira']['all'].append(n)
-                for n in char['kata']['sp']:
-                    char['kata']['all'].append(n)
+                for n in char['sp']:
+                    char['all'].append(n)
         if(combiplus_added == 0):
             if(input("Add combi+ kana ? (y/n)\n>") == 'y'):
                 combi_added = 1
                 combiplus_added = 1
-                for n in char['romaji']['sp']:
-                    char['romaji']['all'].append(n)
-                for n in char['hira']['sp']:
-                    char['hira']['all'].append(n)
-                for n in char['kata']['sp']:
-                    char['kata']['all'].append(n)
-                for n in char['romaji']['sp+']:
-                    char['romaji']['all'].append(n)
-                for n in char['hira']['sp+']:
-                    char['hira']['all'].append(n)
-                for n in char['kata']['sp+']:
-                    char['kata']['all'].append(n)
+                for n in char['sp']:
+                    char['all'].append(n)
+                for n in char['sp+']:
+                    char['all'].append(n)
 
     if(family == 'c' and combi_added == 0):
         combi_added = 1
-        for n in char['romaji']['sp']:
-            char['romaji']['all'].append(n)
-        for n in char['hira']['sp']:
-            char['hira']['all'].append(n)
-        for n in char['kata']['sp']:
-            char['kata']['all'].append(n)
+        for n in char['sp']:
+            char['all'].append(n)
     if(family == 'C' and combiplus_added == 0):
         combi_added = 1
         combiplus_added = 1
-        for n in char['romaji']['sp']:
-            char['romaji']['all'].append(n)
-        for n in char['hira']['sp']:
-            char['hira']['all'].append(n)
-        for n in char['kata']['sp']:
-            char['kata']['all'].append(n)
-        for n in char['romaji']['sp+']:
-            char['romaji']['all'].append(n)
-        for n in char['hira']['sp+']:
-            char['hira']['all'].append(n)
-        for n in char['kata']['sp+']:
-            char['kata']['all'].append(n)
+        for n in char['sp']:
+            char['all'].append(n)
+        for n in char['sp+']:
+            char['all'].append(n)
 
 
 
@@ -118,7 +94,7 @@ def function(combi_added, combiplus_added):
         #printing of characters, then creation of the traducted characters
         while(x > 0):
             if (family == 'A' or 'a'):
-                i = random.randint(0, len(char['hira']['all']) -1)
+                i = random.randint(0, len(char['all']) -1)
             if (family == 'v'):
                 i = random.randint(0, 4)
             if (family == 'k'):
@@ -147,18 +123,18 @@ def function(combi_added, combiplus_added):
             #kana => romaji
             if(lang[0] == 'k'):
                 if(rand_kana == 'h'):
-                    print(char['hira']['all'][i], end = ' ')
+                    print(char['all'][i].hira, end = ' ')
                 if(rand_kana == 'k'):
-                    print(char['kata']['all'][i], end = ' ')
-                romaji += char['romaji']['all'][i] + " "
+                    print(char['all'][i].kata, end = ' ')
+                romaji += char['all'][i].roma + " "
             
             #romaji => kana
             if(lang[0] == 'r'):
-                print(char['romaji']['all'][i], end = ' ')
+                print(char['all'][i].roma, end = ' ')
                 if(rand_kana == 'h'):
-                    kana += char['hira']['all'][i] + " "
+                    kana += char['all'][i].hira + " "
                 if(rand_kana == 'k'):
-                    kana += char['kata']['all'][i] + " "
+                    kana += char['all'][i].kata + " "
 
                 
 

@@ -4,14 +4,22 @@
 from module_characters_jap import *
 import string
 
+#add specials characters in the [all] list
+for n in char['sp']:
+    char['all'].append(n)
+for n in char['sp+']:
+    char['all'].append(n)
 
 #kana_lang == 'hira' or 'kata', x is the romaji version of the kana to find
 def find_kana(kana_lang, x):
-    j = 0
-    for y in char['romaji']['all']:
-        if(y == x):
-            return(char[kana_lang]['all'][j])
-        j += 1
+    i = 0
+    for y in char['all']:
+        if(y.roma == x):
+            if(kana_lang == "hira"):
+                return(char['all'][i].hira)
+            elif(kana_lang == "kata"):
+                return(char['all'][i].kata)
+        i += 1
     return 0
 
 
@@ -34,7 +42,7 @@ def romaji_to_hira(text):
         #the checked letter is a "n" (this part is for identify if it's a solo "n")
 
         if(x in consonants and text[i-1] == x):
-            to_hira += hira_small_tsu
+            to_hira += tsuSmall.hira
 
         elif(x == "n"):
             #the "n" is the last letter on the word
@@ -170,7 +178,7 @@ def romaji_to_kata(text):
         #the checked letter is a "n" (this part is for identify if it's a solo "n")
 
         if(x in consonants and text[i-1] == x):
-            to_kata += kata_small_tsu
+            to_kata += tsuSmall.kata
 
 
         elif(x == "n"):
@@ -228,7 +236,7 @@ def romaji_to_kata(text):
                     to_kata += c
 
             #because th vowel is circumflex, we have to add a vowel kana
-            to_kata += kata_long_vowel
+            to_kata += longVowel.kata
 
 
         #the checked letter is a "vowel" (without circumflex)
@@ -236,12 +244,12 @@ def romaji_to_kata(text):
             #the vowel IS NOT after a consonant (so it's NOT a consonant-vowel syllab, just a single vowel)
             if(not text[i-1] in consonants):
                 if(text[i-1] in vowels and x == text[i-1]):
-                    to_kata += kata_long_vowel
+                    to_kata += longVowel.kata
                 elif(text[i-1] in vowels):
                     if(text[i-1] == 'e' and x == "i"):
-                        to_kata += kata_long_vowel
+                        to_kata += longVowel.kata
                     elif(text[i-1] == 'o' and x == "u"):
-                        to_kata += kata_long_vowel
+                        to_kata += longVowel.kata
                     else:
                         c = find_kana('kata', x)
                         to_kata += c
