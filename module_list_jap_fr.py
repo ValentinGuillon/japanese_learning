@@ -1,4 +1,7 @@
 #module_list_jap_fr.py
+
+from typing import NamedTuple
+
 """
 nb elements par liste
 transports = 10
@@ -21,15 +24,27 @@ expressions = 1
 """
 
 
+
+
+class W(NamedTuple) :
+    kana: chr #'h' or 'k' pour "hira" et "kata"
+    fr: str
+    jap: int
+
+def printW(a):
+    print(f" {a.fr} -> {a.jap}")
+
+
+
 #mots jap
 all_jap = []
-transports_jap = ["Kuruma", "Sukûtâ", "Jitensha", "Takushî", "Chikatetsu", "Densha", "Hikôki", "Fune", "Baiku", "Basu"]
-colors_jap = ["Shiro", "Chairo", "Kiiro", "Haiiro", "Ao", "Kuro", "Aka", "Orenji", "Murasaki", "Midori", "Pinku"]
-animals_jap = ["Inu", "Ahiru", "Usagi", "Saru", "Nezumi", "Uma", "Kuma", "Tora", "Raion", "Niwatori", "Shika", "Buta", "Neko", "Tori", "Kitsune", "Ushi", "Zô", "Hitsuji", "Koara", "Panda" ]
-weather_jap = ["Kaminari", "Kumori", "Hare", "Samui", "Yuki", "Atsui", "Ame"]
-clothes_jap = ["Kutsushita", "Kutsu", "Jîpan", "Sukâto", "Kôto", "Zubon", "Tîshatsu", "Sandaru", "Tan pan", "Doresu", "Mizugi" ]
-food_jap = ["Tamanegi", "Budô", "Kamoniku", "Orenji", "Suika", "Tômorokoshi", "Remon", "Burokkorî", "Kyûri", "Ichigo", "Ninjin", "Kokonattsu", "Jagaimo", "Bêkon", "Gyûnyû", "Kyabetsu", "Kinoko", "Kabocha", "Mizu", "Tomato", "Ocha", "Eiyô dorinku", "Jûsu", "Kohitsuji", "Ringo", "Banana", "Kôra", "Kôhî", "Sakana", "Gyûniku", "Toriniku", "Nashi", "Butaniku", "Painappuru"]
-house_jap = ["Eakon", "Kamera", "Karendâ", "Kurejittokâdo", "Konpyûta", "Sutereo / Sutereofonikku", "Supûn", "Sofâ", "Têburu", "Terebi / Terebijon", "Toire / Toiretto", "Doa", "Naifu", "Nôto", "Fôku", "Beddo", "Pasokon", "Pen / Bôrupen", "Rajio", "Ranpu", "Rimokon"]
+transports_jap = [W("Kuruma", W("Sukûtâ", W("Jitensha", W("Takushî", W("Chikatetsu", W("Densha", W("Hikôki", W("Fune", W("Baiku", W("Basu"]
+colors_jap = [W("Shiro", W("Chairo", W("Kiiro", W("Haiiro", W("Ao", W("Kuro", W("Aka", W("Orenji", W("Murasaki", W("Midori", W("Pinku"]
+animals_jap = [W("Inu", W("Ahiru", W("Usagi", W("Saru", W("Nezumi", W("Uma", W("Kuma", W("Tora", W("Raion", W("Niwatori", W("Shika", W("Buta", W("Neko", W("Tori", W("Kitsune", W("Ushi", W("Zô", W("Hitsuji", W("Koara", W("Panda" ]
+weather_jap = [W("Kaminari", W("Kumori", W("Hare", W("Samui", W("Yuki", W("Atsui", W("Ame"]
+clothes_jap = [W("Kutsushita", W("Kutsu", W("Jîpan", W("Sukâto", W("Kôto", W("Zubon", W("Tîshatsu", W("Sandaru", W("Tan pan", W("Doresu", W("Mizugi" ]
+food_jap = [W("Tamanegi", W("Budô", W("Kamoniku", W("Orenji", W("Suika", W("Tômorokoshi", W("Remon", W("Burokkorî", W("Kyûri", W("Ichigo", W("Ninjin", W("Kokonattsu", W("Jagaimo", W("Bêkon", W("Gyûnyû", W("Kyabetsu", W("Kinoko", W("Kabocha", W("Mizu", W("Tomato", W("Ocha", W("Eiyô dorinku", W("Jûsu", W("Kohitsuji", W("Ringo", W("Banana", W("Kôra", W("Kôhî", W("Sakana", W("Gyûniku", W("Toriniku", W("Nashi", W("Butaniku", W("Painappuru"]
+house_jap = [W("Eakon", W("Kamera", W("Karendâ", W("Kurejittokâdo", W("Konpyûta", W("Sutereo / Sutereofonikku", W("Supûn", W("Sofâ", W("Têburu", W("Terebi / Terebijon", W("Toire / Toiretto", W("Doa", W("Naifu", W("Nôto", W("Fôku", W("Beddo", W("Pasokon", W("Pen / Bôrupen", W("Rajio", W("Ranpu", W("Rimokon"]
 divers_jap = ["Ai", "Ue", "Aoi", "Ie", "Iie", "Sekai", "Kagi", "Akai", "Osushi", "Kugi", "Keigo", "Saka", "Ya", "Hanaya", "Sakanaya", "Yuki", "Yoru", "Karada", "Rikai", "Ji", "Omatsuri", "Kuuki", "Tokei", "Kinoe", "Sakka", "Irasutoneitaa", "Shashinka", "Seiyuu", "Eegakantoku", "Keesan", "Kodomo no sensee", "Gaka", "Kyaku", "Jugyoe", "Ocha", "Ryokoe", "Sanmyaku"]
 verbs_jap = ["Hanasu", "Yomu", "Asobu", "Morau", "Matsu", "Omou", "Motsu", "Nomu", "Kiku", "Shinu", "Nugu", "Iu", "Kau", "Sumu", "Iku", "Noru", "Naru", "Wakaru", "Aru", "Oshieru", "Miru", "Taberu", "Iru", "Dekiru", "Kaeru", "Yameru", "Ageru", "Kuru", "Suru"]
 adjs_jap = ["Hayai", "Tanoshii", "Samui", "Sugoi", "Ii", "Kakkoii", "Warui", "Atsui", "Chiisai", "Yasui", "Omoshiroi", "Muzukashii", "Itai", "Takai", "Kowai", "Yasashii", "Atarashii", "Isogashii", "Ookii", "Oishii", "Jôzu", "Kirei", "Suki", "Kirai", "Kantan", "Hen", "Taihen", "Anzen", "Genki", "Benri"]
