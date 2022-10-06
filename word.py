@@ -6,13 +6,13 @@ from module_romaji_to_kana import *
 
 def presentation():
     input("""
-=============================
+===========================================
         This program
          gives you
            a word
             then
        a translation
-=============================
+===========================================
 ...
 """)
     input("""Press Enter to proceed
@@ -21,7 +21,7 @@ when nothing is asked.
 """)
     input("""This symbol ">",
 means an answer is expected.
-=============================
+===========================================
 """)
 
 def function_mod():
@@ -216,8 +216,8 @@ Expressions (e)
 
         if(mod == "g"):
             if(lang == "fr"):
-                guess = str.lower(input(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn romaji ?\n\n{word_fr}\n>"""))
+                guess = str.lower(input(f""""STOP" to end the game\n=============================
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n=============================\n\n\n\nIn romaji ?\n\n{word_fr}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_romaji)):
@@ -231,8 +231,8 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
                     current_streak += 1
 
             elif(lang == "rf"):
-                guess = str.lower(input(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn french ?\n\n{word_romaji}\n>"""))
+                guess = str.lower(input(f""""STOP" to end the game\n=============================
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n=============================\n\n\n\nIn french ?\n\n{word_romaji}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_fr)):
@@ -246,8 +246,8 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
                     current_streak += 1
 
             elif(lang == "hr"):
-                guess = str.lower(input(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn romaji ?\n\n{word_hira}\n>"""))
+                guess = str.lower(input(f""""STOP" to end the game\n=============================
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n=============================\n\n\n\nIn romaji ?\n\n{word_hira}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_romaji)):
@@ -261,8 +261,8 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
                     current_streak += 1
 
             elif(lang == "hf"):
-                guess = str.lower(input(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn french ?\n\n{word_hira}\n>"""))
+                guess = str.lower(input(f""""STOP" to end the game\n=============================
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n=============================\n\n\n\nIn french ?\n\n{word_hira}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_fr)):
@@ -276,8 +276,8 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
                     current_streak += 1
 
             elif(lang == "kr"):
-                guess = str.lower(input(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn romaji ?\n\n{word_kata}\n>"""))
+                guess = str.lower(input(f""""STOP" to end the game\n=============================
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n=============================\n\n\n\nIn romaji ?\n\n{word_kata}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_romaji)):
@@ -291,8 +291,8 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
                     current_streak += 1
 
             elif(lang == "kf"):
-                guess = str.lower(input(f""""STOP" to end the game\n===============
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n===============\n\n\n\nIn french ?\n\n{word_kata}\n>"""))
+                guess = str.lower(input(f""""STOP" to end the game\n=============================
+Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n=============================\n\n\n\nIn french ?\n\n{word_kata}\n>"""))
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(word_fr)):

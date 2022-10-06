@@ -109,19 +109,19 @@ def nbr_to_romaji(x):
 
 def presentation():
     input("""
-=============================
+===========================================
         This program
      gives you a number
      between 1 and 999
         in japanese
-=============================
+===========================================
 Press Enter to proceed
 when nothing is asked.
 ...
 """)
     input("""This symbol ">",
 means an answer is expected.
-=============================
+===========================================
 """)
 
 def function_mod():
@@ -194,8 +194,8 @@ def function(mod):
 
         elif(mod == "g"):
             if(lang == "n"):
-                guess = input(f"""\n===============
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n===============\n\n\n\n
+                guess = input(f"""\n=============================
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n=============================\n\n\n\n
 In romaji ?\n\n {nbr}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
@@ -210,8 +210,8 @@ In romaji ?\n\n {nbr}\n>""")
                     current_streak += 1
 
             elif(lang == "r"):
-                guess = input(f"""\n===============
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n===============\n\n\n\n
+                guess = input(f"""\n=============================
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n=============================\n\n\n\n
 Which number is ?\n\n {romaji}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
@@ -226,8 +226,8 @@ Which number is ?\n\n {romaji}\n>""")
                     current_streak += 1
 
             elif(lang == "h"):
-                guess = input(f"""\n===============
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n===============\n\n\n\n
+                guess = input(f"""\n=============================
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n=============================\n\n\n\n
 Which number is ?\n\n {hira}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
@@ -242,8 +242,8 @@ Which number is ?\n\n {hira}\n>""")
                     current_streak += 1
 
             elif(lang == "k"):
-                guess = input(f"""\n===============
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n===============\n\n\n\n
+                guess = input(f"""\n=============================
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n=============================\n\n\n\n
 Which number is ?\n\n {kata}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
