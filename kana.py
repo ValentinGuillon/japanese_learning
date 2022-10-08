@@ -27,7 +27,7 @@ means an answer is expected.
 """)
 
 #ask first langage (jap or romaji), then program loop (possibility of restart the fonction during the loop)
-def function(combi_added, combiplus_added):
+def main(combiAdded, combiplusAdded):
     print("\n\n\n\n\n\n\n\n")
     lang = input("What do you want to see ?\n Kana (k)\n Romaji (r)\n>")
     lang += input("Which kind of kana ?\n Hiragana (h)\n Katakana (k)\n Both (b)\n>")
@@ -38,27 +38,27 @@ def function(combi_added, combiplus_added):
             family = input("Choose the range :\n All (a)\n Vowels (v)\n K/G (k)\n S/Z (s)\n T/D (t)\n N (n)\n H/B/P (h)\n M (m)\n R (r)\n W/N (w)\n Combi (c)\n Combi+ (C)\n>")
     
     else:
-        if(combi_added == 0):
+        if(combiAdded == 0):
             if(input("Add combi kana ? (y/n)\n>") == 'y'):
-                combi_added = 1
+                combiAdded = 1
                 for n in char['sp']:
                     char['all'].append(n)
-        if(combiplus_added == 0):
+        if(combiplusAdded == 0):
             if(input("Add combi+ kana ? (y/n)\n>") == 'y'):
-                combi_added = 1
-                combiplus_added = 1
+                combiAdded = 1
+                combiplusAdded = 1
                 for n in char['sp']:
                     char['all'].append(n)
                 for n in char['sp+']:
                     char['all'].append(n)
 
-    if(family == 'c' and combi_added == 0):
-        combi_added = 1
+    if(family == 'c' and combiAdded == 0):
+        combiAdded = 1
         for n in char['sp']:
             char['all'].append(n)
-    if(family == 'C' and combiplus_added == 0):
-        combi_added = 1
-        combiplus_added = 1
+    if(family == 'C' and combiplusAdded == 0):
+        combiAdded = 1
+        combiplusAdded = 1
         for n in char['sp']:
             char['all'].append(n)
         for n in char['sp+']:
@@ -78,17 +78,17 @@ def function(combi_added, combiplus_added):
         romaji = ""
         kana = ""
 
-        rand_kana = lang[1]
-        if rand_kana == 'b':
+        randKana = lang[1]
+        if randKana == 'b':
             if (random.randint(0, 1) == 0):
-                rand_kana = 'h'
+                randKana = 'h'
             else:
-                rand_kana = 'k'
+                randKana = 'k'
     
         if (lang[0] == 'r'):
-            if (rand_kana == 'h'):
+            if (randKana == 'h'):
                 print("(Hiragana)")
-            if (rand_kana == 'k'):
+            if (randKana == 'k'):
                 print("(Katakana)")
 
         #printing of characters, then creation of the traducted characters
@@ -122,18 +122,18 @@ def function(combi_added, combiplus_added):
             
             #kana => romaji
             if(lang[0] == 'k'):
-                if(rand_kana == 'h'):
+                if(randKana == 'h'):
                     print(char['all'][i].hira, end = ' ')
-                if(rand_kana == 'k'):
+                if(randKana == 'k'):
                     print(char['all'][i].kata, end = ' ')
                 romaji += char['all'][i].roma + " "
             
             #romaji => kana
             if(lang[0] == 'r'):
                 print(char['all'][i].roma, end = ' ')
-                if(rand_kana == 'h'):
+                if(randKana == 'h'):
                     kana += char['all'][i].hira + " "
-                if(rand_kana == 'k'):
+                if(randKana == 'k'):
                     kana += char['all'][i].kata + " "
 
                 
@@ -152,17 +152,12 @@ def function(combi_added, combiplus_added):
     restart = input("\n\nRestart ? (y/n)\n>")
     while(restart == "" or not restart == "n"):
         if(restart == "y"):
-            function(combi_added, combiplus_added)
+            main(combiAdded, combiplusAdded)
             break
         restart = input(">")
 
 
 
-
-
-def main():
-    presentation()
-    function(0, 0)
-
 if __name__ == "__main__":
-    main() 
+    presentation()
+    main(0, 0)

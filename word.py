@@ -35,11 +35,12 @@ Guess mod (g) | View mod (v)
 >""")
     while(not mod == "g" and not mod == "v"):
         mod = input(">")
-    function(mod)
+    main(mod)
 
 
 
-def function(mod):
+
+def main(mod):
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     if(mod == "g"):
         lang = input("Langage mod :\nFrench => Romaji (fr)\nRomaji => French (rf)\nHiragana => Romaji (hr)\nHiragana => French (hf)\nkatakana => Romaji (kr)\nkatakana => French (kf)\n>")
@@ -149,7 +150,7 @@ Expressions (e)
         else:
             print(word_romaji)
             print("Restarting...")
-            function(mod)
+            main(mod)
         
         word_hira = romaji_to_hira(word_romaji)
         word_kata = romaji_to_kata(word_romaji)
@@ -314,12 +315,8 @@ Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\
         restart = input(">")
     
     
-    
 
-
-def main():
-    presentation()    
-    function_mod()
 
 if __name__ == "__main__":
-    main() 
+    presentation()    
+    function_mod()

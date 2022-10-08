@@ -1,6 +1,6 @@
 #kana_guess-game.py
-from module_characters_jap import *
 import random
+from module_characters_jap import *
 
 
 def presentation():
@@ -27,21 +27,25 @@ means an answer is expected.
 =============================
 """)
 
-def function(combi_added, combiplus_added):
+
+
+
+
+def main(combiAdded, combiplusAdded):
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     lang = input("Which kana ?\n Hiragana (h)\n Katakana (k)\n Both (b)\n>")
     while(not lang == "h" and not lang == "k" and not lang == "b"):
         lang = input(">")
     
-    if(combi_added == 0):
+    if(combiAdded == 0):
         if(input("Add combi kana ? (y/n)\n>") == 'y'):
-            combi_added = 1
+            combiAdded = 1
             for n in char['sp']:
                 char['all'].append(n)
-    if(combiplus_added == 0):
+    if(combiplusAdded == 0):
         if(input("Add combi+ kana ? (y/n)\n>") == 'y'):
-            combi_added = 1
-            combiplus_added = 1
+            combiAdded = 1
+            combiplusAdded = 1
             for n in char['sp']:
                 char['all'].append(n)
             for n in char['sp+']:
@@ -60,32 +64,32 @@ def function(combi_added, combiplus_added):
     correct = 0
     wrong = 0
     streak = 0
-    current_streak = 0
+    streakCurrent = 0
 
     vrai = "true"
     while(vrai == "true"):
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
         print(f""""STOP" to end\n=============================
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n=============================\n\n\n\n""")
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{streakCurrent}\n=============================\n\n\n\n""")
         kana = ""
         romaji = ""
         x = number
-        rand_lang = lang
+        randLang = lang
 
         if(lang == 'b'):
             if(random.randint(0, 1) == 0):
-                rand_lang = 'h'
+                randLang = 'h'
             else:
-                rand_lang = 'k'
+                randLang = 'k'
 
         while(not x == 0):
             i = random.randint(0, len(char['all']) -1)
             if(char['all'][i].roma != ""):
                 romaji += char['all'][i].roma
 
-                if (rand_lang == 'h'):
+                if (randLang == 'h'):
                     kana += char['all'][i].hira
-                elif (rand_lang == 'k'):
+                elif (randLang == 'k'):
                     kana += char['all'][i].kata
                     
                 x -= 1
@@ -93,33 +97,27 @@ def function(combi_added, combiplus_added):
             
         
         print(f" {kana}")
-        user_answer = input(">")
-        if(user_answer == romaji):
+        userAnswer = input(">")
+        if(userAnswer == romaji):
             correct += 1
-            current_streak += 1
-        elif(user_answer == "STOP"):
+            streakCurrent += 1
+        elif(userAnswer == "STOP"):
            break
         else:
             input(f"""Oupsi, it was "{romaji}"\n""")
             wrong += 1
-            if(current_streak > streak):
-                streak = current_streak
-            current_streak = 0
+            if(streakCurrent > streak):
+                streak = streakCurrent
+            streakCurrent = 0
 
     restart = input(" Restart ? (y/n)\n>")
     while(restart == "" or not restart == "n"):
         if(restart == "y"):
-            function(combi_added, combiplus_added)
+            main(combiAdded, combiplusAdded)
             break
         restart = input(">")
 
 
-
-
-    
-def main():
-    presentation()
-    function(0, 0)
-
 if __name__=="__main__":
-    main()
+    presentation()
+    main(0, 0)

@@ -24,21 +24,16 @@ means an answer is expected.
 """)
 
 
-def function():
+def main():
     while(1):
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
         text = input("Write your sentence/word\n(romaji only)\n>")
-        to_hira = romaji_to_hira(text)
-        to_kata = romaji_to_kata(text)
-        input(f"\nHiragana\n {to_hira}\n\nKatakana\n {to_kata}\n...")
+        toHira = romaji_to_hira(text)
+        toKata = romaji_to_kata(text)
+        input(f"\nHiragana\n {toHira}\n\nKatakana\n {toKata}\n...")
 
 
 
-
-
-def main() :
-    presentation()
-    function()
-    
 if __name__ == "__main__":
-    main() 
+    presentation()
+    main()

@@ -154,7 +154,7 @@ def function(mod):
     correct = 0
     wrong = 0
     streak = 0
-    current_streak = 0
+    currentStreak = 0
     stop = ""
     while(not stop == "STOP") :
         nbr = random.randint(1, 999)
@@ -195,67 +195,67 @@ def function(mod):
         elif(mod == "g"):
             if(lang == "n"):
                 guess = input(f"""\n=============================
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n=============================\n\n\n\n
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{currentStreak}\n=============================\n\n\n\n
 In romaji ?\n\n {nbr}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(romaji)):
                     input(f"""Oupsi. C'était "{romaji}"\n""")
                     wrong += 1
-                    if(current_streak > streak):
-                        streak = current_streak
-                    current_streak = 0
+                    if(currentStreak > streak):
+                        streak = currentStreak
+                    currentStreak = 0
                 elif(str.lower(guess) == romaji):
                     correct += 1
-                    current_streak += 1
+                    currentStreak += 1
 
             elif(lang == "r"):
                 guess = input(f"""\n=============================
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n=============================\n\n\n\n
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{currentStreak}\n=============================\n\n\n\n
 Which number is ?\n\n {romaji}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str(nbr)):
                     input(f"""Oupsi. C'était "{nbr}"\n""")
                     wrong += 1
-                    if(current_streak > streak):
-                        streak = current_streak
-                    current_streak = 0
+                    if(currentStreak > streak):
+                        streak = currentStreak
+                    currentStreak = 0
                 elif(guess == str(nbr)):
                     correct += 1
-                    current_streak += 1
+                    currentStreak += 1
 
             elif(lang == "h"):
                 guess = input(f"""\n=============================
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n=============================\n\n\n\n
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{currentStreak}\n=============================\n\n\n\n
 Which number is ?\n\n {hira}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str(nbr)):
                     input(f"""Oupsi. C'était "{nbr}"\n""")
                     wrong += 1
-                    if(current_streak > streak):
-                        streak = current_streak
-                    current_streak = 0
+                    if(currentStreak > streak):
+                        streak = currentStreak
+                    currentStreak = 0
                 elif(guess == str(nbr)):
                     correct += 1
-                    current_streak += 1
+                    currentStreak += 1
 
             elif(lang == "k"):
                 guess = input(f"""\n=============================
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{current_streak}\n=============================\n\n\n\n
+    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{currentStreak}\n=============================\n\n\n\n
 Which number is ?\n\n {kata}\n>""")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str(nbr)):
                     input(f"""Oupsi. C'était "{nbr}"\n""")
                     wrong += 1
-                    if(current_streak > streak):
-                        streak = current_streak
-                    current_streak = 0
+                    if(currentStreak > streak):
+                        streak = currentStreak
+                    currentStreak = 0
                 elif(guess == str(nbr)):
                     correct += 1
-                    current_streak += 1
+                    currentStreak += 1
 
     
     restart = input("\n\nRestart and change mod ? (y/n)\n>")
