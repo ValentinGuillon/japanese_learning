@@ -91,61 +91,61 @@ Expressions (e)
         word_fr = "[none]"
         
         if(category == "A"):
-            i = random.randint(0, len(all_jap) - 1)
-            word_romaji = all_jap[i]
-            word_fr = all_fr[i]
+            i = random.randint(0, len(all) - 1)
+            word_romaji = all[i].jap
+            word_fr = all[i].fr
         elif(category == "t"):
-            i = random.randint(0, len(transports_jap) - 1)
-            word_romaji = transports_jap[i]
-            word_fr = transports_fr[i]
+            i = random.randint(0, len(transports) - 1)
+            word_romaji = transports[i].jap
+            word_fr = transports[i].fr
         elif(category == "c"):
-            i = random.randint(0, len(colors_jap) - 1)
-            word_romaji = colors_jap[i]
-            word_fr = colors_fr[i]
+            i = random.randint(0, len(colors) - 1)
+            word_romaji = colors[i].jap
+            word_fr = colors[i].fr
         elif(category == "a"):
-            i = random.randint(0, len(animals_jap) - 1)
-            word_romaji = animals_jap[i]
-            word_fr = animals_fr[i]
+            i = random.randint(0, len(animals) - 1)
+            word_romaji = animals[i].jap
+            word_fr = animals[i].fr
         elif(category == "w"):
-            i = random.randint(0, len(weather_jap) - 1)
-            word_romaji = weather_jap[i]
-            word_fr = weather_fr[i]
+            i = random.randint(0, len(weather) - 1)
+            word_romaji = weather[i].jap
+            word_fr = weather[i].fr
         elif(category == "cl"):
-            i = random.randint(0, len(clothes_jap) - 1)
-            word_romaji = clothes_jap[i]
-            word_fr = clothes_fr[i]
+            i = random.randint(0, len(clothes) - 1)
+            word_romaji = clothes[i].jap
+            word_fr = clothes[i].fr
         elif(category == "f"):
-            i = random.randint(0, len(food_jap) - 1)
-            word_romaji = food_jap[i]
-            word_fr = food_fr[i]
+            i = random.randint(0, len(food) - 1)
+            word_romaji = food[i].jap
+            word_fr = food[i].fr
         elif(category == "h"):
-            i = random.randint(0, len(house_jap) - 1)
-            word_romaji = house_jap[i]
-            word_fr = house_fr[i]
+            i = random.randint(0, len(house) - 1)
+            word_romaji = house[i].jap
+            word_fr = house[i].fr
         elif(category == "d"):
-            i = random.randint(0, len(divers_jap) - 1)
-            word_romaji = divers_jap[i]
-            word_fr = divers_fr[i]
+            i = random.randint(0, len(divers) - 1)
+            word_romaji = divers[i].jap
+            word_fr = divers[i].fr
         elif(category == "vb"):
-            i = random.randint(0, len(verbs_jap) - 1)
-            word_romaji = verbs_jap[i]
-            word_fr = verbs_fr[i]
+            i = random.randint(0, len(verbs) - 1)
+            word_romaji = verbs[i].jap
+            word_fr = verbs[i].fr
         elif(category == "adj"):
-            i = random.randint(0, len(adjs_jap) - 1)
-            word_romaji = adjs_jap[i]
-            word_fr = adjs_fr[i]
+            i = random.randint(0, len(adjs) - 1)
+            word_romaji = adjs[i].jap
+            word_fr = adjs[i].fr
         elif(category == "cv"):
-            i = random.randint(0, len(conjug_verbs_jap) - 1)
-            word_romaji = conjug_verbs_jap[i]
-            word_fr = conjug_verbs_fr[i]
+            i = random.randint(0, len(conjug_verbs) - 1)
+            word_romaji = conjug_verbs[i].jap
+            word_fr = conjug_verbs[i].fr
         elif(category == "ca"):
-            i = random.randint(0, len(conjug_adjs_jap) - 1)
-            word_romaji = conjug_adjs_jap[i]
-            word_fr = conjug_adjs_fr[i]
+            i = random.randint(0, len(conjug_adjs) - 1)
+            word_romaji = conjug_adjs[i].jap
+            word_fr = conjug_adjs[i].fr
         elif(category == "e"):
-            i = random.randint(0, len(expressions_jap) - 1)
-            word_romaji = expressions_jap[i]
-            word_fr = expressions_fr[i]
+            i = random.randint(0, len(expressions) - 1)
+            word_romaji = expressions[i].jap
+            word_fr = expressions[i].fr
         else:
             print(word_romaji)
             print("Restarting...")
