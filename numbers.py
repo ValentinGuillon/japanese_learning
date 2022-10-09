@@ -109,19 +109,19 @@ def nbr_to_romaji(x):
 
 def presentation():
     input("""
-===========================================
+=============================
         This program
      gives you a number
      between 1 and 999
         in japanese
-===========================================
+=============================
 Press Enter to proceed
 when nothing is asked.
 ...
 """)
     input("""This symbol ">",
 means an answer is expected.
-===========================================
+=============================
 """)
 
 def function_mod():

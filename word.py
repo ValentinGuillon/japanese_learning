@@ -6,13 +6,13 @@ from module_romaji_to_kana import *
 
 def presentation():
     input("""
-===========================================
+=============================
         This program
          gives you
            a word
             then
        a translation
-===========================================
+=============================
 ...
 """)
     input("""Press Enter to proceed
@@ -21,7 +21,7 @@ when nothing is asked.
 """)
     input("""This symbol ">",
 means an answer is expected.
-===========================================
+=============================
 """)
 
 def function_mod():
