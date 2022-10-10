@@ -8,56 +8,110 @@ def presentation():
     input("""
 =============================
         This program
-         gives you
+          gives you
            a word
             then
-       a translation
+       his translation
 =============================
-...
-""")
+...""")
     input("""Press Enter to proceed
 when nothing is asked.
-...
-""")
+...""")
     input("""This symbol ">",
 means an answer is expected.
 =============================
 """)
 
+#return the game choose, before launch the program
 def function_mod():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
-    mod = input("""Program mod :
+    mod = input("""=== Choose program mod ======
 Guess mod (g) | View mod (v)
   You have    |   Guess in
   to write    |   your mind
   the word    |   No input
   to guess    |   require
+=============================
 >""")
     while(not mod == "g" and not mod == "v"):
         mod = input(">")
     main(mod)
 
+#print current category and languages
+def printOptions(mod, category, lang):
+    print("=== Mod =====================")
+    if mod == "g":
+        print(" Game")
+    elif mod == "v":
+        print(" View")
+    
+    print("=== Category ================")
+    if(category == "A"):
+        print(" All")
+    elif(category == "t"):
+        print(" Transports")
+    elif(category == "c"):
+        print(" Colors")
+    elif(category == "a"):
+        print(" Animals")
+    elif(category == "w"):
+        print(" Weather")
+    elif(category == "cl"):
+        print(" Clothes")
+    elif(category == "f"):
+        print(" Food")
+    elif(category == "h"):
+        print(" House")
+    elif(category == "d"):
+        print(" Divers")
+    elif(category == "vb"):
+        print(" Verbs")
+    elif(category == "adj"):
+        print(" Adjectives")
+    elif(category == "cv"):
+        print(" Conjugaison of Verbs")
+    elif(category == "ca"):
+        print(" Conjugaison of Adjectives")
+    elif(category == "e"):
+        print(" Expressions")
+    
+    print("=== Languages ===============")
+    for n in lang:
+        if n == 'f':
+            print(" French")
+        if n == 'r':
+            print(" Romaji")
+        if n == 'h':
+            print(" Hiragana")
+        if n == 'k':
+            print(" Katakana")
+        if n == 'b' :
+            print(" Random Kana")
+    print("=============================")
 
+    
 
 
 def main(mod):
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     if(mod == "g"):
-        lang = input("Langage mod :\nFrench => Romaji (fr)\nRomaji => French (rf)\nHiragana => Romaji (hr)\nHiragana => French (hf)\nkatakana => Romaji (kr)\nkatakana => French (kf)\n>")
+        lang = input("Langage mod :\nFrench   <=> Romaji (fr / rf)\nHiragana  => Romaji (hr)\nHiragana  => French (hf)\nKatakana  => Romaji (kr)\nKatakana  => French (kf)\nHira/Kata => Romaji (br)\nHira/Kata => French (bf)\n>")
         #katakana => Romaji, katakana => French
-        while(not lang == "fr" and not lang == "rf" and not lang == "hr" and not lang == "hf" and not lang == "kr" and not lang == "kf"):
+        while(not lang == "fr" and not lang == "rf" and not lang == "hr" and not lang == "hf" and not lang == "kr" and not lang == "kf" and not lang == "bf" and not lang == "br"):
             lang = input(">")
     
     if(mod == "v"):
-        '''
-        lang = input("Language mod :\nHiragana:\nFrench => Hiragana => Romaji (fhr)\nFrench => Romaji => Hiragana (frh)\nRomaji => Hiragana => French (rhf)\nHiragana => Romaji => French (hrf)\n\nkatakana :\nFrench => katakana => Romaji (fkr)\nFrench => Romaji => katakana (frk)\nRomaji => katakana => French (rkf)\nkatakana => Romaji => French (krf)\n>")'''
+        print("Language mod :\n(choose 3 langage) (ex : fhr)\n(can only have 1 kana type)\n\n French (f)\n Romaji (r)\n Hiragana (h)\n Katakana (k)\n Both (b)")
 
-        lang = input("Language mod :\n(choose 3 langage) (ex : fhr)\n(can only have 1 kana type)\n\n French (f)\n Romaji (r)\n Hiragana (h)\n Katakana (k)\n>")
-        
-        #, French => katakana => Romaji, , French => Romaji => katakana
-        #, Romaji => katakana => French, , katakana => Romaji => French
-        while(not lang == "fhr" and not lang == "frh" and not lang == "rhf" and not lang == "hrf" and not lang == "fkr" and not lang == "frk" and not lang == "rkf" and not lang == "krf"):
+        #input of languages choice
+        lang = ""
+        while(not len(lang)):
+            #user input
             lang = input(">")
+            for letter in lang:
+                print(letter)
+                if not letter == 'f' and not letter == 'r' and not letter == 'h' and not letter == 'k' and not letter == 'b':
+                    lang = ""
 
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     category = input("""
@@ -80,17 +134,19 @@ Expressions (e)
     while(not category == "A" and not category == "t" and not category == "c" and not category == "a" and not category == "w" and not category == "cl" and not category == "f" and not category == "h" and not category == "d" and not category == "vb" and not category == "adj" and not category == "cv" and not category == "ca" and not category == "e"):
         category = input(">")
 
-    correct = 0
+    #var used for Game mod
+    correct = 0 
     wrong = 0
     streak = 0
     current_streak = 0
 
     stop = ""
     while(not stop == "STOP"):
-        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\"STOP\" to end\n\n\n\n\n") 
         word_romaji = "[none]"
         word_fr = "[none]"
+        #origin = '' = word.kana
         
+        #un mot est aléatoirement choisis
         if(category == "A"):
             i = random.randint(0, len(all) - 1)
             word_romaji = all[i].jap
@@ -155,159 +211,179 @@ Expressions (e)
         word_hira = romaji_to_hira(word_romaji)
         word_kata = romaji_to_kata(word_romaji)
 
+
+        #VIEW MOD
         if(mod == "v"):
-            if(lang == "fhr"):
-                stop = input(f"{word_fr}\n")
+            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+            printOptions(mod, category, lang)
+            print("Tap \"STOP\" to end\n\n")
+            for n in lang:
                 if(not stop == "STOP"):
-                    stop = input(f"{word_hira}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_romaji}\n")
-
-            elif(lang == "frh"):
-                stop = input(f"{word_fr}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_romaji}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_hira}\n")
-            
-            elif(lang == "rhf"):
-                stop = input(f"{word_romaji}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_hira}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_fr}\n")
-
-            elif(lang == "hrf"):
-                stop = input(f"{word_hira}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_romaji}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_fr}\n")
-
-            elif(lang == "fkr"):
-                stop = input(f"{word_fr}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_kata}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_romaji}\n")
-
-            elif(lang == "frk"):
-                stop = input(f"{word_fr}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_romaji}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_kata}\n")
-
-            elif(lang == "rkf"):
-                stop = input(f"{word_romaji}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_kata}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_fr}\n")
-
-            elif(lang == "krf"):
-                stop = input(f"{word_kata}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_romaji}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{word_fr}\n")
-                
+                    if n == 'f':
+                        stop = input(f"{word_fr}\n")
+                    if n == 'r':
+                        stop = input(f"{word_romaji}\n")
+                    if n == 'h':
+                        stop = input(f"{word_hira}\n")
+                    if n == 'k':
+                        stop = input(f"{word_kata}\n")
+                    if n == 'b' :
+                        if (random.randint(0, 1)):
+                            stop = input(f"{word_hira}\n")
+                        else :
+                            stop = input(f"{word_kata}\n")
 
 
 
+        #GAME MOD
         if(mod == "g"):
+            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+            printOptions(mod, category, lang)
+            print(f"""=== Scores ==================
+Correct:{correct}
+Wrong:{wrong}
+Best streak:{streak}
+Streak:{current_streak}
+=============================
+Tap "STOP" to end\n\n""")
+
+
+            #random choice of kana
+            tempLang = lang
+            if lang[0] == 'b':
+                if (random.randint(0, 1)):
+                    lang = 'h' + lang[1]
+                else:
+                    lang = 'k' + lang[1]
+
+
             if(lang == "fr"):
-                guess = str.lower(input(f""""STOP" to end the game\n=============================
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n=============================\n\n\n\nIn romaji ?\n\n{word_fr}\n>"""))
+                #user guess
+                guess = str.lower(input(f"In romaji ?\n\n {word_fr}\n>"))
+
+                #verification
+                #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
+                #wrong guess
                 if(not guess == str.lower(word_romaji)):
                     input(f"""Oupsi. C'était "{word_romaji}"\n""")
                     wrong += 1
                     if(current_streak > streak):
                         streak = current_streak
                     current_streak = 0
+                #good guess
                 elif(guess == str.lower(word_romaji)):
                     correct += 1
                     current_streak += 1
 
             elif(lang == "rf"):
-                guess = str.lower(input(f""""STOP" to end the game\n=============================
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n=============================\n\n\n\nIn french ?\n\n{word_romaji}\n>"""))
+                #user guess
+                guess = str.lower(input(f"In french ?\n\n {word_romaji}\n>"))
+
+                #verification
+                #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
+                #wrong guess
                 if(not guess == str.lower(word_fr)):
                     input(f"""Oupsi. C'était "{word_fr}"\n""")
                     wrong += 1
                     if(current_streak > streak):
                         streak = current_streak
                     current_streak = 0
+                #good guess
                 elif(guess == str.lower(word_fr)):
                     correct += 1
                     current_streak += 1
 
             elif(lang == "hr"):
-                guess = str.lower(input(f""""STOP" to end the game\n=============================
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n=============================\n\n\n\nIn romaji ?\n\n{word_hira}\n>"""))
+                #user guess
+                guess = str.lower(input(f"In romaji ?\n\n {word_hira}\n>"))
+
+                #verification
+                #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
+                #wrong guess
                 if(not guess == str.lower(word_romaji)):
                     input(f"""Oupsi. C'était "{word_romaji}"\n""")
                     wrong += 1
                     if(current_streak > streak):
                         streak = current_streak
                     current_streak = 0
+                #good guess
                 elif(guess == str.lower(word_romaji)):
                     correct += 1
                     current_streak += 1
 
             elif(lang == "hf"):
-                guess = str.lower(input(f""""STOP" to end the game\n=============================
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n=============================\n\n\n\nIn french ?\n\n{word_hira}\n>"""))
+                #user guess
+                guess = str.lower(input(f"In french ?\n\n {word_hira}\n>"))
+
+                #verification
+                #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
+                #wrong guess
                 if(not guess == str.lower(word_fr)):
                     input(f"""Oupsi. C'était "{word_fr}"\n""")
                     wrong += 1
                     if(current_streak > streak):
                         streak = current_streak
                     current_streak = 0
+                #user guess
                 elif(guess == str.lower(word_fr)):
                     correct += 1
                     current_streak += 1
 
             elif(lang == "kr"):
-                guess = str.lower(input(f""""STOP" to end the game\n=============================
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n=============================\n\n\n\nIn romaji ?\n\n{word_kata}\n>"""))
+                #user guess
+                guess = str.lower(input(f"In romaji ?\n\n {word_kata}\n>"))
+
+                #verification
+                #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
+                #wrong guess
                 if(not guess == str.lower(word_romaji)):
                     input(f"""Oupsi. C'était "{word_romaji}"\n""")
                     wrong += 1
                     if(current_streak > streak):
                         streak = current_streak
                     current_streak = 0
+                #user guess
                 elif(guess == str.lower(word_romaji)):
                     correct += 1
                     current_streak += 1
 
             elif(lang == "kf"):
-                guess = str.lower(input(f""""STOP" to end the game\n=============================
-Correct:{correct}\nWrong:{wrong}\nBest streak:{streak}\nStreak:{current_streak}\n=============================\n\n\n\nIn french ?\n\n{word_kata}\n>"""))
+                #user guess
+                guess = str.lower(input(f"In french ?\n\n {word_kata}\n>"))
+                                #verification
+                #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
+                #wrong guess
                 if(not guess == str.lower(word_fr)):
                     input(f"""Oupsi. C'était "{word_fr}"\n""")
                     wrong += 1
                     if(current_streak > streak):
                         streak = current_streak
                     current_streak = 0
+                #user guess
                 elif(guess == str.lower(word_fr)):
                     correct += 1
                     current_streak += 1
+            
+            #reset language
+            lang = tempLang
                 
 
-    restart = input("\n\nRestart and change mod ? (y/n)\n>")
+
+
+
+    restart = input("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRestart and change mod ? (y/n)\n>")
     while(restart == "" or not restart == "n"):
         if(restart == "y"):
             function_mod()
