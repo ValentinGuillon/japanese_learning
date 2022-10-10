@@ -24,8 +24,7 @@ def presentation():
 #print current category and languages
 def printOptions(category, lang):
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    print("=== Kana category ===========")
-    print(category)
+    print("=========== Kana category ===")
     if (category in ['A', 'a']):
         print(" All")
     if (category == 'v'):
@@ -51,21 +50,21 @@ def printOptions(category, lang):
     if (category == 'C'):
         print(" Combi+")
 
-    print("=== Printing order ==========")
+    print("========== Printing order ===")
     for n in lang[0]:
         if n == 'r':
             print(" Romaji => Kana")
         if n == 'k':
             print(" Kana => Romaji")
 
-    print("=== Kana ====================")
+    print("==================== Kana ===")
     for n in lang[1]:
         if n == 'h':
             print(" Hiragana")
         if n == 'k':
             print(" Katakana")
         if n == 'b' :
-            print(" Random Kana")
+            print(" Random kana")
     print("=============================")
 
 
@@ -78,7 +77,7 @@ def main(combiAdded, combiplusAdded):
     userInput = ""
 
     #choose printing order
-    print("=== Choose what to see first=\n Kana (k)\n Romaji (r)\n=============================")
+    print("= Choose what to see first ==\n Kana (k)\n Romaji (r)\n=============================")
     while(not userInput == "k" and not userInput == "r"):
         userInput = input(">")
     
@@ -87,7 +86,7 @@ def main(combiAdded, combiplusAdded):
 
     #choose kana type
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    print("=== Choose kana==============\n Hiragana (h)\n Katakana (k)\n Both (b)\n=============================")
+    print("============= Choose kana ===\n Hiragana (h)\n Katakana (k)\n Both (b)\n=============================")
     while(not userInput == "h" and not userInput == "k" and not userInput == "b"):
         userInput = input(">")
     
@@ -100,7 +99,7 @@ def main(combiAdded, combiplusAdded):
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     if(input("Choose a kana category ? (y/n)\n>") == 'y'):
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-        print("=== Choose kana category ====\n All (a)\n Vowels (v)\n K/G (k)\n S/Z (s)\n T/D (t)\n N (n)\n H/B/P (h)\n M (m)\n R (r)\n W/N (w)\n Combi (c) (kya, byu...)\n Combi+ (C) (va, kwo...)\n=============================")
+        print("==== Choose kana category ===\n All (a)\n Vowels (v)\n K/G (k)\n S/Z (s)\n T/D (t)\n N (n)\n H/B/P (h)\n M (m)\n R (r)\n W/N (w)\n Combi (c) (kya, byu...)\n Combi+ (C) (va, kwo...)\n=============================")
         while (not family in kanaFamily):
             family = input(">")
     
