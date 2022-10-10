@@ -13,37 +13,41 @@ def presentation():
           You have
    to write them in romaji.
 =============================
-Press Enter to proceed
-when nothing is asked.
-...
-""")
-    input("""Restart the game
-or exit the program,
-will reset the high score.
-...
-""")
-    input("""This symbol ">",
-means an answer is expected.
-=============================
-""")
+...""")
+    input("Press Enter to proceed\nwhen nothing is asked.\n...")
+    input("This symbol \">\",\nmeans an answer is expected.\n=============================\n""")
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
-
-
+#print current category and languages
+def printOptions(lang):
+    print("=============== Languages ===")
+    for n in lang:
+        if n == 'h':
+            print(" Hiragana")
+        if n == 'k':
+            print(" Katakana")
+        if n == 'b' :
+            print(" Random kana")
+    print("=============================")
 
 
 def main(combiAdded, combiplusAdded):
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    lang = input("Which kana ?\n Hiragana (h)\n Katakana (k)\n Both (b)\n>")
-    while(not lang == "h" and not lang == "k" and not lang == "b"):
+    langList = ['h', 'k', 'b']
+    lang = ""
+
+    print("============= Choose kana ===\n Hiragana (h)\n Katakana (k)\n Both (b)\n=============================")
+    while(not lang in langList):
         lang = input(">")
     
+    
     if(combiAdded == 0):
-        if(input("Add combi kana ? (y/n)\n>") == 'y'):
+        if(input("    Add combi kana ? (y/n)\n>") == 'y'):
             combiAdded = 1
             for n in char['sp']:
                 char['all'].append(n)
     if(combiplusAdded == 0):
-        if(input("Add combi+ kana ? (y/n)\n>") == 'y'):
+        if(input("    Add combi+ kana ? (y/n)\n>") == 'y'):
             combiAdded = 1
             combiplusAdded = 1
             for n in char['sp']:
@@ -51,66 +55,79 @@ def main(combiAdded, combiplusAdded):
             for n in char['sp+']:
                 char['all'].append(n)
 
-    number = int(input("How much ?\n>"))
+    number = int(input("    How much ?\n>"))
 
 
-    """
-    for n in char['sp']:
-        char['all'].append(n)
-    for n in char['sp+']:
-        char['all'].append(n)
-    """
 
     correct = 0
     wrong = 0
     streak = 0
     streakCurrent = 0
 
-    vrai = "true"
-    while(vrai == "true"):
+
+    while(1):
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-        print(f""""STOP" to end\n=============================
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{streakCurrent}\n=============================\n\n\n\n""")
+        printOptions(lang)
+        print(f"""================== Scores ===
+ Correct:{correct}
+ Wrong:{wrong}
+ Best streak:{streak}
+ Streak:{streakCurrent}
+=============================
+Tap "STOP" to end
+\n\n""")
+
         kana = ""
         romaji = ""
-        x = number
-        randLang = lang
+        x = number #number of kana to print
+        saveLang = lang
 
         if(lang == 'b'):
-            if(random.randint(0, 1) == 0):
-                randLang = 'h'
+            if(random.randint(0, 1)):
+                lang = 'h'
             else:
-                randLang = 'k'
+                lang = 'k'
 
-        while(not x == 0):
+        while(x):
             i = random.randint(0, len(char['all']) -1)
             if(char['all'][i].roma != ""):
                 romaji += char['all'][i].roma
 
-                if (randLang == 'h'):
+                if (lang == 'h'):
                     kana += char['all'][i].hira
-                elif (randLang == 'k'):
+                elif (lang == 'k'):
                     kana += char['all'][i].kata
                     
                 x -= 1
+        
 
             
         
         print(f" {kana}")
+        #user input
         userAnswer = input(">")
+
+        #good guess
         if(userAnswer == romaji):
             correct += 1
             streakCurrent += 1
+
+        #force stop prog
         elif(userAnswer == "STOP"):
            break
+        
+        #bad guess
         else:
             input(f"""Oupsi, it was "{romaji}"\n""")
             wrong += 1
             if(streakCurrent > streak):
                 streak = streakCurrent
             streakCurrent = 0
+        
+        #reset language
+        lang = saveLang
 
-    restart = input(" Restart ? (y/n)\n>")
+    restart = input("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRestart ? (y/n)\n>")
     while(restart == "" or not restart == "n"):
         if(restart == "y"):
             main(combiAdded, combiplusAdded)

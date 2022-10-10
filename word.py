@@ -1,7 +1,7 @@
 #jap_to_fr.py
-from module_list_jap_fr import *
 import random
-from module_romaji_to_kana import *
+import module_romaji_to_kana
+from module_list_jap_fr import * #class W(kana, jap, fr) => ex: W('h', "kuro", "noir")
 
 
 def presentation():
@@ -14,38 +14,37 @@ def presentation():
        his translation
 =============================
 ...""")
-    input("""Press Enter to proceed
-when nothing is asked.
-...""")
-    input("""This symbol ">",
-means an answer is expected.
-=============================
-""")
+    input("Press Enter to proceed\nwhen nothing is asked.\n...")
+    input("This symbol \">\",\nmeans an answer is expected.\n=============================\n""")
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
-#return the game choose, before launch the program
-def function_mod():
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
-    mod = input("""=== Choose program mod ======
+#return the game mod chosen, before launch the actual function's program
+def function_mod():  
+    modList = ['g', 'v'] #g = game, v = view
+    mod = ""
+
+    print("""
+====== Choose program mod ===
 Guess mod (g) | View mod (v)
   You have    |   Guess in
   to write    |   your mind
   the word    |   No input
   to guess    |   require
-=============================
->""")
-    while(not mod == "g" and not mod == "v"):
+=============================""")
+
+    while(not mod in modList):
         mod = input(">")
     main(mod)
 
 #print current category and languages
 def printOptions(mod, category, lang):
-    print("=== Mod =====================")
+    print("===================== Mod ===")
     if mod == "g":
         print(" Game")
     elif mod == "v":
         print(" View")
     
-    print("=== Category ================")
+    print("================ Category ===")
     if(category == "A"):
         print(" All")
     elif(category == "t"):
@@ -74,8 +73,8 @@ def printOptions(mod, category, lang):
         print(" Conjugaison of Adjectives")
     elif(category == "e"):
         print(" Expressions")
-    
-    print("=== Languages ===============")
+
+    print("=============== Languages ===")
     for n in lang:
         if n == 'f':
             print(" French")
@@ -86,52 +85,83 @@ def printOptions(mod, category, lang):
         if n == 'k':
             print(" Katakana")
         if n == 'b' :
-            print(" Random Kana")
+            print(" Random kana")
     print("=============================")
 
     
 
 
 def main(mod):
+    #LANGUAGES CHOICE
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    lang = ""
+
+    #ask languages for Game mod
     if(mod == "g"):
-        lang = input("Langage mod :\nFrench   <=> Romaji (fr / rf)\nHiragana  => Romaji (hr)\nHiragana  => French (hf)\nKatakana  => Romaji (kr)\nKatakana  => French (kf)\nHira/Kata => Romaji (br)\nHira/Kata => French (bf)\n>")
-        #katakana => Romaji, katakana => French
-        while(not lang == "fr" and not lang == "rf" and not lang == "hr" and not lang == "hf" and not lang == "kr" and not lang == "kf" and not lang == "bf" and not lang == "br"):
+        langList = ["fr", "rf", "hr", "hf", "kr", "kf", "bf", "br"] #f = french, r = romaji, h = hira, k = kata, b = hira/kata (randomly)
+
+        print("""
+======== Choose languages ===
+French   <=> Romaji (fr / rf)
+Hiragana  => Romaji (hr)
+Hiragana  => French (hf)
+Katakana  => Romaji (kr)
+Katakana  => French (kf)
+Hira/Kata => Romaji (br)
+Hira/Kata => French (bf)
+=============================""")
+
+        while(not lang in langList):
             lang = input(">")
-    
+
+
+    #ask languages for View mod
     if(mod == "v"):
-        print("Language mod :\n(choose 3 langage) (ex : fhr)\n(can only have 1 kana type)\n\n French (f)\n Romaji (r)\n Hiragana (h)\n Katakana (k)\n Both (b)")
+        print("""
+======== Choose languages ===
+Can have multiple ones
+(ex : fhr)\n
+   (kana)         (alpha)
+ Hiragana (h) | French (f)
+ Katakana (k) | Romaji (r)
+ Both (b)     |
+=============================""")
 
         #input of languages choice
-        lang = ""
         while(not len(lang)):
+            langList = ['f', 'r', 'h', 'k', 'b'] #f = french, r = romaji, h = hira, k = kata, b = hira/kata (randomly)
             #user input
             lang = input(">")
             for letter in lang:
-                print(letter)
-                if not letter == 'f' and not letter == 'r' and not letter == 'h' and not letter == 'k' and not letter == 'b':
+                #clear user input if one letter is not allow
+                if not letter in langList:
                     lang = ""
+                    break
 
+
+    #CATEGORY CHOICE
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    category = input("""
-Choose the category :
+    categList = ["A", "t", "c", "a", "w", "cl", "f", "h", "d", "vb", "adj", "cv", "ca", "e"]
+    category = ""
 
-All (A) (exept 3 lasts)
+    print("""
+========= Choose category ===
+All (A) (except the last 3)
 
 Transports (t) | Colors (c)
 Animals (a)    | Weather (w)
 Clothes (cl)   | Food (f)
-House (h)
-Divers (d)
+House (h)      |
+Divers (d)     |
 
-Verbs (vb) | Adjectifs (adj)
+Verbs (vb) | Adjectives (adj)
 
 Conjug of verbs (cv)
-Conjug of adjectifs (ca)
+Conjug of adjectives (ca)
 Expressions (e)
->""")
-    while(not category == "A" and not category == "t" and not category == "c" and not category == "a" and not category == "w" and not category == "cl" and not category == "f" and not category == "h" and not category == "d" and not category == "vb" and not category == "adj" and not category == "cv" and not category == "ca" and not category == "e"):
+=============================""")
+
+    while(not category in categList):
         category = input(">")
 
     #var used for Game mod
@@ -144,9 +174,9 @@ Expressions (e)
     while(not stop == "STOP"):
         word_romaji = "[none]"
         word_fr = "[none]"
-        #origin = '' = word.kana
+        #origin = '' #= word.kana
         
-        #un mot est aléatoirement choisis
+        #a word is randomly choose, bases on the category
         if(category == "A"):
             i = random.randint(0, len(all) - 1)
             word_romaji = all[i].jap
@@ -208,15 +238,16 @@ Expressions (e)
             print("Restarting...")
             main(mod)
         
-        word_hira = romaji_to_hira(word_romaji)
-        word_kata = romaji_to_kata(word_romaji)
+        word_hira = module_romaji_to_kana.romaji_to_hira(word_romaji)
+        word_kata = module_romaji_to_kana.romaji_to_kata(word_romaji)
 
 
-        #VIEW MOD
+        #VIEW MOD process
         if(mod == "v"):
             print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
             printOptions(mod, category, lang)
             print("Tap \"STOP\" to end\n\n")
+
             for n in lang:
                 if(not stop == "STOP"):
                     if n == 'f':
@@ -235,21 +266,21 @@ Expressions (e)
 
 
 
-        #GAME MOD
+        #GAME MOD process
         if(mod == "g"):
             print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
             printOptions(mod, category, lang)
-            print(f"""=== Scores ==================
-Correct:{correct}
-Wrong:{wrong}
-Best streak:{streak}
-Streak:{current_streak}
+            print(f"""================== Scores ===
+ Correct:{correct}
+ Wrong:{wrong}
+ Best streak:{streak}
+ Streak:{current_streak}
 =============================
 Tap "STOP" to end\n\n""")
 
 
             #random choice of kana
-            tempLang = lang
+            saveLang = lang
             if lang[0] == 'b':
                 if (random.randint(0, 1)):
                     lang = 'h' + lang[1]
@@ -377,7 +408,7 @@ Tap "STOP" to end\n\n""")
                     current_streak += 1
             
             #reset language
-            lang = tempLang
+            lang = saveLang
                 
 
 

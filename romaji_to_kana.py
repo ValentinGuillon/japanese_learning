@@ -1,6 +1,6 @@
 #romaji_to_kana.py
+import module_romaji_to_kana
 from module_characters_jap import *
-from module_romaji_to_kana import *
 
 
 def presentation():
@@ -28,8 +28,8 @@ def main():
     while(1):
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
         text = input("Write your sentence/word\n(romaji only)\n>")
-        toHira = romaji_to_hira(text)
-        toKata = romaji_to_kata(text)
+        toHira = module_romaji_to_kana.romaji_to_hira(text)
+        toKata = module_romaji_to_kana.romaji_to_kata(text)
         input(f"\nHiragana\n {toHira}\n\nKatakana\n {toKata}\n...")
 
 

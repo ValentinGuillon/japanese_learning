@@ -1,6 +1,6 @@
 #numbers.py
 import random
-from module_romaji_to_kana import *
+import module_romaji_to_kana
 
 
 #receive a int, and return it as a romaji str
@@ -97,9 +97,8 @@ def nbr_to_romaji(x):
     elif(x==1):
         romaji += _1
 
-    length = len(romaji)
-    if(romaji[length - 1] == " "):
-        romaji = romaji[0:length - 1]
+    if(romaji[len(romaji) - 1] == " "):
+        romaji = romaji[0:len(romaji) - 1]
             
     return(romaji)
 
@@ -115,39 +114,107 @@ def presentation():
      between 1 and 999
         in japanese
 =============================
-Press Enter to proceed
-when nothing is asked.
-...
-""")
-    input("""This symbol ">",
-means an answer is expected.
-=============================
-""")
+...""")
+    input("Press Enter to proceed\nwhen nothing is asked.\n...")
+    input("This symbol \">\",\nmeans an answer is expected.\n=============================\n""")
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+
+#print current category and languages
+def printOptions(mod, lang):
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    print("===================== Mod ===")
+    
+    if mod == "g":
+        print(" Game")
+        print("=============== Languages ===")
+        if lang == 'n':
+            print(" Number\n Romaji")
+        if lang == 'r':
+            print(" Romaji\n Number")
+        if lang == 'h':
+            print(" Hiragana\n Number")
+        if lang == 'k':
+            print(" Katakana\n Number")
+        if lang == 'b':
+            print(" Random kana\n Number")
+
+
+    elif mod == "v":
+        print(" View")
+        print("=============== Languages ===")
+        for n in lang:
+            if n == 'n':
+                print(" Number")
+            if n == 'r':
+                print(" Romaji")
+            if n == 'h':
+                print(" Hiragana")
+            if n == 'k':
+                print(" Katakana")
+            if n == 'b':
+                print(" Random kana")
+
+    print("=============================")
+
+
+
+
+
 
 def function_mod():
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
-    mod = input("""Choose the program mod :
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    print("""
+====== Choose program mod ===
 Guess mod (g) | View mod (v)
   You have    |   Guess in
   to write    |   your mind
   the word    |   No input
   to guess    |   require
->""")
+=============================""")
+
+    mod = ""
     while(not mod == "g" and not mod == "v"):
         mod = input(">")
-    function(mod)
 
-def function(mod):    
+    main(mod)
+
+
+
+
+
+def main(mod):    
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    print("======== Choose languages ===")
+    lang = ""
 
+
+    #VIEW MOD languages selection
     if(mod == "v"):
-        lang = input("Number => Romaji (nr)\nRomaji => Number (rn)\nNumber => Hiragana (nh)\nHiragana => Number (hn)\nNumber => katakana (nk)\nkatakana => Number (kn)\n>")
-        while(not lang == "nh" and not lang == "nr" and not lang == "hn" and not lang == "rn" and not lang == "nk" and not lang == "kn"):
-            lang = input(">")
+        print("""Can have multiple ones
+(ex : nhr)\n
+   (kana)
+ Hiragana (h) | Number (n)
+ Katakana (k) | Romaji (r)
+ Random   (b) |
+=============================""")
 
+        #input/verif of languages choice
+        while(not len(lang)):
+            langList = ['n', 'r', 'h', 'k', 'b'] #n = number, r = romaji, h = hira, k = kata, b = hira/kata (randomly)
+            #user input
+            lang = input(">")
+            for letter in lang:
+                #clear user input if one letter is not allow
+                if not letter in langList:
+                    lang = ""
+                    break
+
+    #GAME MOD languages selection
     elif(mod == "g"):
-        lang = input("Number => Romaji (n)\nRomaji => Number (r)\nHiragana => Number (h)\nkatakana => Number (k)\n>")
-        while(not lang == "n" and not lang == "r" and not lang == "h" and not lang == "k"):
+        print(" Number => Romaji (n)\n Romaji => Number (r)\n Hiragana => Number (h)\n Katakana => Number (k)\n Hira/Kata => Number (b)\n=============================")
+        
+        langList = ["n", "r", "h", "k", 'b']
+        while(not lang in langList):
             lang = input(">")
 
 
@@ -159,44 +226,51 @@ def function(mod):
     while(not stop == "STOP") :
         nbr = random.randint(1, 999)
         romaji = nbr_to_romaji(nbr)
-        hira = romaji_to_hira(romaji)
-        kata = romaji_to_kata(romaji)
+        hira = module_romaji_to_kana.romaji_to_hira(romaji)
+        kata = module_romaji_to_kana.romaji_to_kata(romaji)
         
-        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\"STOP\" to end\n\n\n\n\n")
+        printOptions(mod, lang)
+    
 
         if(mod == "v"):
-            if(lang == "nr"):
-                stop = input(f"{nbr}\n")
+            print("\"STOP\" to end\n\n")
+            for n in lang:
                 if(not stop == "STOP"):
-                    stop = input(f"{romaji}\n")
-            elif(lang == "rn"):
-                stop = input(f"{romaji}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{nbr}\n")
-            elif(lang == "nh"):
-                stop = input(f"{nbr}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{hira}\n")
-            elif(lang == "hn"):
-                stop = input(f"{hira}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{nbr}\n")
-            elif(lang == "nk"):
-                stop = input(f"{nbr}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{kata}\n")
-            elif(lang == "kn"):
-                stop = input(f"{kata}\n")
-                if(not stop == "STOP"):
-                    stop = input(f"{nbr}\n")
+                    if n == "n":
+                        stop = input(f"{nbr}\n")
+                    if n == "r":
+                        stop = input(f"{romaji}\n")
+                    if n == "h":
+                        stop = input(f"{hira}\n")
+                    if n == "k":
+                        stop = input(f"{kata}\n")
+                    if n == "b":
+                        if(random.randint(0,1)):
+                            stop = input(f"{hira}\n")
+                        else:
+                            stop = input(f"{kata}\n")
 
         
 
         elif(mod == "g"):
+            print(f"""================== Scores ===
+ Correct:{correct}
+ Wrong:{wrong}
+ Best streak:{streak}
+ Streak:{currentStreak}
+=============================
+Tap "Stop" to end\n\n""")
+
+        
+            saveLang = lang
+            if lang == 'b':
+                if (random.randint(0, 1)):
+                    lang = 'h'
+                else:
+                    lang = 'k'
+
             if(lang == "n"):
-                guess = input(f"""\n=============================
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{currentStreak}\n=============================\n\n\n\n
-In romaji ?\n\n {nbr}\n>""")
+                guess = input(f"In romaji ?\n\n {nbr}\n>")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str.lower(romaji)):
@@ -210,9 +284,7 @@ In romaji ?\n\n {nbr}\n>""")
                     currentStreak += 1
 
             elif(lang == "r"):
-                guess = input(f"""\n=============================
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{currentStreak}\n=============================\n\n\n\n
-Which number is ?\n\n {romaji}\n>""")
+                guess = input(f"Which number is it ?\n\n {romaji}\n>")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str(nbr)):
@@ -226,9 +298,7 @@ Which number is ?\n\n {romaji}\n>""")
                     currentStreak += 1
 
             elif(lang == "h"):
-                guess = input(f"""\n=============================
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{currentStreak}\n=============================\n\n\n\n
-Which number is ?\n\n {hira}\n>""")
+                guess = input(f"Which number is it ?\n\n {hira}\n>")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str(nbr)):
@@ -242,9 +312,7 @@ Which number is ?\n\n {hira}\n>""")
                     currentStreak += 1
 
             elif(lang == "k"):
-                guess = input(f"""\n=============================
-    Correct:{correct}\n      Wrong:{wrong}\nBest streak:{streak}\n     Streak:{currentStreak}\n=============================\n\n\n\n
-Which number is ?\n\n {kata}\n>""")
+                guess = input(f"Which number is it ?\n\n {kata}\n>")
                 if(str.upper(guess) == "STOP"):
                     break
                 if(not guess == str(nbr)):
@@ -257,8 +325,12 @@ Which number is ?\n\n {kata}\n>""")
                     correct += 1
                     currentStreak += 1
 
-    
-    restart = input("\n\nRestart and change mod ? (y/n)\n>")
+            #reset language
+            lang = saveLang
+
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    restart = ""
+    print("Restart and change mod ? (y/n)")
     while(restart == "" or not restart == "n"):
         if(restart == "y"):
             function_mod()
@@ -269,9 +341,6 @@ Which number is ?\n\n {kata}\n>""")
 
 
 
-def main():
+if __name__ == "__main__":
     presentation()
     function_mod()
-    
-if __name__ == "__main__":
-    main() 
