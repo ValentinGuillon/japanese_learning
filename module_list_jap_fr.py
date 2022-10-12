@@ -28,7 +28,9 @@ expressions = 1
 class W(NamedTuple) :
     kana: chr #'h' or 'k' pour "hira" et "kata"
     jap: str
+    japAlt: list #different writing for a word
     fr: str
+    frAlt: list #different writing for a word
 
 def printW(word):
     print(f" {word.jap} -> {word.fr}")
@@ -37,7 +39,7 @@ def printW(word):
 
 #mots jap
 all = []
-transports = [W('h', "Kuruma", "Voiture"), W('k', "Sukûtâ", "Scooter"), W('h', "Jitensha", "Vélo"), W('k', "Takushî", "Taxi"), W('h', "Chikatetsu", "Métro"), W('h', "Densha", "Train"), W('h', "Hikôki", "Avion"), W('h', "Fune", "Bateau"), W('k', "Baiku", "Moto"), W('k', "Basu", "Bus")]
+transports = [W('h', "Kuruma", [], "Voiture", []), W('k', "Sukûtâ", ["Sukuutaa"], "Scooter", []), W('h', "Jitensha", [], "Vélo", ["Velo"]), W('k', "Takushî", ["Takushii"], "Taxi", []), W('h', "Chikatetsu", [], "Métro", ["Metro"]), W('h', "Densha", "Train"), W('h', "Hikôki", "Avion"), W('h', "Fune", "Bateau"), W('k', "Baiku", "Moto"), W('k', "Basu", "Bus")]
 colors = [W('h', "Shiro", "Blanc"), W('h', "Chairo", "Marron"), W('h', "Kiiro", "Jaune"), W('h', "Haiiro", "Gris"), W('h', "Ao", "Bleu"), W('h', "Kuro", "Noir"), W('h', "Aka", "Rouge"), W('h', "Orenji", "Orange"), W('h', "Murasaki", "Violet"), W('h', "Midori", "Vert"), W('k', "Pinku", "Rose")]
 animals = [W('h', "Inu", "Chien"), W('h', "Ahiru", "Canard"), W('h', "Usagi", "Lapin"), W('h', "Saru", "Singe"), W('h', "Nezumi", "Souris"), W('h', "Uma", "Cheval"), W('h', "Kuma", "Ours"), W('h', "Tora", "Tigre"), W('k', "Raion", "Lion"), W('h', "Niwatori", "Poulet"), W('h', "Shika", "Biche"), W('h', "Buta", "Cochon"), W('h', "Neko", "Chat"), W('h', "Tori", "Oiseau"), W('h', "Kitsune", "Renard"), W('h', "Ushi", "Vache"), W('h', "Zô", "Éléphant"), W('h', "Hitsuji", "Mouton"), W('k', "Koara", "Koala"), W('k', "Panda", "Panda")]
 weather = [W('h', "Kaminari", "Orageux"), W('h', "Kumori", "Nuageux"), W('h', "Hare",  "Ensoleillé"), W('h', "Samui", "Froid"), W('h', "Yuki", "Enneigé"), W('h', "Atsui", "Chaud"), W('h', "Ame", "Pluvieux")]
