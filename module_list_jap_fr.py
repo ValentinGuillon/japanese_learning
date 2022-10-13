@@ -39,9 +39,40 @@ def printW(word):
 
 #mots jap
 all = []
-transports = [W('h', "Kuruma", [], "Voiture", []), W('k', "Sukûtâ", ["Sukuutaa"], "Scooter", []), W('h', "Jitensha", [], "Vélo", ["Velo"]), W('k', "Takushî", ["Takushii"], "Taxi", []), W('h', "Chikatetsu", [], "Métro", ["Metro"]), W('h', "Densha", "Train"), W('h', "Hikôki", "Avion"), W('h', "Fune", "Bateau"), W('k', "Baiku", "Moto"), W('k', "Basu", "Bus")]
-colors = [W('h', "Shiro", "Blanc"), W('h', "Chairo", "Marron"), W('h', "Kiiro", "Jaune"), W('h', "Haiiro", "Gris"), W('h', "Ao", "Bleu"), W('h', "Kuro", "Noir"), W('h', "Aka", "Rouge"), W('h', "Orenji", "Orange"), W('h', "Murasaki", "Violet"), W('h', "Midori", "Vert"), W('k', "Pinku", "Rose")]
-animals = [W('h', "Inu", "Chien"), W('h', "Ahiru", "Canard"), W('h', "Usagi", "Lapin"), W('h', "Saru", "Singe"), W('h', "Nezumi", "Souris"), W('h', "Uma", "Cheval"), W('h', "Kuma", "Ours"), W('h', "Tora", "Tigre"), W('k', "Raion", "Lion"), W('h', "Niwatori", "Poulet"), W('h', "Shika", "Biche"), W('h', "Buta", "Cochon"), W('h', "Neko", "Chat"), W('h', "Tori", "Oiseau"), W('h', "Kitsune", "Renard"), W('h', "Ushi", "Vache"), W('h', "Zô", "Éléphant"), W('h', "Hitsuji", "Mouton"), W('k', "Koara", "Koala"), W('k', "Panda", "Panda")]
+transports = [W('h', "Kuruma", [], "Voiture", []),
+              W('k', "Sukûtâ", ["Sukuutaa"], "Scooter", []),
+              W('h', "Jitensha", [], "Vélo", ["Velo"]),
+              W('k', "Takushî", ["Takushii"], "Taxi", []),
+              W('h', "Chikatetsu", [], "Métro", ["Metro"]),
+              W('h', "Densha", "Train"), W('h', "Hikôki", "Avion"),
+              W('h', "Fune", "Bateau"), W('k', "Baiku", "Moto"),
+              W('k', "Basu", "Bus")]
+colors = [W('h', "Shiro", "Blanc"),
+          W('h', "Chairo", "Marron"),
+          W('h', "Kiiro", "Jaune"),
+          W('h', "Haiiro", "Gris"),
+          W('h', "Ao", "Bleu"),
+          W('h', "Kuro", "Noir"),
+          W('h', "Aka", "Rouge"),
+          W('h', "Orenji", "Orange"),
+          W('h', "Murasaki", "Violet"),
+          W('h', "Midori", "Vert"),
+          W('k', "Pinku", "Rose")]
+animals = [W('h', "Inu", "Chien"),
+           W('h', "Ahiru", "Canard"),
+           W('h', "Usagi", "Lapin"),
+           W('h', "Saru", "Singe"),
+           W('h', "Nezumi", "Souris"),
+           W('h', "Uma", "Cheval"),
+           W('h', "Kuma", "Ours"),
+           W('h', "Tora", "Tigre"),
+           W('k', "Raion", "Lion"),
+           W('h', "Niwatori", "Poulet"),
+           W('h', "Shika", "Biche"),
+           W('h', "Buta", "Cochon"),
+           W('h', "Neko", "Chat"),
+           W('h', "Tori", "Oiseau"),
+           W('h', "Kitsune", "Renard"), W('h', "Ushi", "Vache"), W('h', "Zô", "Éléphant"), W('h', "Hitsuji", "Mouton"), W('k', "Koara", "Koala"), W('k', "Panda", "Panda")]
 weather = [W('h', "Kaminari", "Orageux"), W('h', "Kumori", "Nuageux"), W('h', "Hare",  "Ensoleillé"), W('h', "Samui", "Froid"), W('h', "Yuki", "Enneigé"), W('h', "Atsui", "Chaud"), W('h', "Ame", "Pluvieux")]
 clothes = [W('h', "Kutsushita", "Chaussettes"), W('h', "Kutsu", "Chaussures"), W('h', "Jîpan", "Jeans"), W('h', "Sukâto", "Jupe"), W('h', "Kôto", "Manteau"), W('h', "Zubon", "Pantalon"), W('k', "Tîshatsu", "T-shirt"), W('k', "Sandaru", "Sandales"), W('h', "Tan pan", "Short"), W('h', "Doresu", "Robe"), W('h', "Mizugi", "Maillot de bain")]
 food = [W('h', "Tamanegi", "Oignon"), W('h', "Budô", "Raisin"), W('h', "Kamoniku", "Canard (viande)"), W('k', "Orenji", "Orange"), W('h', "Suika", "Pastèque"), W('h', "Tômorokoshi", "Maïs"), W('k', "Remon", "Citron"), W('k', "Burokkorî", "Brocoli"), W('h', "Kyûri", "Concombre"), W('h', "Ichigo", "Fraise"), W('h', "Ninjin", "Carotte"), W('k', "Kokonattsu", "Noix de coco"), W('h', "Jagaimo", "Pomme de terre"), W('k', "Bêkon", "Bécon"), W('h', "Gyûnyû", "Lait"), W('h', "Kyabetsu", "Chou"), W('h', "Kinoko", "Champignon"), W('h', "Kabocha", "Citrouille"), W('h', "Mizu", "Eau"), W('k', "Tomato", "Tomate"), W('h', "Ocha", "Thé"), W('k', "Eiyô dorinku", "Boisson énergisante"), W('k', "Jûsu", "Jus"), W('h', "Kohitsuji", "Agneau (viande)"), W('h', "Ringo", "Pomme"), W('k', "Banana", "Banane"), W('k', "Kôra", "Cola"), W('k', "Kôhî", "Café"), W('h', "Sakana", "Poisson (viande)"), W('h', "Gyûniku", "Boeuf (viande)"), W('h', "Toriniku", "Poulet (viande)"), W('h', "Nashi", "Poire"), W('h', "Butaniku", "Porc (viande)"), W('k', "Painappuru", "Ananas")]
