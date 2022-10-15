@@ -32,70 +32,340 @@ class W(NamedTuple) :
     fr: str
     frAlt: list #different writing for a word
 
+#print fr/jap properties of "word", and the alt version if ones exist
 def printW(word):
-    print(f" {word.jap} -> {word.fr}")
+    print(f" {word.jap}")
+
+    if(len(word.japAlt)):
+        print(end="  ====== ")
+        for n in word.japAlt:
+            print(f"{n}, ", end="")
+        print()
+    
+    print(f"  {word.fr}") #{word.japAlt}\n  {word.fr}\n  {word.frAlt}")
+
+    if(len(word.frAlt)):
+        print(end="  ====== ")
+        for n in word.frAlt:
+            print(f"{n}, ", end="")
+        print()
+
+
+eAccents = ['é', 'è', 'ê']
+iAccents = ['î', 'ï']
+#return an accentless version of fr word (use this function only with a word with accents)
+def removeAccents(word):
+    accentlessWord = ""
+
+    for letter in word:
+        if letter in eAccents:
+            letter = 'e'
+        elif letter in iAccents:
+            letter = 'i'
+        accentlessWord += letter
+
+    return accentlessWord
+
+japAccents = ['â', 'î', 'û', 'ê', 'ô']
+#return an accentless version of jap  word (use this function only with a word with accents)
+def convertJapAccent(word):
+    accentlessWord = ""
+
+    for letter in word:
+        if letter == 'â':
+            letter = "aa"
+        elif letter == 'î':
+            letter = "ii"
+        elif letter == 'û':
+            letter = "uu"
+        elif letter == 'ê':
+            letter = "ei"
+        elif letter == 'ô':
+            letter = "ou"
+        accentlessWord += letter
+    
+    return accentlessWord
+        
 
 
 
 #mots jap
 all = []
-transports = [W('h', "Kuruma", [], "Voiture", []),
-              W('k', "Sukûtâ", ["Sukuutaa"], "Scooter", []),
-              W('h', "Jitensha", [], "Vélo", ["Velo"]),
-              W('k', "Takushî", ["Takushii"], "Taxi", []),
-              W('h', "Chikatetsu", [], "Métro", ["Metro"]),
-              W('h', "Densha", "Train"), W('h', "Hikôki", "Avion"),
-              W('h', "Fune", "Bateau"), W('k', "Baiku", "Moto"),
-              W('k', "Basu", "Bus")]
-colors = [W('h', "Shiro", "Blanc"),
-          W('h', "Chairo", "Marron"),
-          W('h', "Kiiro", "Jaune"),
-          W('h', "Haiiro", "Gris"),
-          W('h', "Ao", "Bleu"),
-          W('h', "Kuro", "Noir"),
-          W('h', "Aka", "Rouge"),
-          W('h', "Orenji", "Orange"),
-          W('h', "Murasaki", "Violet"),
-          W('h', "Midori", "Vert"),
-          W('k', "Pinku", "Rose")]
-animals = [W('h', "Inu", "Chien"),
-           W('h', "Ahiru", "Canard"),
-           W('h', "Usagi", "Lapin"),
-           W('h', "Saru", "Singe"),
-           W('h', "Nezumi", "Souris"),
-           W('h', "Uma", "Cheval"),
-           W('h', "Kuma", "Ours"),
-           W('h', "Tora", "Tigre"),
-           W('k', "Raion", "Lion"),
-           W('h', "Niwatori", "Poulet"),
-           W('h', "Shika", "Biche"),
-           W('h', "Buta", "Cochon"),
-           W('h', "Neko", "Chat"),
-           W('h', "Tori", "Oiseau"),
-           W('h', "Kitsune", "Renard"), W('h', "Ushi", "Vache"), W('h', "Zô", "Éléphant"), W('h', "Hitsuji", "Mouton"), W('k', "Koara", "Koala"), W('k', "Panda", "Panda")]
-weather = [W('h', "Kaminari", "Orageux"), W('h', "Kumori", "Nuageux"), W('h', "Hare",  "Ensoleillé"), W('h', "Samui", "Froid"), W('h', "Yuki", "Enneigé"), W('h', "Atsui", "Chaud"), W('h', "Ame", "Pluvieux")]
-clothes = [W('h', "Kutsushita", "Chaussettes"), W('h', "Kutsu", "Chaussures"), W('h', "Jîpan", "Jeans"), W('h', "Sukâto", "Jupe"), W('h', "Kôto", "Manteau"), W('h', "Zubon", "Pantalon"), W('k', "Tîshatsu", "T-shirt"), W('k', "Sandaru", "Sandales"), W('h', "Tan pan", "Short"), W('h', "Doresu", "Robe"), W('h', "Mizugi", "Maillot de bain")]
-food = [W('h', "Tamanegi", "Oignon"), W('h', "Budô", "Raisin"), W('h', "Kamoniku", "Canard (viande)"), W('k', "Orenji", "Orange"), W('h', "Suika", "Pastèque"), W('h', "Tômorokoshi", "Maïs"), W('k', "Remon", "Citron"), W('k', "Burokkorî", "Brocoli"), W('h', "Kyûri", "Concombre"), W('h', "Ichigo", "Fraise"), W('h', "Ninjin", "Carotte"), W('k', "Kokonattsu", "Noix de coco"), W('h', "Jagaimo", "Pomme de terre"), W('k', "Bêkon", "Bécon"), W('h', "Gyûnyû", "Lait"), W('h', "Kyabetsu", "Chou"), W('h', "Kinoko", "Champignon"), W('h', "Kabocha", "Citrouille"), W('h', "Mizu", "Eau"), W('k', "Tomato", "Tomate"), W('h', "Ocha", "Thé"), W('k', "Eiyô dorinku", "Boisson énergisante"), W('k', "Jûsu", "Jus"), W('h', "Kohitsuji", "Agneau (viande)"), W('h', "Ringo", "Pomme"), W('k', "Banana", "Banane"), W('k', "Kôra", "Cola"), W('k', "Kôhî", "Café"), W('h', "Sakana", "Poisson (viande)"), W('h', "Gyûniku", "Boeuf (viande)"), W('h', "Toriniku", "Poulet (viande)"), W('h', "Nashi", "Poire"), W('h', "Butaniku", "Porc (viande)"), W('k', "Painappuru", "Ananas")]
-house = [W('k', "Eakon", "Climatiseur"), W('k', "Kamera", "Appareil photo"), W('k', "Karendâ", "Calendrier"), W('k', "Kurejittokâdo", "Carte de paiement"), W('k', "Konpyûta", "Ordinateur"), W('k', "Sutereo / Sutereofonikku", "Chaîne Hi-Fi"), W('k', "Supûn", "Cuillère"), W('k', "Sofâ", "Canapé"), W('k', "Têburu", "Table"), W('k', "Terebi / Terebijon", "Télévision"), W('k', "Toire / Toiretto", "Toilettes"), W('k', "Doa", "Porte"), W('k', "Naifu", "Couteau"), W('k', "Nôto", "Cahier"), W('k', "Fôku", "Fourchette"), W('k', "Beddo", "Lit"), W('k', "Pasokon", "PC (Ordi portable)"), W('k', "Pen / Bôrupen", "Stylo / Stylo-bille"), W('k', "Rajio", "Radio"), W('k', "Ranpu", "Lampe"), W('k', "Rimokon", "Télécommande")]
-divers = [W('h', "Ai", "Amour"), W('h', "Ue", "En haut / Haut"), W('h', "Aoi", "Bleu (adjectif)"), W('h', "Ie", "Maison"), W('h', "Iie", "Non"), W('h', "Sekai", "Monde"), W('h', "Kagi", "Clé"), W('h', "Akai", "Rouge (adjectif)"), W('h', "Osushi", "Sushi (avec respect)"), W('h', "Kugi", "Clou"), W('h', "Keigo", "Entrainement"), W('h', "Saka", "Pente"), W('h', "Ya", "Magasin"), W('h', "Hanaya", "Fleuriste"), W('h', "Sakanaya", "Poissonnier"), W('h', "Yuki", "Neige"), W('h', "Yoru", "Nuit"), W('h', "Karada", "Corps"), W('h', "Rikai", "Compréhension"), W('h', "Ji", "Heure"), W('h', "Omatsuri", "Nom d'un Festival"), W('h', "Kuuki", "Air"), W('h', "Tokei", "Montre / Horloge"), W('h', "Kinoe", "Hier"), W('h', "Sakka", "Écrivain"), W('h', "Irasutoneitaa", "Dessinateur"), W('h', "Shashinka", "Photographe"), W('h', "Seiyuu", "Doubleur"), W('h', "Eegakantoku", "Réalisateur"), W('h', "Keesan", "Policier"), W('h', "Kodomo no sensee", "Animateur pour enfants"), W('h', "Gaka", "Peintre"), W('h', "Kyaku", "Client"), W('h', "Jugyoe", "Cours"), W('h', "Ocha", "Thé"), W('h', "Ryokoe", "Voyage"), W('h', "Sanmyaku", "Chaîne de montagnes")]
-verbs = [W('h', "Hanasu", "Parler"), W('h', "Yomu", "Lire"), W('h', "Asobu", "Jouer / Se divertir"), W('h', "Morau", "Recevoir"), W('h', "Matsu", "Attendre"), W('h', "Omou", "Penser"), W('h', "Motsu", "Tenir / Posséder"), W('h', "Nomu", "Boire"), W('h', "Kiku", "Demander"), W('h', "Shinu", "Mourir"), W('h', "Nugu", "Se déshabiller"), W('h', "Iu", "Dire"), W('h', "Kau", "Acheter"), W('h', "Sumu", "Vivre / Habiter"), W('h', "Iku", "Aller"), W('h', "Noru",  "Monter dans"), W('h', "Naru", "Devenir"), W('h', "Wakaru", "Comprendre"), W('h', "Aru", "Être / Avoir (objet)"), W('h', "Oshieru", "Enseigner / Dire"), W('h', "Miru", "Regarder / Voir"), W('h', "Taberu", "Manger"), W('h', "Iru", "Être / Avoir (être vivant)"), W('h', "Dekiru", "Être capable / Pouvoir"), W('h', "Kaeru", "Rentrer / Retourner"), W('h', "Yameru", "Arrêter / Abandonner"), W('h', "Ageru", "Donner"), W('h', "Kuru", "Venir"), W('h', "Suru", "Faire")]
-adjs = [W('h', "Hayai", "Rapide / Tôt"), W('h', "Tanoshii", "Amusant"), W('h', "Samui", "Froid"), W('h', "Sugoi", "Incroyable / Impressionnant"), W('h', "Ii", "Bon / Bien / Correct"), W('h', "Kakkoii", "Cool / Beau-gosse"), W('h', "Warui", "Mauvais"), W('h', "Atsui", "Chaud"), W('h', "Chiisai", "Petit"), W('h', "Yasui", "Pas cher"), W('h', "Omoshiroi", "Intéressant"), W('h', "Muzukashii", "Difficile"), W('h', "Itai", "Douloureux / Aïe"), W('h', "Takai", "Cher / Haut"), W('h', "Kowai", "Effrayant"), W('h', "Yasashii", "Gentil"), W('h', "Atarashii", "Neuf / Nouveau"), W('h', "Isogashii", "Occupé"), W('h', "Ookii", "Gros / Grand"), W('h', "Oishii", "Bon (goût)"), W('h', "Jôzu", "Habille / Doué"), W('h', "Kirei", "Beau / Belle / Jolie"), W('h', "Suki", "Aimé / Être aimé"), W('h', "Kirai", "Détester / Être détester"), W('h', "Kantan", "Simple / Facile"), W('h', "Hen", "Bizarre / Étrange"), W('h', "Taihen", "Situation difficile"), W('h', "Anzen", "Sûr / En sécurité"), W('h', "Genki", "En forme / En bonne santé"), W('h', "Benri", "Pratique")]
-conjug_verbs = [W('h', "-u -> -imasu", "Forme polie (verbes 1er g)"), W('h', "-u -> -imasen", "Forme négative polie (verbes 1er g)"), W('h', "-u -> -imashita", "Forme passé polie (verbes 1er g)"), W('h', "-u -> -imasen deshita", "Forme négative passé polie (verbes 1er g)"),
+transports = [W('h', "kuruma",     [], "voiture", []),
+              W('k', "sukûtâ",     [], "scooter", []),
+              W('h', "jitensha",   [], "vélo",    []),
+              W('k', "takushî",    [], "taxi",    []),
+              W('h', "chikatetsu", [], "métro",   []),
+              W('h', "densha",     [], "train",   []),
+              W('h', "hikôki",     [], "avion",   []),
+              W('h', "fune",       [], "bateau",  []),
+              W('k', "baiku",      [], "moto",    []),
+              W('k', "basu",       [], "bus",     [])]
+            
+colors = [W('h', "shiro",    [], "blanc",  []),
+          W('h', "chairo",   [], "marron", []),
+          W('h', "kîro",     [], "jaune",  []),
+          W('h', "haîro",    [], "gris",   []),
+          W('h', "ao",       [], "bleu",   []),
+          W('h', "kuro",     [], "noir",   []),
+          W('h', "aka",      [], "rouge",  []),
+          W('h', "orenji",   [], "orange", []),
+          W('h', "murasaki", [], "violet", []),
+          W('h', "midori",   [], "vert",   []),
+          W('k', "pinku",    [], "rose",   [])]
 
-                W('h', "-u -> -tta", "Forme passé (verbes 1er g) -u"), W('h', "-ru -> -tta", "Forme passé (verbes 1er g) -ru"), W('h', "-tsu -> -tta", "Forme passé (verbes 1er g) -tsu"), W('h', "-gu -> -ida", "Forme passé (verbes 1er g) -gu"), W('h', "-bu -> -nda", "Forme passé (verbes 1er g) -bu"), W('h', "-mu -> -nda", "Forme passé (verbes 1er g) -mu"), W('h', "-nu -> -nda", "Forme passé (verbes 1er g) -nu"), W('h', "-su -> -shita", "Forme passé (verbes 1er g) -su"), W('h', "-ku -> -ita", "Forme passé (verbes 1er g) -ku"),
+animals = [W('h', "inu",      [], "chien",    []),
+           W('h', "ahiru",    [], "canard",   []),
+           W('h', "usagi",    [], "lapin",    []),
+           W('h', "saru",     [], "singe",    []),
+           W('h', "nezumi",   [], "souris",   []),
+           W('h', "uma",      [], "cheval",   []),
+           W('h', "kuma",     [], "ours",     []),
+           W('h', "tora",     [], "tigre",    []),
+           W('k', "raion",    [], "lion",     []),
+           W('h', "niwatori", [], "poulet",   []),
+           W('h', "shika",    [], "biche",    []),
+           W('h', "buta",     [], "cochon",   []),
+           W('h', "neko",     [], "chat",     []),
+           W('h', "tori",     [], "oiseau",   []),
+           W('h', "kitsune",  [], "renard",   []),
+           W('h', "ushi",     [], "vache",    []),
+           W('h', "zô",       [], "éléphant", []),
+           W('h', "hitsuji",  [], "mouton",   []),
+           W('k', "koara",    [], "koala",    []),
+           W('k', "panda",    [], "panda",    [])]
 
-                W('h', "-u -> -wanai", "Forme négative (verbes 1er g) -u"), W('h', "-_u -> -_anai", "Forme négative (verbes 1er g) -_u"), W('h', "-tsu -> -tanai", "Forme négative (verbes 1er g) -tsu"),
+weather = [W('h', "kaminari", [], "orageux",     []),
+           W('h', "kumori",   [], "nuageux",     []),
+           W('h', "hare",     [], "ensoleillé",  []),
+           W('h', "samui",    [], "froid",       []),
+           W('h', "yuki",     [], "enneigé",     []),
+           W('h', "atsui",    [], "chaud",       []),
+           W('h', "ame",      [], "pluvieux",    [])]
 
-                W('h', "-u -> -wanakatta", "Forme négative passé (verbes 1er g) -u"), W('h', "-_u -> -_anakatta", "Forme négative passé (verbes 1er g) -_u"), W('h', "-tsu -> -tanakatta", "Forme négative passé (verbes 1er g) -tsu"),
+clothes = [W('h', "kutsushita", [], "chaussettes",     []),
+           W('h', "kutsu",      [], "chaussures",      []),
+           W('h', "jîpan",      [], "jeans",           []),
+           W('h', "sukâto",     [], "jupe",            []),
+           W('h', "kôto",       [], "manteau",         []),
+           W('h', "zubon",      [], "pantalon",        []),
+           W('k', "tîshatsu",   [], "t-shirt",         []),
+           W('k', "sandaru",    [], "sandales",        []),
+           W('h', "tanpan",     [], "short",           []),
+           W('h', "doresu",     [], "robe",            []),
+           W('h', "mizugi",     [], "maillot de bain", [])]
 
-                W('h', "-ru -> -masu", "Forme polie (verbes 2e g)"), W('h', "-ru -> -masen", "Forme négative polie (verbes 2e g)"), W('h', "-ru -> -mashita", "Forme passé polie (verbes 2e g)"), W('h', "-ru -> -masen deshita", "Forme négative passé polie (verbes 2e g)"), W('h', "-ru -> -ta", "Forme passé (verbes 2e g)"), W('h', "-ru -> -nai", "Forme négative (verbes 2e g)"), W('h', "-ru -> -nakatta", "Forme négative passé (verbes 2e g)"),
+food = [W('h', "tamanegi",     [], "oignon",              []),
+        W('h', "budô",         [], "raisin",              []),
+        W('h', "kamoniku",     [], "canard (viande)",     ["canard"]),
+        W('k', "orenji",       [], "orange",              []),
+        W('h', "suika",        [], "pastèque",            []),
+        W('h', "tômorokoshi",  [], "maïs",                []),
+        W('k', "remon",        [], "citron",              []),
+        W('k', "burokkorî",    [], "brocoli",             []),
+        W('h', "kyûri",        [], "concombre",           []),
+        W('h', "ichigo",       [], "fraise",              []),
+        W('h', "ninjin",       [], "carotte",             []),
+        W('k', "kokonattsu",   [], "noix de coco",        []),
+        W('h', "jagaimo",      [], "pomme de terre",      []),
+        W('k', "bêkon",        [], "bécon",               []),
+        W('h', "gyûnyû",       [], "lait",                []),
+        W('h', "kyabetsu",     [], "chou",                []),
+        W('h', "kinoko",       [], "champignon",          []),
+        W('h', "kabocha",      [], "citrouille",          []),
+        W('h', "mizu",         [], "eau",                 []),
+        W('k', "tomato",       [], "tomate",              []),
+        W('h', "ocha",         [], "thé",                 []),
+        W('k', "eiyô dorinku", [], "boisson énergisante", []),
+        W('k', "jûsu",         [], "jus",                 []),
+        W('h', "kohitsuji",    [], "agneau (viande)",     ["agneau"]),
+        W('h', "ringo",        [], "pomme",               []),
+        W('k', "banana",       [], "banane",              []),
+        W('k', "kôra",         [], "cola",                []),
+        W('k', "kôhî",         [], "café",                []),
+        W('h', "sakana",       [], "poisson (viande)",    ["poisson"]),
+        W('h', "gyûniku",      [], "boeuf (viande)",      ["boeuf"]),
+        W('h', "toriniku",     [], "poulet (viande)",     ["poulet"]),
+        W('h', "nashi",        [], "poire",               []),
+        W('h', "butaniku",     [], "porc (viande)",       ["porc"]),
+        W('k', "painappuru",   [], "ananas",              [])]
 
-                W('h', "Suru -> Shimasu  || Kuru -> Kimasu", "Forme polie (verbes 3e g)"), W('h', "Suru -> Shimasen  || Kuru -> Kimasen", "Forme négative polie (verbes 3e g)"), W('h', "Suru -> Shimashita  || Kuru -> Kimashita", "Forme passé polie (verbes 3e g)"), W('h', "Suru -> Shimasen deshita  || Kuru -> Kimasen deshita", "Forme négative passé polie (verbes 3e g)"), W('h', "Suru -> Shita  || Kuru -> Kita", "Forme passé (verbes 3e g)"), W('h', "Suru -> Shinai  || Kuru -> Kinai", "Forme négative (verbes 3e g)"), W('h', "Suru -> Shinakatta  || Kuru -> Kinakatta", "Forme négative passé (verbes 3e g)")]
-conjug_adjs = [W('h', "-i -> -kunai", "Forme négative (adjectifs en i)"), W('h', "-i -> -katta", "Forme passée (adjectifs en i)"), W('h', "-i -> -kunakatta", "Forme négative passée (adjectifs en i)"), W('h', "-i -> -sô", "Forme ''ça a l'air'' (adjectifs en i)"), W('h', "-i -> -kunasasô", "Forme négative de ''ça a l'air'' (adjectifs en i)"), W('h', "-i -> -ku", "Transformation en adverbe (adjectifs en i)"),
-               W('h', "+ janai", "Forme négative (adjectifs en na)"), W('h', "+ datta", "Forme passée (adjectifs en na)"), W('h', "+ janakatta", "Forme négative passée (adjectifs en na)"), W('h', "+ -sô", "Forme ''ça a l'air'' (adjectifs en na)"), W('h', "+ -janasasô", "Forme négative de ''ça a l'air'' (adjectifs en na)"), W('h', "+ ni", "Transformation en adverbe (adjectifs en na)")]
+house = [W('k', "ea kondishonâ",    ["eakon"],   "climatiseur",         []),
+         W('k', "kamera",           [],          "appareil photo",      []),
+         W('k', "karendâ",          [],          "calendrier",          []),
+         W('k', "kurejittokâdo",    [],          "carte bancaire",      ["carte de crédit", "carte de paiement"]),
+         W('k', "konpyûta",         [],          "ordinateur",          []),
+         W('k', "sutereofonikku",   ["sutereo"], "chaîne hi-fi",        []),
+         W('k', "supûn",            [],          "cuillère",            []),
+         W('k', "sofâ",             ["sofa"],    "canapé",              []),
+         W('k', "têburu",           [],          "table",               []),
+         W('k', "terebijon",        ["terebi"],  "télévision",          ["télé"]),
+         W('k', "toiretto",         ["toire"],   "toilettes",           []),
+         W('k', "doa",              [],          "porte",               []),
+         W('k', "naifu",            [],          "couteau",             []),
+         W('k', "nôto",             [],          "cahier",              []),
+         W('k', "fôku",             [],          "fourchette",          []),
+         W('k', "beddo",            [],          "lit",                 []),
+         W('k', "pâsonarukonpyûta", ["pasokon"], "ordinateur portable", ["pc"]),
+         W('k', "bôrupen",          ["pen"],     "stylo-bille",         ["stylo"]),
+         W('k', "rajio",            [],          "radio",               []),
+         W('k', "ranpu",            [],          "lampe",               []),
+         W('k', "rimôtokontorôrâ",  ["rimokon"], "télécommande",        [])]
+
+divers = [W('h', "ai",               [], "amour",                  []),
+          W('h', "ue",               [], "en haut",                ["haut"]),
+          W('h', "aoi",              [], "bleu (adjectif)",        ["bleu"]),
+          W('h', "ie",               [], "maison",                 []),
+          W('h', "Îe",               [], "non",                    []),
+          W('h', "sekai",            [], "monde",                  []),
+          W('h', "kagi",             [], "clé",                    []),
+          W('h', "akai",             [], "rouge (adjectif)",       ["rouge"]),
+          W('h', "osushi",           [], "sushi (avec respect)",   ["sushi"]),
+          W('h', "kugi",             [], "clou",                   []),
+          W('h', "keigo",            [], "entrainement",           []),
+          W('h', "saka",             [], "pente",                  []),
+          W('h', "ya",               [], "magasin",                []),
+          W('h', "hanaya",           [], "fleuriste",              []),
+          W('h', "sakanaya",         [], "poissonnier",            []),
+          W('h', "yuki",             [], "neige",                  []),
+          W('h', "yoru",             [], "nuit",                   []),
+          W('h', "karada",           [], "corps",                  []),
+          W('h', "rikai",            [], "compréhension",          []),
+          W('h', "ji",               [], "heure",                  []),
+          W('h', "matsuri",          [], "festival",               []),
+          W('h', "kûki",             [], "air",                    []),
+          W('h', "tokei",            [], "montre / horloge",       ["horloge", "montre"]),
+          W('h', "kinô",             [], "hier",                   []),
+          W('h', "sakka",            [], "écrivain",               []),
+          W('h', "irasutoneitâ",     [], "dessinateur",            []),
+          W('h', "shashinka",        [], "photographe",            []),
+          W('h', "seiyû",            [], "doubleur",               []),
+          W('h', "kantoku",          [], "réalisateur",            []),
+          W('h', "keikan",           [], "policier",               []),
+          W('h', "kodomo no sensee", [], "animateur pour enfants", ["animateur"]),
+          W('h', "gaka",             [], "peintre",                []),
+          W('h', "kyaku",            [], "client",                 []),
+          W('h', "jugyô",            [], "cours",                  []),
+          W('h', "ryokô",            [], "voyage",                 []),
+          W('h', "sanmyaku",         [], "chaîne de montagnes",    [])]
+
+verbs = [W('h', "hanasu",  [], "parler",                     []),
+         W('h', "yomu",    [], "lire",                       []),
+         W('h', "asobu",   [], "jouer / se divertir",        ["jouer", "se divertir"]),
+         W('h', "morau",   [], "recevoir",                   []),
+         W('h', "matsu",   [], "attendre",                   []),
+         W('h', "omou",    [], "penser",                     []),
+         W('h', "motsu",   [], "tenir / posséder",           ["tenir", "posséder"]),
+         W('h', "nomu",    [], "boire",                      []),
+         W('h', "kiku",    [], "demander",                   []),
+         W('h', "shinu",   [], "mourir",                     []),
+         W('h', "nugu",    [], "se déshabiller",             []),
+         W('h', "iu",      [], "dire",                       []),
+         W('h', "kau",     [], "acheter",                    []),
+         W('h', "sumu",    [], "vivre / habiter",            ["vivre", "habiter"]),
+         W('h', "iku",     [], "aller",                      []),
+         W('h', "noru",    [], "monter dans",                []),
+         W('h', "naru",    [], "devenir",                    []),
+         W('h', "wakaru",  [], "comprendre",                 []),
+         W('h', "aru",     [], "être / avoir (objet)",       ["Être / avoir", "être", "avoir"]),
+         W('h', "oshieru", [], "enseigner / dire",           ["enseigner", "dire"]),
+         W('h', "miru",    [], "regarder / voir",            ["regarder", "voir"]),
+         W('h', "taberu",  [], "manger",                     []),
+         W('h', "iru",     [], "être / avoir (être vivant)", ["être / avoir", "être", "avoir"]),
+         W('h', "dekiru",  [], "être capable / pouvoir",     ["être capable", "pouvoir"]),
+         W('h', "kaeru",   [], "rentrer / retourner",        ["rentrer", "retourner"]),
+         W('h', "yameru",  [], "arrêter / abandonner",       ["arrêter", "arreter", "abandonner"]),
+         W('h', "ageru",   [], "donner",                     []),
+         W('h', "kuru",    [], "venir",                      []),
+         W('h', "suru",    [], "faire",                      [])]
+
+adjs = [W('h', "hayai",      [], "rapide / tôt",                ["rapide", "tôt"]),
+        W('h', "tanoshii",   [], "amusant",                     []),
+        W('h', "samui",      [], "froid",                       []),
+        W('h', "sugoi",      [], "incroyable / impressionnant", ["incroyable", "impressionnant"]),
+        W('h', "ii",         [], "bon / bien / correct",        ["bon", "bien", "correct"]),
+        W('h', "kakkoii",    [], "cool / beau-gosse",           ["cool", "beau-gosse"]),
+        W('h', "warui",      [], "mauvais",                     []),
+        W('h', "atsui",      [], "chaud",                       []),
+        W('h', "chiisai",    [], "petit",                       []),
+        W('h', "yasui",      [], "pas cher",                    []),
+        W('h', "omoshiroi",  [], "intéressant",                 []),
+        W('h', "muzukashii", [], "difficile",                   []),
+        W('h', "itai",       [], "douloureux / aïe",            ["douloureux", "aïe"]),
+        W('h', "takai",      [], "cher / haut",                 ["cher", "haut"]),
+        W('h', "kowai",      [], "effrayant",                   []),
+        W('h', "yasashii",   [], "gentil",                      []),
+        W('h', "atarashii",  [], "neuf / nouveau",              ["neuf", "nouveau"]),
+        W('h', "isogashii",  [], "occupé",                      []),
+        W('h', "ookii",      [], "gros / grand",                ["gros", "grand"]),
+        W('h', "oishii",     [], "bon (goût)",                  ["bon"]),
+        W('h', "jôzu",       [], "habille / doué",              ["habille", "doué"]),
+        W('h', "kirei",      [], "beau / belle / joli",         ["beau", "belle", "joli"]),
+        W('h', "suki",       [], "aimé / être aimé",            ["aimé", "être aimé"]),
+        W('h', "kirai",      [], "détesté / être détesté",      ["détesté", "être détesté"]),
+        W('h', "kantan",     [], "simple / facile",             ["simple", "facile"]),
+        W('h', "hen",        [], "bizarre / étrange",           ["bizarre", "étrange"]),
+        W('h', "taihen",     [], "situation difficile",         []),
+        W('h', "anzen",      [], "sûr / en sécurité",           ["sûr", "en sécurité"]),
+        W('h', "genki",      [], "en forme / en bonne santé",   ["en forme", "en bonne santé"]),
+        W('h', "benri",      [], "pratique",                    [])]
+
+conjug_verbs = [W('h', "-u -> -imasu",          ["imasu"],          "forme poli (vb 1er g)",                ["poli vb 1"]),
+                W('h', "-u -> -imasen",         ["imasen"],         "forme négative poli (vb 1er g)",       ["négative poli vb 1"]),
+                W('h', "-u -> -imashita",       ["imashita"],       "forme passé poli (vb 1er g)",          ["passé poli vb 1"]),
+                W('h', "-u -> -imasen deshita", ['imasen deshita'], "forme négative passé poli (vb 1er g)", ["négative passé poli vb 1"]),
+
+                W('h', "-u -> -tta",    ["tta"],   "forme passé (vb 1er g) -u",   ["passé vb 1"]),
+                W('h', "-ru -> -tta",   ["tta"],   "forme passé (vb 1er g) -ru",  ["passé vb 1"]),
+                W('h', "-tsu -> -tta",  ["tta"],   "forme passé (vb 1er g) -tsu", ["passé vb 1"]),
+                W('h', "-gu -> -ida",   ["ida"],   "forme passé (vb 1er g) -gu",  ["passé vb 1"]),
+                W('h', "-bu -> -nda",   ["nda"],   "forme passé (vb 1er g) -bu",  ["passé vb 1"]),
+                W('h', "-mu -> -nda",   ["nda"],   "forme passé (vb 1er g) -mu",  ["passé vb 1"]),
+                W('h', "-nu -> -nda",   ["nda"],   "forme passé (vb 1er g) -nu",  ["passé vb 1"]),
+                W('h', "-su -> -shita", ["shita"], "forme passé (vb 1er g) -su",  ["passé vb 1"]),
+                W('h', "-ku -> -ita",   ["ita"],   "forme passé (vb 1er g) -ku",  ["passé vb 1"]),
+
+                W('h', "-u -> -wanai",   ["wanai"], "forme négative (vb 1er g) -u",   ["négative vb 1"]),
+                W('h', "-_u -> -_anai",  ["anai"],  "forme négative (vb 1er g) -_u",  ["négative vb 1"]),
+                W('h', "-tsu -> -tanai", ["tanai"], "forme négative (vb 1er g) -tsu", ["négative vb 1"]),
+
+                W('h', "-u -> -wanakatta",   ["wanakatta"], "forme négative passé (vb 1er g) -u",   ["négative passé vb 1"]),
+                W('h', "-_u -> -_anakatta",  ["anakatta"],  "forme négative passé (vb 1er g) -_u",  ["négative passé vb 1"]),
+                W('h', "-tsu -> -tanakatta", ["tanakatta"], "forme négative passé (vb 1er g) -tsu", ["négative passé vb 1"]),
+
+                W('h', "-ru -> -masu",          ["masu"],          "forme poli (vb 2e g)",                ["poli vb 2"]),
+                W('h', "-ru -> -masen",         ["masen"],         "forme négative poli (vb 2e g)",       ["négative poli vb 2"]),
+                W('h', "-ru -> -mashita",       ["mashita"],       "forme passé poli (vb 2e g)",          ["passé poli vb 2"]),
+                W('h', "-ru -> -masen deshita", ["masen deshita"], "forme négative passé poli (vb 2e g)", ["négative passé vb 2"]),
+                W('h', "-ru -> -ta",            ["ta"],            "forme passé (vb 2e g)",               ["passé vb 2"]),
+                W('h', "-ru -> -nai",           ["nai"],           "forme négative (vb 2e g)",            ["négative vb 2"]),
+                W('h', "-ru -> -nakatta",       ["nakatta"],       "forme négative passé (vb 2e g)",      ["négative passé vb 2"]),
+
+                W('h', "suru -> shimasu  || kuru -> kimasu",                   ["shimasu / kimasu", "shimasu", "kimasu"],                                     "forme poli (vb 3e g)",                ["poli vb 3"]),
+                W('h', "suru -> shimasen  || kuru -> kimasen",                 ["shimasen / kimasen", "shimasen", "kimasen"],                                 "forme négative poli (vb 3e g)",       ["négative poli vb 3"]),
+                W('h', "suru -> shimashita  || kuru -> kimashita",             ["shimashita / kimashita", "shimashita", "kimashita"],                         "forme passé poli (vb 3e g)",          ["passé poli vb 3"]),
+                W('h', "suru -> shimasen deshita  || kuru -> kimasen deshita", ["shimasen deshita / kimasen deshita", "shimasen deshita", "kimasen deshita"], "forme négative passé poli (vb 3e g)", ["négative passé poli vb 3"]),
+                W('h', "suru -> shita  || kuru -> kita",                       ["shita / kita", "shita", "kita"],                                             "forme passé (vb 3e g)",               ["passé vb 3"]),
+                W('h', "suru -> shinai  || kuru -> kinai",                     ["shinai / kinai", "shinai", "kinai"],                                         "forme négative (vb 3e g)",            ["négative vb 3"]),
+                W('h', "suru -> shinakatta  || kuru -> kinakatta",             ["shinakatta / kinakatta", "shinakatta", "kinakatta"],                         "forme négative passé (vb 3e g)",      ["négative passé vb 3"])]
+
+conjug_adjs = [W('h', "-i -> -kunai",     ["kunai"],     "forme négative (adj en i)",                   ["négative adj i"]),
+               W('h', "-i -> -katta",     ["katta"],     "forme passé (adj en i)",                      ["passé adj i"]),
+               W('h', "-i -> -kunakatta", ["kunakatta"], "forme négative passé (adj en i)",             ["négative passé adj i"]),
+               W('h', "-i -> -sô",        ["sô"],        "forme \"ça a l'air\" (adj en i)",             ["ça à l'air adj i"]),
+               W('h', "-i -> -kunasasô",  ["kunasasô"],  "forme négative de \"ça a l'air\" (adj en i)", ["négative ça à l'air adj i"]),
+               W('h', "-i -> -ku",        ["ku"],        "transformation en adverbe (adj en i)",        ["adverbe adj i"]),
+
+               W('h', "+ janai",     ["janai"],     "forme négative (adj en na)",                   ["négative adj na"]),
+               W('h', "+ datta",     ["datta"],     "forme passé (adj en na)",                      ["passé adj na"]),
+               W('h', "+ janakatta", ["janakatta"], "forme négative passé (adj en na)",             ["négative passé adj na"]),
+               W('h', "+ -sô",       ["sô"],        "forme \"ça a l'air\" (adj en na)",             ["ça à l'air adj na"]),
+               W('h', "+ -janasasô", ["janasasô"],  "forme négative de \"ça a l'air\" (adj en na)", ["négative ça à l'air adj na"]),
+               W('h', "+ ni",        ["ni"],        "transformation en adverbe (adj en na)",        ["adverbe adj na"])]
 
 
-expressions = [W('h', "Sumimasen", "Excusez-moi / Pardon pour le dérangement")]
+expressions = [W('h', "sumimasen", [], "excusez-moi / pardon pour le dérangement", ["excusez-moi", "pardon pour le dérangement"])]
+
 
 
 
@@ -131,8 +401,55 @@ for n in adjs:
 
 
 
+#add an alternative version to "frAlt" and "japAlt", if the word contains accents
+for word in all:
+    #JAP
+    #check alt list
+    if(len(word.japAlt)):
+        for wordAlt in word.japAlt:
+            accentFound = 0
+            for letter in wordAlt:
+                if letter in japAccents:
+                    accentFound =  1
+
+            if accentFound:
+                word.japAlt.append(convertJapAccent(wordAlt))
+
+    accentFound = 0
+    #check the word
+    for letter in word.jap:
+        if letter in japAccents:
+            accentFound =  1
+    if accentFound:
+        word.japAlt.append(convertJapAccent(word.jap))
+
+
+    #FR
+    #check alt list
+    if(len(word.frAlt)):
+        for wordAlt in word.frAlt:
+            accentFound = 0
+            for letter in wordAlt:
+                if letter in eAccents or letter in iAccents:
+                    accentFound =  1
+
+            if accentFound:
+                word.frAlt.append(removeAccents(wordAlt))
+
+    accentFound = 0
+    #check the word
+    for letter in word.fr:
+        if letter in eAccents or letter in iAccents:
+            accentFound =  1
+
+    if accentFound:
+        word.frAlt.append(removeAccents(word.fr))
+
+
+
+
 #pour vérifie que les mots correspondent
-"""
+
 i = 1
 for n in all:
     if (i < 10):
@@ -140,7 +457,26 @@ for n in all:
     print(i, end=" ")
     printW(n)
     i = i + 1
+for n in conjug_verbs:
+    if (i < 10):
+        print(" ", end="")
+    print(i, end=" ")
+    printW(n)
+    i = i + 1
+for n in conjug_adjs:
+    if (i < 10):
+        print(" ", end="")
+    print(i, end=" ")
+    printW(n)
+    i = i + 1
+for n in expressions:
+    if (i < 10):
+        print(" ", end="")
+    print(i, end=" ")
+    printW(n)
+    i = i + 1
 
+"""
 i = 1
 print("\nHiragana :")
 for n in all:
@@ -239,3 +575,7 @@ i = len(all)
 print(i)
 print(all[i - 1])
 """
+
+
+
+
