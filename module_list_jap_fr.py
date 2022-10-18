@@ -16,11 +16,12 @@ verbs = 29
 adjs = 30
 all = 210
 
+#expressions = 32
+expressions = 1
+
 conjug_verbs = 33
 conjug_adjs = 12
 
-#expressions = 32
-expressions = 1
 """
 
 
@@ -91,6 +92,7 @@ def convertJapAccent(word):
 
 #mots jap
 all = []
+#imin = 0, imax = 9
 transports = [W('h', "kuruma",     [], "voiture", []),
               W('k', "sukûtâ",     [], "scooter", []),
               W('h', "jitensha",   [], "vélo",    []),
@@ -101,7 +103,8 @@ transports = [W('h', "kuruma",     [], "voiture", []),
               W('h', "fune",       [], "bateau",  []),
               W('k', "baiku",      [], "moto",    []),
               W('k', "basu",       [], "bus",     [])]
-            
+
+#imin = 10, imax = 20
 colors = [W('h', "shiro",    [], "blanc",  []),
           W('h', "chairo",   [], "marron", []),
           W('h', "kîro",     [], "jaune",  []),
@@ -114,6 +117,7 @@ colors = [W('h', "shiro",    [], "blanc",  []),
           W('h', "midori",   [], "vert",   []),
           W('k', "pinku",    [], "rose",   [])]
 
+#imin = 21, imax = 40
 animals = [W('h', "inu",      [], "chien",    []),
            W('h', "ahiru",    [], "canard",   []),
            W('h', "usagi",    [], "lapin",    []),
@@ -135,6 +139,7 @@ animals = [W('h', "inu",      [], "chien",    []),
            W('k', "koara",    [], "koala",    []),
            W('k', "panda",    [], "panda",    [])]
 
+#imin = 41, imax = 47
 weather = [W('h', "kaminari", [], "orageux",     []),
            W('h', "kumori",   [], "nuageux",     []),
            W('h', "hare",     [], "ensoleillé",  []),
@@ -143,6 +148,7 @@ weather = [W('h', "kaminari", [], "orageux",     []),
            W('h', "atsui",    [], "chaud",       []),
            W('h', "ame",      [], "pluvieux",    [])]
 
+#imin = 48, imax = 58
 clothes = [W('h', "kutsushita", [], "chaussettes",     []),
            W('h', "kutsu",      [], "chaussures",      []),
            W('h', "jîpan",      [], "jeans",           []),
@@ -155,6 +161,7 @@ clothes = [W('h', "kutsushita", [], "chaussettes",     []),
            W('h', "doresu",     [], "robe",            []),
            W('h', "mizugi",     [], "maillot de bain", [])]
 
+#imin = 59, imax = 92
 food = [W('h', "tamanegi",     [], "oignon",              []),
         W('h', "budô",         [], "raisin",              []),
         W('h', "kamoniku",     [], "canard (viande)",     ["canard"]),
@@ -190,6 +197,7 @@ food = [W('h', "tamanegi",     [], "oignon",              []),
         W('h', "butaniku",     [], "porc (viande)",       ["porc"]),
         W('k', "painappuru",   [], "ananas",              [])]
 
+#imin = 93, imax = 113
 house = [W('k', "ea kondishonâ",    ["eakon"],   "climatiseur",         []),
          W('k', "kamera",           [],          "appareil photo",      []),
          W('k', "karendâ",          [],          "calendrier",          []),
@@ -212,6 +220,7 @@ house = [W('k', "ea kondishonâ",    ["eakon"],   "climatiseur",         []),
          W('k', "ranpu",            [],          "lampe",               []),
          W('k', "rimôtokontorôrâ",  ["rimokon"], "télécommande",        [])]
 
+#imin = 114, imax = 149
 divers = [W('h', "ai",               [], "amour",                  []),
           W('h', "ue",               [], "en haut",                ["haut"]),
           W('h', "aoi",              [], "bleu (adjectif)",        ["bleu"]),
@@ -249,6 +258,7 @@ divers = [W('h', "ai",               [], "amour",                  []),
           W('h', "ryokô",            [], "voyage",                 []),
           W('h', "sanmyaku",         [], "chaîne de montagnes",    [])]
 
+#imin = 150, imax = 178
 verbs = [W('h', "hanasu",  [], "parler",                     []),
          W('h', "yomu",    [], "lire",                       []),
          W('h', "asobu",   [], "jouer / se divertir",        ["jouer", "se divertir"]),
@@ -279,6 +289,7 @@ verbs = [W('h', "hanasu",  [], "parler",                     []),
          W('h', "kuru",    [], "venir",                      []),
          W('h', "suru",    [], "faire",                      [])]
 
+#imin = 179, imax = 208
 adjs = [W('h', "hayai",      [], "rapide / tôt",                ["rapide", "tôt"]),
         W('h', "tanoshii",   [], "amusant",                     []),
         W('h', "samui",      [], "froid",                       []),
@@ -287,7 +298,7 @@ adjs = [W('h', "hayai",      [], "rapide / tôt",                ["rapide", "tô
         W('h', "kakkoii",    [], "cool / beau-gosse",           ["cool", "beau-gosse"]),
         W('h', "warui",      [], "mauvais",                     []),
         W('h', "atsui",      [], "chaud",                       []),
-        W('h', "chiisai",    [], "petit",                       []),
+        W('h', "chîsai",     [], "petit",                       []),
         W('h', "yasui",      [], "pas cher",                    []),
         W('h', "omoshiroi",  [], "intéressant",                 []),
         W('h', "muzukashii", [], "difficile",                   []),
@@ -297,7 +308,7 @@ adjs = [W('h', "hayai",      [], "rapide / tôt",                ["rapide", "tô
         W('h', "yasashii",   [], "gentil",                      []),
         W('h', "atarashii",  [], "neuf / nouveau",              ["neuf", "nouveau"]),
         W('h', "isogashii",  [], "occupé",                      []),
-        W('h', "ookii",      [], "gros / grand",                ["gros", "grand"]),
+        W('h', "ôkii",       [], "gros / grand",                ["gros", "grand"]),
         W('h', "oishii",     [], "bon (goût)",                  ["bon"]),
         W('h', "jôzu",       [], "habille / doué",              ["habille", "doué"]),
         W('h', "kirei",      [], "beau / belle / joli",         ["beau", "belle", "joli"]),
@@ -310,10 +321,13 @@ adjs = [W('h', "hayai",      [], "rapide / tôt",                ["rapide", "tô
         W('h', "genki",      [], "en forme / en bonne santé",   ["en forme", "en bonne santé"]),
         W('h', "benri",      [], "pratique",                    [])]
 
-conjug_verbs = [W('h', "-u -> -imasu",          ["imasu"],          "forme poli (vb 1er g)",                ["poli vb 1"]),
-                W('h', "-u -> -imasen",         ["imasen"],         "forme négative poli (vb 1er g)",       ["négative poli vb 1"]),
-                W('h', "-u -> -imashita",       ["imashita"],       "forme passé poli (vb 1er g)",          ["passé poli vb 1"]),
-                W('h', "-u -> -imasen deshita", ['imasen deshita'], "forme négative passé poli (vb 1er g)", ["négative passé poli vb 1"]),
+#imin = 209, imax = 209
+expressions = [W('h', "sumimasen", [], "excusez-moi / pardon pour le dérangement", ["excusez-moi", "pardon pour le dérangement"])]
+
+conjug_verbs = [W('h', "-u -> -imasu",          ["imasu"],          "forme polie (vb 1er g)",                ["polie vb 1"]),
+                W('h', "-u -> -imasen",         ["imasen"],         "forme négative polie (vb 1er g)",       ["négative polie vb 1"]),
+                W('h', "-u -> -imashita",       ["imashita"],       "forme passé polie (vb 1er g)",          ["passé polie vb 1"]),
+                W('h', "-u -> -imasen deshita", ['imasen deshita'], "forme négative passé polie (vb 1er g)", ["négative passé polie vb 1"]),
 
                 W('h', "-u -> -tta",    ["tta"],   "forme passé (vb 1er g) -u",   ["passé vb 1"]),
                 W('h', "-ru -> -tta",   ["tta"],   "forme passé (vb 1er g) -ru",  ["passé vb 1"]),
@@ -333,18 +347,18 @@ conjug_verbs = [W('h', "-u -> -imasu",          ["imasu"],          "forme poli 
                 W('h', "-_u -> -_anakatta",  ["anakatta"],  "forme négative passé (vb 1er g) -_u",  ["négative passé vb 1"]),
                 W('h', "-tsu -> -tanakatta", ["tanakatta"], "forme négative passé (vb 1er g) -tsu", ["négative passé vb 1"]),
 
-                W('h', "-ru -> -masu",          ["masu"],          "forme poli (vb 2e g)",                ["poli vb 2"]),
-                W('h', "-ru -> -masen",         ["masen"],         "forme négative poli (vb 2e g)",       ["négative poli vb 2"]),
-                W('h', "-ru -> -mashita",       ["mashita"],       "forme passé poli (vb 2e g)",          ["passé poli vb 2"]),
-                W('h', "-ru -> -masen deshita", ["masen deshita"], "forme négative passé poli (vb 2e g)", ["négative passé vb 2"]),
+                W('h', "-ru -> -masu",          ["masu"],          "forme polie (vb 2e g)",                ["polie vb 2"]),
+                W('h', "-ru -> -masen",         ["masen"],         "forme négative polie (vb 2e g)",       ["négative polie vb 2"]),
+                W('h', "-ru -> -mashita",       ["mashita"],       "forme passé polie (vb 2e g)",          ["passé polie vb 2"]),
+                W('h', "-ru -> -masen deshita", ["masen deshita"], "forme négative passé polie (vb 2e g)", ["négative passé vb 2"]),
                 W('h', "-ru -> -ta",            ["ta"],            "forme passé (vb 2e g)",               ["passé vb 2"]),
                 W('h', "-ru -> -nai",           ["nai"],           "forme négative (vb 2e g)",            ["négative vb 2"]),
                 W('h', "-ru -> -nakatta",       ["nakatta"],       "forme négative passé (vb 2e g)",      ["négative passé vb 2"]),
 
-                W('h', "suru -> shimasu  || kuru -> kimasu",                   ["shimasu / kimasu", "shimasu", "kimasu"],                                     "forme poli (vb 3e g)",                ["poli vb 3"]),
-                W('h', "suru -> shimasen  || kuru -> kimasen",                 ["shimasen / kimasen", "shimasen", "kimasen"],                                 "forme négative poli (vb 3e g)",       ["négative poli vb 3"]),
-                W('h', "suru -> shimashita  || kuru -> kimashita",             ["shimashita / kimashita", "shimashita", "kimashita"],                         "forme passé poli (vb 3e g)",          ["passé poli vb 3"]),
-                W('h', "suru -> shimasen deshita  || kuru -> kimasen deshita", ["shimasen deshita / kimasen deshita", "shimasen deshita", "kimasen deshita"], "forme négative passé poli (vb 3e g)", ["négative passé poli vb 3"]),
+                W('h', "suru -> shimasu  || kuru -> kimasu",                   ["shimasu / kimasu", "shimasu", "kimasu"],                                     "forme polie (vb 3e g)",                ["polie vb 3"]),
+                W('h', "suru -> shimasen  || kuru -> kimasen",                 ["shimasen / kimasen", "shimasen", "kimasen"],                                 "forme négative polie (vb 3e g)",       ["négative polie vb 3"]),
+                W('h', "suru -> shimashita  || kuru -> kimashita",             ["shimashita / kimashita", "shimashita", "kimashita"],                         "forme passé polie (vb 3e g)",          ["passé polie vb 3"]),
+                W('h', "suru -> shimasen deshita  || kuru -> kimasen deshita", ["shimasen deshita / kimasen deshita", "shimasen deshita", "kimasen deshita"], "forme négative passé polie (vb 3e g)", ["négative passé polie vb 3"]),
                 W('h', "suru -> shita  || kuru -> kita",                       ["shita / kita", "shita", "kita"],                                             "forme passé (vb 3e g)",               ["passé vb 3"]),
                 W('h', "suru -> shinai  || kuru -> kinai",                     ["shinai / kinai", "shinai", "kinai"],                                         "forme négative (vb 3e g)",            ["négative vb 3"]),
                 W('h', "suru -> shinakatta  || kuru -> kinakatta",             ["shinakatta / kinakatta", "shinakatta", "kinakatta"],                         "forme négative passé (vb 3e g)",      ["négative passé vb 3"])]
@@ -364,7 +378,6 @@ conjug_adjs = [W('h', "-i -> -kunai",     ["kunai"],     "forme négative (adj e
                W('h', "+ ni",        ["ni"],        "transformation en adverbe (adj en na)",        ["adverbe adj na"])]
 
 
-expressions = [W('h', "sumimasen", [], "excusez-moi / pardon pour le dérangement", ["excusez-moi", "pardon pour le dérangement"])]
 
 
 
@@ -397,11 +410,14 @@ for n in verbs:
     all.append(n)
 for n in adjs:
     all.append(n)
+for n in expressions:
+    all.append(n)
 
 
 
 
 #add an alternative version to "frAlt" and "japAlt", if the word contains accents
+#in All
 for word in all:
     #JAP
     #check alt list
@@ -421,7 +437,7 @@ for word in all:
         if letter in japAccents:
             accentFound =  1
     if accentFound:
-        word.japAlt.append(convertJapAccent(word.jap))
+        word.japAlt.insert(0, convertJapAccent(word.jap))
 
 
     #FR
@@ -434,7 +450,8 @@ for word in all:
                     accentFound =  1
 
             if accentFound:
-                word.frAlt.append(removeAccents(wordAlt))
+                #word.frAlt.append(removeAccents(wordAlt))
+                word.frAlt.insert(word.frAlt.index(wordAlt) + 1, removeAccents(wordAlt))
 
     accentFound = 0
     #check the word
@@ -443,20 +460,114 @@ for word in all:
             accentFound =  1
 
     if accentFound:
-        word.frAlt.append(removeAccents(word.fr))
+        word.frAlt.insert(0, removeAccents(word.fr))
 
+
+#in conjug_verbs
+for word in conjug_verbs:
+    #JAP
+    #check alt list
+    if(len(word.japAlt)):
+        for wordAlt in word.japAlt:
+            accentFound = 0
+            for letter in wordAlt:
+                if letter in japAccents:
+                    accentFound =  1
+
+            if accentFound:
+                #word.japAlt.append(convertJapAccent(wordAlt))
+                word.japAlt.insert(word.japAlt.index(wordAlt) + 1, convertJapAccent(wordAlt))
+
+    accentFound = 0
+    #check the word
+    for letter in word.jap:
+        if letter in japAccents:
+            accentFound =  1
+    if accentFound:
+        word.japAlt.insert(0, convertJapAccent(word.jap))
+
+
+    #FR
+    #check alt list
+    if(len(word.frAlt)):
+        for wordAlt in word.frAlt:
+            accentFound = 0
+            for letter in wordAlt:
+                if letter in eAccents or letter in iAccents:
+                    accentFound =  1
+
+            if accentFound:
+                # word.frAlt.append(removeAccents(wordAlt))
+                word.frAlt.insert(word.frAlt.index(wordAlt) + 1, removeAccents(wordAlt))
+
+    accentFound = 0
+    #check the word
+    for letter in word.fr:
+        if letter in eAccents or letter in iAccents:
+            accentFound =  1
+
+    if accentFound:
+        word.frAlt.insert(0, removeAccents(word.fr))
+
+
+#in conjug_adjs
+for word in conjug_adjs:
+    #JAP
+    #check alt list
+    if(len(word.japAlt)):
+        for wordAlt in word.japAlt:
+            accentFound = 0
+            for letter in wordAlt:
+                if letter in japAccents:
+                    accentFound =  1
+
+            if accentFound:
+                # word.japAlt.append(convertJapAccent(wordAlt))
+                word.japAlt.insert(word.japAlt.index(wordAlt) + 1, convertJapAccent(wordAlt))
+
+    accentFound = 0
+    #check the word
+    for letter in word.jap:
+        if letter in japAccents:
+            accentFound =  1
+    if accentFound:
+        word.japAlt.insert(0, convertJapAccent(word.jap))
+
+
+    #FR
+    #check alt list
+    if(len(word.frAlt)):
+        for wordAlt in word.frAlt:
+            accentFound = 0
+            for letter in wordAlt:
+                if letter in eAccents or letter in iAccents:
+                    accentFound =  1
+
+            if accentFound:
+                # word.frAlt.append(removeAccents(wordAlt))
+                word.frAlt.insert(word.frAlt.index(wordAlt) + 1, removeAccents(wordAlt))
+
+    accentFound = 0
+    #check the word
+    for letter in word.fr:
+        if letter in eAccents or letter in iAccents:
+            accentFound =  1
+
+    if accentFound:
+        word.frAlt.insert(0, removeAccents(word.fr))
 
 
 
 #pour vérifie que les mots correspondent
-
-i = 1
+"""
+i = 0
 for n in all:
     if (i < 10):
         print(" ", end="")
     print(i, end=" ")
     printW(n)
     i = i + 1
+
 for n in conjug_verbs:
     if (i < 10):
         print(" ", end="")
@@ -469,12 +580,7 @@ for n in conjug_adjs:
     print(i, end=" ")
     printW(n)
     i = i + 1
-for n in expressions:
-    if (i < 10):
-        print(" ", end="")
-    print(i, end=" ")
-    printW(n)
-    i = i + 1
+"""
 
 """
 i = 1
@@ -555,6 +661,11 @@ i = len(adjs)
 print(i)
 print(adjs[i - 1])
 
+print("\nExpressions")
+i = len(expressions)
+print(i)
+print(expressions[i - 1])
+
 print("\nConjugaison verbs")
 i = len(conjug_verbs)
 print(i)
@@ -565,11 +676,6 @@ i = len(conjug_adjs)
 print(i)
 print(conjug_adjs[i - 1])
 
-print("\nExpressions")
-i = len(expressions)
-print(i)
-print(expressions[i - 1])
-
 print("\nAll")
 i = len(all)
 print(i)
@@ -578,4 +684,148 @@ print(all[i - 1])
 
 
 
+
+"""
+import random
+
+
+category = "A"
+
+
+iIndexInAll = 0
+borneMin = 0
+borneMax = len(all) - 1
+#origin = '' #= word.kana
+
+#a word is randomly choose, bases on the category
+if(category == "A"):
+    iIndexInAll = random.randint(0, len(all) - 1)
+
+
+
+
+borneMin = 0
+borneMax = len(transports) - 1
+if(category == "t"):
+    iIndexInAll = random.randint(borneMin, borneMax)
+
+borneMin = borneMax + 1
+borneMax += len(colors)
+if(category == "c"):
+    iIndexInAll = random.randint(borneMin, borneMax)
+
+borneMin = borneMax + 1
+borneMax += len(animals)
+if(category == "a"):
+    iIndexInAll = random.randint(borneMin, borneMax)
+
+borneMin = borneMax + 1
+borneMax += len(weather)
+if(category == "w"):
+    iIndexInAll = random.randint(borneMin, borneMax)
+
+borneMin = borneMax + 1
+borneMax += len(clothes)
+if(category == "cl"):
+    iIndexInAll = random.randint(borneMin, borneMax)
+
+borneMin = borneMax + 1
+borneMax += len(food)
+if(category == "f"):
+    iIndexInAll = random.randint(borneMin, borneMax)
+
+borneMin = borneMax + 1
+borneMax += len(house)
+if(category == "h"):
+    iIndexInAll = random.randint(borneMin, borneMax)
+
+borneMin = borneMax + 1
+borneMax += len(divers)
+if(category == "d"):
+    iIndexInAll = random.randint(borneMin, borneMax)
+
+borneMin = borneMax + 1
+borneMax += len(verbs)
+if(category == "vb"):
+    iIndexInAll = random.randint(borneMin, borneMax)
+
+borneMin = borneMax + 1
+borneMax += len(adjs)
+if(category == "adj"):
+    iIndexInAll = random.randint(borneMin, borneMax)
+
+
+borneMin = borneMax + 1
+borneMax += len(expressions)
+if(category == "e"):
+    iIndexInAll = random.randint(borneMin, borneMax)
+
+if(category == "cv"):
+    iIndexInAll = random.randint(0, len(conjug_verbs) - 1)
+if(category == "ca"):
+    iIndexInAll = random.randint(0, len(conjug_adjs) - 1)
+
+
+"""
+
+
+
+"""
+for i in range(borneMin, borneMax + 1):
+    print(f"{i} ", end="")
+    printW(all[i])
+"""
+
+
+
+"""
+#imin = 0, imax = 9
+transports = [W('h', "kuruma",     [], "voiture", []),
+              W('k', "basu",       [], "bus",     [])]
+
+#imin = 10, imax = 20
+colors = [W('h', "shiro",    [], "blanc",  []),
+          W('k', "pinku",    [], "rose",   [])]
+
+#imin = 21, imax = 40
+animals = [W('h', "inu",      [], "chien",    []),
+           W('k', "panda",    [], "panda",    [])]
+
+#imin = 41, imax = 47
+weather = [W('h', "kaminari", [], "orageux",     []),
+           W('h', "ame",      [], "pluvieux",    [])]
+
+#imin = 48, imax = 58
+clothes = [W('h', "kutsushita", [], "chaussettes",     []),
+           W('h', "mizugi",     [], "maillot de bain", [])]
+
+#imin = 59, imax = 92
+food = [W('h', "tamanegi",     [], "oignon",              []),
+        W('k', "painappuru",   [], "ananas",              [])]
+
+#imin = 93, imax = 113
+house = [W('k', "ea kondishonâ",    ["eakon"],   "climatiseur",         []),
+         W('k', "rimôtokontorôrâ",  ["rimokon"], "télécommande",        [])]
+
+#imin = 114, imax = 149
+divers = [W('h', "ai",               [], "amour",                  []),
+          W('h', "sanmyaku",         [], "chaîne de montagnes",    [])]
+
+#imin = 150, imax = 178
+verbs = [W('h', "hanasu",  [], "parler",                     []),
+         W('h', "suru",    [], "faire",                      [])]
+
+#imin = 179, imax = 208
+adjs = [W('h', "hayai",      [], "rapide / tôt",                ["rapide", "tôt"]),
+        W('h', "benri",      [], "pratique",                    [])]
+
+#imin = 209, imax = 209
+expressions = [W('h', "sumimasen", [], "excusez-moi / pardon pour le dérangement", ["excusez-moi", "pardon pour le dérangement"])]
+
+conjug_verbs = [W('h', "-u -> -imasu",          ["imasu"],          "forme polie (vb 1er g)",                ["polie vb 1"]),                                 "forme négative (vb 3e g)",            ["négative vb 3"]),
+                W('h', "suru -> shinakatta  || kuru -> kinakatta",             ["shinakatta / kinakatta", "shinakatta", "kinakatta"],                         "forme négative passé (vb 3e g)",      ["négative passé vb 3"])]
+
+conjug_adjs = [W('h', "-i -> -kunai",     ["kunai"],     "forme négative (adj en i)",                   ["négative adj i"]),
+               W('h', "+ ni",        ["ni"],        "transformation en adverbe (adj en na)",        ["adverbe adj na"])]
+"""
 

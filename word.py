@@ -1,7 +1,8 @@
 #jap_to_fr.py
+from nis import cat
 import random
 import module_romaji_to_kana
-from module_list_jap_fr import * #class W(kana, jap, fr) => ex: W('h', "kuro", "noir")
+from module_list_jap_fr import * #class W(kana, jap, japAlt, fr, frAlt) => ex: W('h', "îe", ["iie"], "non", [])
 
 
 def presentation():
@@ -88,6 +89,11 @@ def printOptions(mod, category, lang):
             print(" Random kana")
     print("=============================")
 
+def isAnswerInAlt(answer, alt):
+    if answer in alt:
+        return 1
+
+    return 0
     
 
 
@@ -129,9 +135,10 @@ Can have multiple ones
 
         #input of languages choice
         while(not len(lang)):
-            langList = ['f', 'r', 'h', 'k', 'b'] #f = french, r = romaji, h = hira, k = kata, b = hira/kata (randomly)
-            #user input
+            #user input (until input is allow)
             lang = input(">")
+
+            langList = ['f', 'r', 'h', 'k', 'b'] #f = french, r = romaji, h = hira, k = kata, b = hira/kata (randomly)
             for letter in lang:
                 #clear user input if one letter is not allow
                 if not letter in langList:
@@ -139,14 +146,13 @@ Can have multiple ones
                     break
 
 
-    #CATEGORY CHOICE
+    #characters CATEGORY CHOICE
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    categList = ["A", "t", "c", "a", "w", "cl", "f", "h", "d", "vb", "adj", "cv", "ca", "e"]
     category = ""
 
     print("""
 ========= Choose category ===
-All (A) (except the last 3)
+All (A) (except the last 2)
 
 Transports (t) | Colors (c)
 Animals (a)    | Weather (w)
@@ -155,89 +161,118 @@ House (h)      |
 Divers (d)     |
 
 Verbs (vb) | Adjectives (adj)
+Expressions (e)
 
 Conjug of verbs (cv)
 Conjug of adjectives (ca)
-Expressions (e)
 =============================""")
 
+    categList = ["A", "t", "c", "a", "w", "cl", "f", "h", "d", "vb", "adj", "e", "cv", "ca"]
     while(not category in categList):
         category = input(">")
 
-    #var used for Game mod
+
     correct = 0 
     wrong = 0
     streak = 0
-    current_streak = 0
-
+    streakCurrent = 0
     stop = ""
     while(not stop == "STOP"):
-        word_romaji = "[none]"
-        word_fr = "[none]"
-        #origin = '' #= word.kana
+        iIndex = 0
+        borneMin = 0
+        borneMax = len(all) -1
         
         #a word is randomly choose, bases on the category
         if(category == "A"):
-            i = random.randint(0, len(all) - 1)
-            word_romaji = all[i].jap
-            word_fr = all[i].fr
-        elif(category == "t"):
-            i = random.randint(0, len(transports) - 1)
-            word_romaji = transports[i].jap
-            word_fr = transports[i].fr
-        elif(category == "c"):
-            i = random.randint(0, len(colors) - 1)
-            word_romaji = colors[i].jap
-            word_fr = colors[i].fr
-        elif(category == "a"):
-            i = random.randint(0, len(animals) - 1)
-            word_romaji = animals[i].jap
-            word_fr = animals[i].fr
-        elif(category == "w"):
-            i = random.randint(0, len(weather) - 1)
-            word_romaji = weather[i].jap
-            word_fr = weather[i].fr
-        elif(category == "cl"):
-            i = random.randint(0, len(clothes) - 1)
-            word_romaji = clothes[i].jap
-            word_fr = clothes[i].fr
-        elif(category == "f"):
-            i = random.randint(0, len(food) - 1)
-            word_romaji = food[i].jap
-            word_fr = food[i].fr
-        elif(category == "h"):
-            i = random.randint(0, len(house) - 1)
-            word_romaji = house[i].jap
-            word_fr = house[i].fr
-        elif(category == "d"):
-            i = random.randint(0, len(divers) - 1)
-            word_romaji = divers[i].jap
-            word_fr = divers[i].fr
-        elif(category == "vb"):
-            i = random.randint(0, len(verbs) - 1)
-            word_romaji = verbs[i].jap
-            word_fr = verbs[i].fr
-        elif(category == "adj"):
-            i = random.randint(0, len(adjs) - 1)
-            word_romaji = adjs[i].jap
-            word_fr = adjs[i].fr
-        elif(category == "cv"):
-            i = random.randint(0, len(conjug_verbs) - 1)
-            word_romaji = conjug_verbs[i].jap
-            word_fr = conjug_verbs[i].fr
-        elif(category == "ca"):
-            i = random.randint(0, len(conjug_adjs) - 1)
-            word_romaji = conjug_adjs[i].jap
-            word_fr = conjug_adjs[i].fr
-        elif(category == "e"):
-            i = random.randint(0, len(expressions) - 1)
-            word_romaji = expressions[i].jap
-            word_fr = expressions[i].fr
-        else:
-            print(word_romaji)
-            print("Restarting...")
+            iIndex = random.randint(0, len(all) - 1)
+
+        borneMin = 0
+        borneMax = len(transports) -1
+        if(category == "t"):
+            iIndex = random.randint(borneMin, borneMax)
+
+        borneMin = borneMax + 1
+        borneMax += len(colors)
+        if(category == "c"):
+            iIndex = random.randint(borneMin, borneMax)
+
+        borneMin = borneMax + 1
+        borneMax += len(animals)
+        if(category == "a"):
+            iIndex = random.randint(borneMin, borneMax)
+
+        borneMin = borneMax + 1
+        borneMax += len(weather)
+        if(category == "w"):
+            iIndex = random.randint(borneMin, borneMax)
+
+        borneMin = borneMax + 1
+        borneMax += len(clothes)
+        if(category == "cl"):
+            iIndex = random.randint(borneMin, borneMax)
+
+        borneMin = borneMax + 1
+        borneMax += len(food)
+        if(category == "f"):
+            iIndex = random.randint(borneMin, borneMax)
+
+        borneMin = borneMax + 1
+        borneMax += len(house)
+        if(category == "h"):
+            iIndex = random.randint(borneMin, borneMax)
+
+        borneMin = borneMax + 1
+        borneMax += len(divers)
+        if(category == "d"):
+            iIndex = random.randint(borneMin, borneMax)
+
+        borneMin = borneMax + 1
+        borneMax += len(verbs)
+        if(category == "vb"):
+            iIndex = random.randint(borneMin, borneMax)
+
+        borneMin = borneMax + 1
+        borneMax += len(adjs)
+        if(category == "adj"):
+            iIndex = random.randint(borneMin, borneMax)
+
+        borneMin = borneMax + 1
+        borneMax += len(expressions)
+        print(borneMin, borneMax)
+        if(category == "e"):
+            iIndex = random.randint(borneMin, borneMax)
+
+        if(category == "cv"):
+            iIndex = random.randint(0, len(conjug_verbs) - 1)
+        if(category == "ca"):
+            iIndex = random.randint(0, len(conjug_adjs) - 1)
+
+        if(category not in categList):
+            input("Error...\nRestarting...")
             main(mod)
         
+        word = W('', "", [], "", [])
+        word_romaji = "[none]"
+        word_fr = "[none]"
+        #origin = '' #= word.kana
+
+        if(category in categList and category != "cv" and category != "ca"):
+            word = all[iIndex]
+            word_romaji = word.jap
+            word_fr = word.fr
+        if(category == "cv"):
+            word = conjug_verbs[iIndex]
+            word_romaji = word.jap
+            word_fr = word.fr
+        if(category == "ca"):
+            word = conjug_adjs[iIndex]
+            word_romaji = word.jap
+            word_fr = word.fr
+
+
+
+
+
         word_hira = module_romaji_to_kana.romaji_to_hira(word_romaji)
         word_kata = module_romaji_to_kana.romaji_to_kata(word_romaji)
 
@@ -268,13 +303,14 @@ Expressions (e)
 
         #GAME MOD process
         if(mod == "g"):
+
             print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
             printOptions(mod, category, lang)
             print(f"""================== Scores ===
  Correct:{correct}
  Wrong:{wrong}
  Best streak:{streak}
- Streak:{current_streak}
+ Streak:{streakCurrent}
 =============================
 Tap "STOP" to end\n\n""")
 
@@ -296,17 +332,25 @@ Tap "STOP" to end\n\n""")
                 #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
-                #wrong guess
-                if(not guess == str.lower(word_romaji)):
-                    input(f"""Oupsi. C'était "{word_romaji}"\n""")
-                    wrong += 1
-                    if(current_streak > streak):
-                        streak = current_streak
-                    current_streak = 0
                 #good guess
-                elif(guess == str.lower(word_romaji)):
+                if(guess == str.lower(word_romaji) or isAnswerInAlt(guess, word.japAlt)):
                     correct += 1
-                    current_streak += 1
+                    streakCurrent += 1
+                #wrong guess
+                else:
+                    print(f"Oupsi. C'était \"{word_romaji}\"")
+                    wrong += 1
+                    if(streakCurrent > streak):
+                        streak = streakCurrent
+                    streakCurrent = 0
+
+                    if(len(word.japAlt)):
+                        if(input("Wanna see alternative ? (y/Enter)>") == 'y'):
+                            for n in word.japAlt:
+                                print(f" {n}")
+                            input()
+                    else:
+                        input()
 
             elif(lang == "rf"):
                 #user guess
@@ -316,17 +360,25 @@ Tap "STOP" to end\n\n""")
                 #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
-                #wrong guess
-                if(not guess == str.lower(word_fr)):
-                    input(f"""Oupsi. C'était "{word_fr}"\n""")
-                    wrong += 1
-                    if(current_streak > streak):
-                        streak = current_streak
-                    current_streak = 0
                 #good guess
-                elif(guess == str.lower(word_fr)):
+                elif(guess == str.lower(word_fr) or isAnswerInAlt(guess, word.frAlt)):
                     correct += 1
-                    current_streak += 1
+                    streakCurrent += 1
+                #wrong guess
+                else:
+                    print(f"Oupsi. C'était \"{word_fr}\"")
+                    wrong += 1
+                    if(streakCurrent > streak):
+                        streak = streakCurrent
+                    streakCurrent = 0
+
+                    if(len(word.frAlt)):
+                        if(input("Wanna see alternative ? (y/Enter)>") == 'y'):
+                            for n in word.frAlt:
+                                print(f" {n}")
+                            input()
+                    else:
+                        input()
 
             elif(lang == "hr"):
                 #user guess
@@ -336,17 +388,25 @@ Tap "STOP" to end\n\n""")
                 #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
-                #wrong guess
-                if(not guess == str.lower(word_romaji)):
-                    input(f"""Oupsi. C'était "{word_romaji}"\n""")
-                    wrong += 1
-                    if(current_streak > streak):
-                        streak = current_streak
-                    current_streak = 0
                 #good guess
-                elif(guess == str.lower(word_romaji)):
+                if(guess == str.lower(word_romaji) or isAnswerInAlt(guess, word.japAlt)):
                     correct += 1
-                    current_streak += 1
+                    streakCurrent += 1
+                #wrong guess
+                else:
+                    print(f"Oupsi. C'était \"{word_romaji}\"")
+                    wrong += 1
+                    if(streakCurrent > streak):
+                        streak = streakCurrent
+                    streakCurrent = 0
+
+                    if(len(word.japAlt)):
+                        if(input("Wanna see alternative ? (y/Enter)>") == 'y'):
+                            for n in word.japAlt:
+                                print(f" {n}")
+                            input()
+                    else:
+                        input()
 
             elif(lang == "hf"):
                 #user guess
@@ -356,17 +416,25 @@ Tap "STOP" to end\n\n""")
                 #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
-                #wrong guess
-                if(not guess == str.lower(word_fr)):
-                    input(f"""Oupsi. C'était "{word_fr}"\n""")
-                    wrong += 1
-                    if(current_streak > streak):
-                        streak = current_streak
-                    current_streak = 0
-                #user guess
-                elif(guess == str.lower(word_fr)):
+                #good guess
+                if(guess == str.lower(word_fr) or isAnswerInAlt(guess, word.frAlt)):
                     correct += 1
-                    current_streak += 1
+                    streakCurrent += 1
+                #wrong guess
+                else:
+                    print(f"Oupsi. C'était \"{word_fr}\"")
+                    wrong += 1
+                    if(streakCurrent > streak):
+                        streak = streakCurrent
+                    streakCurrent = 0
+
+                    if(len(word.frAlt)):
+                        if(input("Wanna see alternative ? (y/Enter)>") == 'y'):
+                            for n in word.frAlt:
+                                print(f" {n}")
+                            input()
+                    else:
+                        input()
 
             elif(lang == "kr"):
                 #user guess
@@ -376,17 +444,25 @@ Tap "STOP" to end\n\n""")
                 #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
-                #wrong guess
-                if(not guess == str.lower(word_romaji)):
-                    input(f"""Oupsi. C'était "{word_romaji}"\n""")
-                    wrong += 1
-                    if(current_streak > streak):
-                        streak = current_streak
-                    current_streak = 0
-                #user guess
-                elif(guess == str.lower(word_romaji)):
+                #good guess
+                if(guess == str.lower(word_romaji) or isAnswerInAlt(guess, word.japAlt)):
                     correct += 1
-                    current_streak += 1
+                    streakCurrent += 1
+                #wrong guess
+                else:
+                    print(f"Oupsi. C'était \"{word_romaji}\"")
+                    wrong += 1
+                    if(streakCurrent > streak):
+                        streak = streakCurrent
+                    streakCurrent = 0
+
+                    if(len(word.japAlt)):
+                        if(input("Wanna see alternative ? (y/Enter)>") == 'y'):
+                            for n in word.japAlt:
+                                print(f" {n}")
+                            input()
+                    else:
+                        input()
 
             elif(lang == "kf"):
                 #user guess
@@ -395,17 +471,25 @@ Tap "STOP" to end\n\n""")
                 #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
-                #wrong guess
-                if(not guess == str.lower(word_fr)):
-                    input(f"""Oupsi. C'était "{word_fr}"\n""")
-                    wrong += 1
-                    if(current_streak > streak):
-                        streak = current_streak
-                    current_streak = 0
-                #user guess
-                elif(guess == str.lower(word_fr)):
+                #good guess
+                if(guess == str.lower(word_fr) or isAnswerInAlt(guess, word.frAlt)):
                     correct += 1
-                    current_streak += 1
+                    streakCurrent += 1
+                #wrong guess
+                else:
+                    print(f"Oupsi. C'était \"{word_fr}\"")
+                    wrong += 1
+                    if(streakCurrent > streak):
+                        streak = streakCurrent
+                    streakCurrent = 0
+
+                    if(len(word.frAlt)):
+                        if(input("Wanna see alternative ? (y/Enter)>") == 'y'):
+                            for n in word.frAlt:
+                                print(f" {n}")
+                            input()
+                    else:
+                        input()
             
             #reset language
             lang = saveLang
