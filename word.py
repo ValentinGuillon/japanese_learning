@@ -1,5 +1,4 @@
 #jap_to_fr.py
-from nis import cat
 import random
 import module_romaji_to_kana
 from module_list_jap_fr import * #class W(kana, jap, japAlt, fr, frAlt) => ex: W('h', "îe", ["iie"], "non", [])
