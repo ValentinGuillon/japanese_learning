@@ -5,6 +5,7 @@ from module_list_jap_fr import * #class W(kana, jap, japAlt, fr, frAlt) => ex: W
 
 #CONJUGAATION MAD TO IMPLEMENT
 #!!! -ru verbs are always considered as 2nd group verb
+#!!! add adjs/verbs exceptions 
 
 def presentation():
     input("""
@@ -75,40 +76,67 @@ def isAnswerInAlt(answer, alt):
 
     return 0
     
+formsAdj = {"négative": "nai",
+            "passé": "tta",
+            "ça à l'air": "sô",
+            "négative passé": "katta",
+            "négative ça à l'air": "nasasô"}
+#exceptAdjs = {} #exemple {"adj1": 'i', "adj2": "na", "adj3", "na"}
+def conjugAdj(adj, form): #form = ["négative", "passé", "ça à l'air", "négative passé", "négative ça à l'air", "adverbe"]
+    conjug = ""
+    group = ""
+    termination = formsAdj[form]
 
-def conjugAdf(word, form):
-    pass
     #determine the adj's category (en i, en na)
+    #if (adj in exceptAdj):
+    #    pass
+    #elif
+    if (adj[-1] == 'i'):
+        group = 'i'
+    else:
+        group = "na"
+
     #conjug the adj, passed en category and form
+    if (group == 'i'):
+        if (form in ["négative", "négative passé", "négative ça à l'air"]):
+            conjug = adj[:-1] + "ku" + termination
+        elif (form == "passé"):
+            conjug = adj[:-1] + "ka" + termination
+        elif (form == "ça à l'air"):
+            conjug = adj[:-1] + termination
+        elif (form == "adverbe"):
+            conjug = adj[:-1] + "ku"
+    elif (group == "na"):
+        if (form in ["négative", "négative passé", "négative ça à l'air"]):
+            conjug = adj + "ja" + termination
+        elif (form == "passé"):
+            conjug = adj + "da" + termination
+        elif (form == "ça à l'air"):
+            conjug = adj + termination
+        elif (form == "adverbe"):
+            conjug = adj + "ni"
 
-"""
-ADJ
-(adj en i)
-(adj en na)
-
-forme négative
-forme passé
-forme négative passé
-forme \"ça a l'air\"
-forme négative de \"ça a l'air\"
-transformation en adverbe
-"""
+    return conjug
 
 
-forms = {"négative": "nai",
+formsVerb = {"négative": "nai",
             "passé": "ta",
             "polie": "masu",
             "négative passé": "nakatta",
             "négative polie": "masen",
             "passé polie": "mashita",
             "négative passé polie": "masen deshita"}
-def conjugVerbs(verb, form):
+#exceptVerbs = {} #exemple {"vb1": 2, "vb2": 2, "vb3", 1}
+def conjugVerbs(verb, form): #form = ["négative", "passé", "polie", "négative passé", "négative polie", "passé polie", "négative passé polie"]
     conjug = ""
     group = 0
-    termination = forms[form]
+    termination = formsVerb[form]
     #!!! passé vb1 gu bu mu nu = nda
 
     #determine the verbs's group (1, 2 or 3)
+    #if (verb in exceptVerbs):
+    #    pass
+    #elif
     if (verb == "suru" or verb == "kuru"):
         group = 3
 
@@ -118,17 +146,7 @@ def conjugVerbs(verb, form):
     else:
         group = 1 
 
-    #conjug the adj, passed en group and form
-    """
-    forme négative
-    forme passé
-    forme polie
-    forme négative passé
-    forme négative polie
-    forme passé polie
-    forme négative passé polie
-    """ 
-
+    #conjug the adj, based on group and form
     if (group == 3):
         if (verb == "suru"):
             conjug = "shi" + termination
@@ -136,127 +154,61 @@ def conjugVerbs(verb, form):
             conjug = "ki" + termination
 
     elif (group == 2):
+        #-ru -> termination
         conjug = verb[:-2] + termination
 
     elif (group == 1):
         if (form == "polie" or form == "négative polie" or form == "passé polie" or form == "négative passé polie"):
+            #-u -> -i + termination
             conjug = verb[:-1] + 'i' + termination
 
         elif (form == "négative"):
             if (verb[-3:-1] == "tsu"):
+                #-tsu -> -ta + nai
                 conjug = verb[:-3] + 'ta' + termination
             elif (not verb[-2] in ['r', 'g', 'b', 'm', 'n', 's', 'k']):
+                #-u -> -wa + nai
                 conjug = verb[:-1] + 'wa' + termination
             else:
+                #-_u -> -_a + nai
                 conjug = verb[:-1] + 'a' + termination
 
         elif (form == "passé"):
             if (verb[-3:-1] == "tsu"):
+                #-tsu -> -t + ta
                 conjug = verb[:-3] + 't' + termination
             elif (not verb[-2] in ['r', 'g', 'b', 'm', 'n', 's', 'k']):
+                #-u -> -t + ta
                 conjug = verb[:-1] + 't' + termination
             else:
                 if (verb[-2] in ['r']):
+                    #-ru -> -t + ta
                     conjug = verb[:-2] + 't' + termination
                 if (verb[-2] in ['g']):
+                    #-gu -> -ida
                     conjug = verb[:-2] + 'ida'
                 if (verb[-2] in ['b', 'm', 'n']):
+                    #-bu/-mu/-nu -> -nda
                     conjug = verb[:-2] + 'nda'
                 if (verb[-2] in ['s']):
+                    #-su -> -shi + ta
                     conjug = verb[:-2] + 'shi' + termination
                 if (verb[-2] in ['k']):
+                    #-ru -> -t + ta
                     conjug = verb[:-2] + 'i' + termination
 
         elif (form == "négative passé"):
             if (verb[-3:-1] == "tsu"):
+                #-tsu -> -ta + nakatta
                 conjug = verb[:-3] + 'ta' + termination
             elif (not verb[-2] in ['r', 'g', 'b', 'm', 'n', 's', 'k']):
+                #-u -> -wa + nakatta
                 conjug = verb[:-1] + 'wa' + termination
             else:
+                #-_u -> -_a + nakatta
                 conjug = verb[:-1] + 'a' + termination
 
-
-
     return conjug
-
-
-"""
-wanai    négative vb 1 -u
-anai     négative vb 1 -_u
-tanai    négative vb 1 -tsu
-
-tta      passé vb 1 -u
-tta      passé vb 1 -ru
-tta      passé vb 1 -tsu
-ida      passé vb 1 -gu
-nda      passé vb 1 -bu
-nda      passé vb 1 -mu
-nda      passé vb 1 -nu
-shita    passé vb 1 -su
-ita      passé vb 1 -ku
-
-imasu    polie vb 1
-
-wanakatta    négative passé vb 1 -u
-anakatta     négative passé vb 1 -_u
-tanakatta    négative passé vb 1 -tsu
-
-imasen            négative polie vb 1
-imashita          passé polie vb 1
-imasen deshita    négative passé polie vb 1
-
-
-nai              négative vb 2
-ta               passé vb 2
-masu             polie vb 2
-nakatta          négative passé vb 2
-masen            négative polie vb 2
-mashita          passé polie vb 2
-masen deshita    négative passé polie vb 2
-
-
-shinai, kinai                        négative vb 3
-shita, kita                          passé vb 3
-shimasu, kimasu                      polie vb 3,
-shinakatta, kinakatta                négative passé vb 3
-shimasen, kimasen                    négative polie vb 3
-shimashita, kimashita                passé polie vb 3
-shimasen deshita, kimasen deshita    négative passé polie vb 3
-
-"""
-
-
-
-
-"""
-VERB
-(vb 1er g)
-(vb 1er g) -u
-(vb 1er g) -ru
-(vb 1er g) -tsu
-(vb 1er g) -gu
-(vb 1er g) -bu
-(vb 1er g) -mu
-(vb 1er g) -nu
-(vb 1er g) -su
-(vb 1er g) -ku
-(vb 1er g) -u
-(vb 1er g) -_u
-(vb 1er g) -tsu
-(vb 1er g) -u
-(vb 1er g) -_u
-(vb 1er g) -tsu
-(vb 2e g)
-(vb 3e g)
-
-forme négative
-forme passé
-forme polie
-forme négative passé
-forme négative polie
-forme passé polie
-forme négative passé polie
-"""
 
 
 
