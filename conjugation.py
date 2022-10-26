@@ -51,10 +51,12 @@ def printOptions(mod, category, lang):
         print(" View")
     
     print("================ Category ===")
-    if(category == "cv"):
+    if (category == "cv"):
         print(" Conjugaison of Verbs")
-    elif(category == "ca"):
+    elif (category == "ca"):
         print(" Conjugaison of Adjectives")
+    elif (category == "C"):
+    	print(" Random")
 
     print("=============== Languages ===")
     for n in lang:
@@ -127,7 +129,7 @@ formsVerb = {"négative": "nai",
             "passé polie": "mashita",
             "négative passé polie": "masen deshita"}
 #exceptVerbs = {} #exemple {"vb1": 2, "vb2": 2, "vb3", 1}
-def conjugVerbs(verb, form): #form = ["négative", "passé", "polie", "négative passé", "négative polie", "passé polie", "négative passé polie"]
+def conjugVerb(verb, form): #form = ["négative", "passé", "polie", "négative passé", "négative polie", "passé polie", "négative passé polie"]
     conjug = ""
     group = 0
     termination = formsVerb[form]
@@ -222,7 +224,7 @@ def main(mod):
 
     #ask languages for Game mod
     if(mod == "g"):
-        langList = ["fr", "rf", "hr", "hf", "kr", "kf", "bf", "br"] #f = french, r = romaji, h = hira, k = kata, b = hira/kata (randomly)
+        langList = ["fr", "rf", "hf", "kf", "bf"] #f = french, r = romaji, h = hira, k = kata, b = hira/kata (randomly)
 
         print("""
 ======== Choose languages ===
@@ -272,6 +274,7 @@ Can have multiple ones
 ========= Choose category ===
 Conjug of verbs (cv)
 Conjug of adjectives (ca)
+Radom (C) (not implement yet)
 =============================""")
 
     categList = ["cv", "ca"]
@@ -285,38 +288,59 @@ Conjug of adjectives (ca)
     streakCurrent = 0
     stop = ""
     while(not stop == "STOP"):
-        iIndex = 0
-        borneMin = 0
-        borneMax = len(all) -1
+        iWord = 0
+        iForm = 0
         
         #a word is randomly choose, bases on the category
         if(category == "cv"):
-            iIndex = random.randint(0, len(conjug_verbs) - 1)
+            iWord = random.randint(0, len(verbs) - 1)
+            iForm = random.randint(0, len(formsVerb) - 1)
+            
         if(category == "ca"):
-            iIndex = random.randint(0, len(conjug_adjs) - 1)
+            iWord = random.randint(0, len(adjs) - 1)
+            iForm = random.randint(0, len(formsAdj) - 1)
 
         if(category not in categList):
             input("Error...\nRestarting...")
             main(mod)
         
+        
         word = W('', "", [], "", [])
         word_romaji = "[none]"
         word_fr = "[none]"
+        form = '[none]'
         #origin = '' #= word.kana
 
+
         if(category == "cv"):
-            word = conjug_verbs[iIndex]
+            word = verbs[iWord]
+            form = list(formsVerb.keys())[iForm]  #list(formsVerb.keys())[i]
             word_romaji = word.jap
             word_fr = word.fr
+            word_romajiConjuged = conjugVerb(word_romaji, form)
+            i = 0
+            for wordAlt in word.japAlt:
+                wordAlt = conjugVerb(wordAlt, form)
+                word.japAlt[i] = wordAlt
+                i = i + 1
+            
         if(category == "ca"):
-            word = conjug_adjs[iIndex]
+            word = adjs[iWord]
+            form = list(formsAdj.keys())[iForm]  #list(formsVerb.keys())[i]
             word_romaji = word.jap
             word_fr = word.fr
+            word_romajiConjuged = conjugAdj(word_romaji, form)
+            i = 0
+            for wordAlt in word.japAlt:
+                wordAlt = conjugAdj(wordAlt, form)
+                word.japAlt[i] = wordAlt
+                i = i + 1
 
+            
 
-        word_hira = module_romaji_to_kana.romaji_to_hira(word_romaji)
-        word_kata = module_romaji_to_kana.romaji_to_kata(word_romaji)
-
+        word_hira = module_romaji_to_kana.romaji_to_hira(word_romajiConjuged)
+        word_kata = module_romaji_to_kana.romaji_to_kata(word_romajiConjuged)
+        
 
         #VIEW MOD process
         if(mod == "v"):
@@ -327,9 +351,9 @@ Conjug of adjectives (ca)
             for n in lang:
                 if(not stop == "STOP"):
                     if n == 'f':
-                        stop = input(f"{word_fr}\n")
+                        stop = input(f"{word_fr} -> {form}\n")
                     if n == 'r':
-                        stop = input(f"{word_romaji}\n")
+                        stop = input(f"{word_romajiConjuged}\n")
                     if n == 'h':
                         stop = input(f"{word_hira}\n")
                     if n == 'k':
@@ -363,22 +387,24 @@ Tap "STOP" to end\n\n""")
                 else:
                     lang = 'k' + lang[1]
 
+            wordIsGood = 0
+            formIsGood = 0
 
             if(lang == "fr"):
                 #user guess
-                guess = str.lower(input(f"In romaji ?\n\n {word_fr}\n>"))
+                guess = str.lower(input(f"In romaji ?\n\n {word_fr} -> {form}\n>"))
 
                 #verification
                 #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
                 #good guess
-                if(guess == str.lower(word_romaji) or isAnswerInAlt(guess, word.japAlt)):
+                if(guess == str.lower(word_romajiConjuged) or isAnswerInAlt(guess, word.japAlt)):
                     correct += 1
                     streakCurrent += 1
                 #wrong guess
                 else:
-                    print(f"Oupsi. C'était \"{word_romaji}\"")
+                    print(f"Oupsi. C'était \"{word_romajiConjuged}\"")
                     wrong += 1
                     if(streakCurrent > streak):
                         streak = streakCurrent
@@ -391,22 +417,38 @@ Tap "STOP" to end\n\n""")
                             input()
                     else:
                         input()
-
+            #A VÉRIFIER
             elif(lang == "rf"):
-                #user guess
-                guess = str.lower(input(f"In french ?\n\n {word_romaji}\n>"))
+                #user guess for the word
+                guess = str.lower(input(f"In french ? (just the word)\n\n {word_romajiConjuged}\n>"))
 
-                #verification
+                #verification word
                 #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
-                #good guess
+                #good guess word
                 elif(guess == str.lower(word_fr) or isAnswerInAlt(guess, word.frAlt)):
+                    wordIsGood = 1
+                
+                #user guess for the form
+                guess = str.lower(input(f"In french ? (just the form)\n\n {word_romajiConjuged}\n>"))
+                
+                #verification form
+                #force stopping prog
+                if(str.upper(guess) == "STOP"):
+                    break
+                #good guess form
+                elif(guess == str.lower(form) or guess == str.lower(removeAccents(form))):
+                    formIsGood = 1
+                    
+                #good word AND form
+                if (wordIsGood and formIsGood):
                     correct += 1
                     streakCurrent += 1
+                
                 #wrong guess
                 else:
-                    print(f"Oupsi. C'était \"{word_fr}\"")
+                    print(f"Oupsi. C'était \"{word_fr}\" -> {form}")
                     wrong += 1
                     if(streakCurrent > streak):
                         streak = streakCurrent
@@ -419,35 +461,7 @@ Tap "STOP" to end\n\n""")
                             input()
                     else:
                         input()
-
-            elif(lang == "hr"):
-                #user guess
-                guess = str.lower(input(f"In romaji ?\n\n {word_hira}\n>"))
-
-                #verification
-                #force stopping prog
-                if(str.upper(guess) == "STOP"):
-                    break
-                #good guess
-                if(guess == str.lower(word_romaji) or isAnswerInAlt(guess, word.japAlt)):
-                    correct += 1
-                    streakCurrent += 1
-                #wrong guess
-                else:
-                    print(f"Oupsi. C'était \"{word_romaji}\"")
-                    wrong += 1
-                    if(streakCurrent > streak):
-                        streak = streakCurrent
-                    streakCurrent = 0
-
-                    if(len(word.japAlt)):
-                        if(input("Wanna see alternative ? (y/Enter)>") == 'y'):
-                            for n in word.japAlt:
-                                print(f" {n}")
-                            input()
-                    else:
-                        input()
-
+            #A FAIRE
             elif(lang == "hf"):
                 #user guess
                 guess = str.lower(input(f"In french ?\n\n {word_hira}\n>"))
@@ -475,35 +489,7 @@ Tap "STOP" to end\n\n""")
                             input()
                     else:
                         input()
-
-            elif(lang == "kr"):
-                #user guess
-                guess = str.lower(input(f"In romaji ?\n\n {word_kata}\n>"))
-
-                #verification
-                #force stopping prog
-                if(str.upper(guess) == "STOP"):
-                    break
-                #good guess
-                if(guess == str.lower(word_romaji) or isAnswerInAlt(guess, word.japAlt)):
-                    correct += 1
-                    streakCurrent += 1
-                #wrong guess
-                else:
-                    print(f"Oupsi. C'était \"{word_romaji}\"")
-                    wrong += 1
-                    if(streakCurrent > streak):
-                        streak = streakCurrent
-                    streakCurrent = 0
-
-                    if(len(word.japAlt)):
-                        if(input("Wanna see alternative ? (y/Enter)>") == 'y'):
-                            for n in word.japAlt:
-                                print(f" {n}")
-                            input()
-                    else:
-                        input()
-
+            #A FAIRE
             elif(lang == "kf"):
                 #user guess
                 guess = str.lower(input(f"In french ?\n\n {word_kata}\n>"))
