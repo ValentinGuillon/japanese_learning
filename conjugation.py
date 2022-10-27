@@ -229,11 +229,8 @@ def main(mod):
         print("""
 ======== Choose languages ===
 French   <=> Romaji (fr / rf)
-Hiragana  => Romaji (hr)
 Hiragana  => French (hf)
-Katakana  => Romaji (kr)
 Katakana  => French (kf)
-Hira/Kata => Romaji (br)
 Hira/Kata => French (bf)
 =============================""")
 
@@ -392,7 +389,7 @@ Tap "STOP" to end\n\n""")
 
             if(lang == "fr"):
                 #user guess
-                guess = str.lower(input(f"In romaji ?\n\n {word_fr} -> {form}\n>"))
+                guess = str.lower(input(f" {word_fr} -> {form}\n\nIn romaji ?\n>"))
 
                 #verification
                 #force stopping prog
@@ -417,10 +414,10 @@ Tap "STOP" to end\n\n""")
                             input()
                     else:
                         input()
-            #A VÉRIFIER
+
             elif(lang == "rf"):
                 #user guess for the word
-                guess = str.lower(input(f"In french ? (just the word)\n\n {word_romajiConjuged}\n>"))
+                guess = str.lower(input(f" {word_romajiConjuged}\n\nIn french ? (just the word)\n>"))
 
                 #verification word
                 #force stopping prog
@@ -431,7 +428,7 @@ Tap "STOP" to end\n\n""")
                     wordIsGood = 1
                 
                 #user guess for the form
-                guess = str.lower(input(f"In french ? (just the form)\n\n {word_romajiConjuged}\n>"))
+                guess = str.lower(input(f"In french ? (just the form)\n>"))
                 
                 #verification form
                 #force stopping prog
@@ -463,20 +460,36 @@ Tap "STOP" to end\n\n""")
                         input()
             #A FAIRE
             elif(lang == "hf"):
-                #user guess
-                guess = str.lower(input(f"In french ?\n\n {word_hira}\n>"))
+                #user guess for the word
+                guess = str.lower(input(f" {word_hira}\n\nIn french ? (just the word)\n>"))
 
-                #verification
+                #verification word
                 #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
-                #good guess
-                if(guess == str.lower(word_fr) or isAnswerInAlt(guess, word.frAlt)):
+                #good guess word
+                elif(guess == str.lower(word_fr) or isAnswerInAlt(guess, word.frAlt)):
+                    wordIsGood = 1
+                
+                #user guess for the form
+                guess = str.lower(input(f"In french ? (just the form)\n>"))
+                
+                #verification form
+                #force stopping prog
+                if(str.upper(guess) == "STOP"):
+                    break
+                #good guess form
+                elif(guess == str.lower(form) or guess == str.lower(removeAccents(form))):
+                    formIsGood = 1
+                    
+                #good word AND form
+                if (wordIsGood and formIsGood):
                     correct += 1
                     streakCurrent += 1
+                
                 #wrong guess
                 else:
-                    print(f"Oupsi. C'était \"{word_fr}\"")
+                    print(f"Oupsi. C'était \"{word_fr}\" -> {form}")
                     wrong += 1
                     if(streakCurrent > streak):
                         streak = streakCurrent
@@ -491,19 +504,36 @@ Tap "STOP" to end\n\n""")
                         input()
             #A FAIRE
             elif(lang == "kf"):
-                #user guess
-                guess = str.lower(input(f"In french ?\n\n {word_kata}\n>"))
-                                #verification
+                #user guess for the word
+                guess = str.lower(input(f" {word_kata}\n\nIn french ? (just the word)\n>"))
+
+                #verification word
                 #force stopping prog
                 if(str.upper(guess) == "STOP"):
                     break
-                #good guess
-                if(guess == str.lower(word_fr) or isAnswerInAlt(guess, word.frAlt)):
+                #good guess word
+                elif(guess == str.lower(word_fr) or isAnswerInAlt(guess, word.frAlt)):
+                    wordIsGood = 1
+                
+                #user guess for the form
+                guess = str.lower(input(f"In french ? (just the form)\n>"))
+                
+                #verification form
+                #force stopping prog
+                if(str.upper(guess) == "STOP"):
+                    break
+                #good guess form
+                elif(guess == str.lower(form) or guess == str.lower(removeAccents(form))):
+                    formIsGood = 1
+                    
+                #good word AND form
+                if (wordIsGood and formIsGood):
                     correct += 1
                     streakCurrent += 1
+                
                 #wrong guess
                 else:
-                    print(f"Oupsi. C'était \"{word_fr}\"")
+                    print(f"Oupsi. C'était \"{word_fr}\" -> {form}")
                     wrong += 1
                     if(streakCurrent > streak):
                         streak = streakCurrent
