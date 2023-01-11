@@ -1,0 +1,8 @@
+total numbers of streaks
+0
+greater streak
+0
+average
+0
+total of correct answers
+0

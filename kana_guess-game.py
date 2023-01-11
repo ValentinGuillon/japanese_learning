@@ -1,7 +1,17 @@
 #kana_guess-game.py
 import random
 from module_characters_jap import *
+import module_saves as saves
 
+
+global TOTAL_STREAKS
+global GREATER_STREAK
+global AVERAGE_STREAK
+global TOTAL_CORRECT
+TOTAL_STREAKS = 0
+GREATER_STREAK = 0
+AVERAGE_STREAK = 0
+TOTAL_CORRECT = 0
 
 def presentation():
     input("""
@@ -31,7 +41,25 @@ def printOptions(lang):
     print("=============================")
 
 
+def update_average() -> None:
+    global AVERAGE_STREAK
+    if TOTAL_STREAKS > 0:
+        AVERAGE_STREAK = TOTAL_CORRECT // TOTAL_STREAKS
+
+def save_streak() -> None:
+    update_average()
+    saves.save_streak_infos(TOTAL_STREAKS, GREATER_STREAK, AVERAGE_STREAK, TOTAL_CORRECT)
+
+
+
+
+
 def main(combiAdded, combiplusAdded):
+    global TOTAL_STREAKS
+    global GREATER_STREAK
+    global AVERAGE_STREAK
+    global TOTAL_CORRECT
+
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     langList = ['h', 'k', 'b']
     lang = ""
@@ -61,7 +89,6 @@ def main(combiAdded, combiplusAdded):
 
     correct = 0
     wrong = 0
-    streak = 0
     streakCurrent = 0
 
 
@@ -71,7 +98,8 @@ def main(combiAdded, combiplusAdded):
         print(f"""================== Scores ===
  Correct:{correct}
  Wrong:{wrong}
- Best streak:{streak}
+ Best streak:{GREATER_STREAK}
+ Average streak:{AVERAGE_STREAK}
  Streak:{streakCurrent}
 =============================
 Tap "STOP" to end
@@ -120,8 +148,12 @@ Tap "STOP" to end
         else:
             input(f"""Oupsi, it was "{romaji}"\n""")
             wrong += 1
-            if(streakCurrent > streak):
-                streak = streakCurrent
+            if(streakCurrent > GREATER_STREAK):
+                GREATER_STREAK = streakCurrent
+
+            TOTAL_STREAKS += 1
+            TOTAL_CORRECT += streakCurrent
+            save_streak()
             streakCurrent = 0
         
         #reset language
@@ -137,4 +169,5 @@ Tap "STOP" to end
 
 if __name__=="__main__":
     presentation()
+    TOTAL_STREAKS, GREATER_STREAK, AVERAGE_STREAK, TOTAL_CORRECT = saves.load_streak_infos()
     main(0, 0)
